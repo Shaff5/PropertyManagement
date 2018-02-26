@@ -1,5 +1,6 @@
 ﻿namespace PropertyManagement.WebApi.Controllers
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading;
@@ -34,9 +35,13 @@
                 b.BuildingId = building.BuildingId;
                 b.BuildingName = building.BuildingName;
                 b.AddressLine1 = building.AddressLine1;
+                b.AddressLine2 = building.AddressLine2;
+                b.AddressLine3 = building.AddressLine3;
                 b.City = building.City;
                 b.State = building.State;
                 b.ZipCode = building.ZipCode;
+                b.PurchaseDate = building.PurchaseDate;
+
                 buildingList.Add(b);
             }
             return buildingList.ToArray();
@@ -62,10 +67,12 @@
             b.BuildingId = building.BuildingId;
             b.BuildingName = building.BuildingName;
             b.AddressLine1 = building.AddressLine1;
+            b.AddressLine2 = building.AddressLine2;
+            b.AddressLine3 = building.AddressLine3;
             b.City = building.City;
             b.State = building.State;
             b.ZipCode = building.ZipCode;
-            //a trivial change 3
+            b.PurchaseDate = building.PurchaseDate;
 
             return Ok(b);
         }
@@ -88,10 +95,13 @@
             b.BuildingId = building.BuildingId;
             b.BuildingName = building.BuildingName;
             b.AddressLine1 = building.AddressLine1;
+            b.AddressLine2 = building.AddressLine2;
+            b.AddressLine3 = building.AddressLine3;
             b.City = building.City;
             b.State = building.State;
             b.ZipCode = building.ZipCode;
-            
+            b.PurchaseDate = building.PurchaseDate;
+
             _buildingRepository.AddBuilding(b);
             return CreatedAtRoute("DefaultApi", new { id = building.BuildingId }, building);
         }
@@ -119,9 +129,12 @@
 
             b.BuildingName = building.BuildingName;
             b.AddressLine1 = building.AddressLine1;
+            b.AddressLine2 = building.AddressLine2;
+            b.AddressLine3 = building.AddressLine3;
             b.City = building.City;
             b.State = building.State;
             b.ZipCode = building.ZipCode;
+            b.PurchaseDate = building.PurchaseDate;
 
             _buildingRepository.UpdateBuilding(b);
             return Ok();
@@ -145,9 +158,12 @@
             public int BuildingId { get; set; }
             public string BuildingName { get; set; }
             public string AddressLine1 { get; set; }
+            public string AddressLine2 { get; set; }
+            public string AddressLine3 { get; set; }
             public string City { get; set; }
             public string State { get; set; }
             public string ZipCode { get; set; }
+            public DateTime PurchaseDate { get; set; }
         }
     }
 }

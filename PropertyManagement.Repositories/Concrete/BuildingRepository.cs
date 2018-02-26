@@ -56,11 +56,13 @@
             var b = new Data.Building();
             b.BuildingName = building.BuildingName;
             b.AddressLine1 = building.AddressLine1;
+            b.AddressLine2 = building.AddressLine2;
+            b.AddressLine3 = building.AddressLine3;
             b.City = building.City;
-
             b.State = building.State;
             b.ZipCode = building.ZipCode;
-            b.PurchaseDate = new System.DateTime(2010, 1, 1);
+            //b.PurchaseDate = new System.DateTime(2010, 1, 1);
+            b.PurchaseDate = building.PurchaseDate;
             b.PurchasePrice = 100000;
             b.NumberOfUnits = 6;
             b.CreatedBy = 4;
@@ -84,11 +86,13 @@
             b.BuildingId = building.BuildingId;
             b.BuildingName = building.BuildingName;
             b.AddressLine1 = building.AddressLine1;
+            b.AddressLine2 = building.AddressLine2;
+            b.AddressLine3 = building.AddressLine3;
             b.City = building.City;
-
             b.State = building.State;
             b.ZipCode = building.ZipCode;
-            b.PurchaseDate = new System.DateTime(2010, 1, 1);
+            //b.PurchaseDate = new System.DateTime(2010, 1, 1);
+            b.PurchaseDate = building.PurchaseDate;
             b.PurchasePrice = 100000;
             b.NumberOfUnits = 6;
             b.CreatedBy = 4;

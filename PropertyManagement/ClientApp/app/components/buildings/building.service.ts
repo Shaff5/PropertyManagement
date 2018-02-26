@@ -23,7 +23,7 @@ export class BuildingService {
     updateBuilding(id: number, building: Building) {
         this.http.put(this.apiUrl + 'Building/' + id, building)
             .subscribe(result => {
-                alert('hi');
+                //alert('hi');
             }, error => console.error(error));
     }
 
