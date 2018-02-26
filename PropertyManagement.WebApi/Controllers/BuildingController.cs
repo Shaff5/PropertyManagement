@@ -63,7 +63,7 @@
             b.AddressLine1 = building.AddressLine1;
             b.City = building.City;
             b.ZipCode = building.ZipCode;
-            //trivial change
+            //a trivial change
 
             return Ok(b);
         }
