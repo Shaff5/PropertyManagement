@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="06da9c74679d4b0ab4527d09f78e6fbf" Name="Diagram1">
+        <EntityTypeShape EntityType="PropertyManagementModel.Building" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyManagementModel.Contact" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyManagementModel.HistoryDetail" Width="1.5" PointX="10" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyManagementModel.HistoryHeader" Width="1.5" PointX="7.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyManagementModel.RentPayment" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyManagementModel.Rent" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyManagementModel.Unit" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyManagementModel.Vendor" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyManagementModel.PhoneType" Width="1.5" PointX="2.75" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="PropertyManagementModel.FK_Units_Buildings" ManuallyRouted="false" />
+        <AssociationConnector Association="PropertyManagementModel.FK_HistoryDetail_HistoryHeader" ManuallyRouted="false" />
+        <AssociationConnector Association="PropertyManagementModel.FK_RentPayments_Units" ManuallyRouted="false" />
+        <AssociationConnector Association="PropertyManagementModel.FK_Rents_Units" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

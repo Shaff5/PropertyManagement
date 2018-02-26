@@ -1,0 +1,39 @@
+﻿<h1>Buildings</h1>
+
+<p *ngIf="!buildings"><em>Loading...</em></p>
+
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-primary" [routerLink]="['/buildings/building-detail', -1]">
+            Add Building
+        </button>
+    </div>
+</div>
+
+<table class='table' *ngIf="buildings">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let building of buildings">
+            <td>{{ building.BuildingId }}</td>
+            <td>{{ building.BuildingName }}</td>
+            <td>{{ building.Address }}</td>
+            <td>{{ building.City }}</td>
+            <td>{{ building.ZipCode }}</td>
+            <td>
+                <button class="btn btn-primary" [routerLink]="['/buildings/building-detail', building.BuildingId]">
+                    <i class="glyphicon glyphicon-edit"></i>                
+                </button>
+                <button class="btn btn-default btn-lg" (click)="delete(building.BuildingId)">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
