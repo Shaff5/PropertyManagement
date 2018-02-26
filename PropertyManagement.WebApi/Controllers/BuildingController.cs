@@ -35,6 +35,7 @@
                 b.BuildingName = building.BuildingName;
                 b.AddressLine1 = building.AddressLine1;
                 b.City = building.City;
+                b.State = building.State;
                 b.ZipCode = building.ZipCode;
                 buildingList.Add(b);
             }
@@ -62,6 +63,7 @@
             b.BuildingName = building.BuildingName;
             b.AddressLine1 = building.AddressLine1;
             b.City = building.City;
+            b.State = building.State;
             b.ZipCode = building.ZipCode;
             //a trivial change 3
 
@@ -87,6 +89,7 @@
             b.BuildingName = building.BuildingName;
             b.AddressLine1 = building.AddressLine1;
             b.City = building.City;
+            b.State = building.State;
             b.ZipCode = building.ZipCode;
             
             _buildingRepository.AddBuilding(b);
@@ -117,6 +120,7 @@
             b.BuildingName = building.BuildingName;
             b.AddressLine1 = building.AddressLine1;
             b.City = building.City;
+            b.State = building.State;
             b.ZipCode = building.ZipCode;
 
             _buildingRepository.UpdateBuilding(b);
@@ -142,6 +146,7 @@
             public string BuildingName { get; set; }
             public string AddressLine1 { get; set; }
             public string City { get; set; }
+            public string State { get; set; }
             public string ZipCode { get; set; }
         }
     }

@@ -3,5 +3,6 @@
     BuildingName: string;
     AddressLine1: string;
     City: string;
+    State: string;
     ZipCode: string;
 }

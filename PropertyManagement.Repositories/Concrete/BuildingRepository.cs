@@ -58,7 +58,7 @@
             b.AddressLine1 = building.AddressLine1;
             b.City = building.City;
 
-            b.State = "MA";
+            b.State = building.State;
             b.ZipCode = building.ZipCode;
             b.PurchaseDate = new System.DateTime(2010, 1, 1);
             b.PurchasePrice = 100000;
@@ -86,7 +86,7 @@
             b.AddressLine1 = building.AddressLine1;
             b.City = building.City;
 
-            b.State = "MA";
+            b.State = building.State;
             b.ZipCode = building.ZipCode;
             b.PurchaseDate = new System.DateTime(2010, 1, 1);
             b.PurchasePrice = 100000;
