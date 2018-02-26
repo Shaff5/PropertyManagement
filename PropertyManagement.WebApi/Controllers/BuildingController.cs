@@ -41,7 +41,7 @@
                 b.State = building.State;
                 b.ZipCode = building.ZipCode;
                 b.PurchaseDate = building.PurchaseDate;
-
+                //another trivial change 555
                 buildingList.Add(b);
             }
             return buildingList.ToArray();
