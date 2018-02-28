@@ -41,6 +41,38 @@
             <label for="purchaseDate">Purchase Date</label>
             <input id="purchaseDate" type="text" class="form-control" [(ngModel)]="building.PurchaseDate" />
         </div>
+        <div class="form-group">
+            <label for="purchasePrice">Purchase Price</label>
+            <input id="purchasePrice" type="text" class="form-control" [(ngModel)]="building.PurchasePrice" />
+        </div>
+        <div class="form-group">
+            <label for="sellDate">Sell Date</label>
+            <input id="sellDate" type="text" class="form-control" [(ngModel)]="building.SellDate" />
+        </div>
+        <div class="form-group">
+            <label for="sellPrice">Sell Price</label>
+            <input id="sellPrice" type="text" class="form-control" [(ngModel)]="building.SellPrice" />
+        </div>
+        <div class="form-group">
+            <label for="numberOfUnits">Number of Units</label>
+            <input id="numberOfUnits" type="text" class="form-control" [(ngModel)]="building.NumberOfUnits" />
+        </div>
+        <div class="form-group">
+            <label for="createdOn">Created On</label>
+            <input id="createdOn" type="text" class="form-control" [(ngModel)]="building.CreatedOn" />
+        </div>
+        <div class="form-group">
+            <label for="createdBy">Created By</label>
+            <input id="createdBy" type="text" class="form-control" [(ngModel)]="building.CreatedBy" />
+        </div>
+        <div class="form-group">
+            <label for="lastUpdatedOn">Last Updated On</label>
+            <input id="lastUpdatedOn" type="text" class="form-control" [(ngModel)]="building.LastUpdatedOn" />
+        </div>
+        <div class="form-group">
+            <label for="lastUpdatedBy">Last Updated By</label>
+            <input id="lastUpdatedBy" type="text" class="form-control" [(ngModel)]="building.LastUpdatedBy" />
+        </div>
     </div>
     <div class="panel-footer">
         <button class="btn btn-success" (click)="saveBuilding()">

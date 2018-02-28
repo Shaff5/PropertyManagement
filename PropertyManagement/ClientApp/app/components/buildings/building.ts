@@ -8,4 +8,12 @@
     State: string;
     ZipCode: string;
     PurchaseDate: Date;
+    PurchasePrice: number;
+    SellDate: Date;
+    SellPrice: number;
+    NumberOfUnits: number;
+    CreatedOn: Date;
+    CreatedBy: number;
+    LastUpdatedOn: Date;
+    LastUpdatedBy: number;
 }

@@ -41,6 +41,14 @@
                 b.State = building.State;
                 b.ZipCode = building.ZipCode;
                 b.PurchaseDate = building.PurchaseDate;
+                b.PurchasePrice = building.PurchasePrice;
+                b.SellDate = building.SellDate;
+                b.SellPrice = building.SellPrice;
+                b.NumberOfUnits = building.NumberOfUnits;
+                b.CreatedOn = building.CreatedOn;
+                b.CreatedBy = building.CreatedBy;
+                b.LastUpdatedOn = building.LastUpdatedOn;
+                b.LastUpdatedBy = building.LastUpdatedBy;
 
                 buildingList.Add(b);
             }
@@ -73,6 +81,14 @@
             b.State = building.State;
             b.ZipCode = building.ZipCode;
             b.PurchaseDate = building.PurchaseDate;
+            b.PurchasePrice = building.PurchasePrice;
+            b.SellDate = building.SellDate;
+            b.SellPrice = building.SellPrice;
+            b.NumberOfUnits = building.NumberOfUnits;
+            b.CreatedOn = building.CreatedOn;
+            b.CreatedBy = building.CreatedBy;
+            b.LastUpdatedOn = building.LastUpdatedOn;
+            b.LastUpdatedBy = building.LastUpdatedBy;
 
             return Ok(b);
         }
@@ -164,6 +180,14 @@
             public string State { get; set; }
             public string ZipCode { get; set; }
             public DateTime PurchaseDate { get; set; }
+            public decimal PurchasePrice { get; set; }
+            public DateTime? SellDate { get; set; }
+            public decimal? SellPrice { get; set; }
+            public decimal NumberOfUnits { get; set; }
+            public DateTime CreatedOn { get; set; }
+            public int CreatedBy { get; set; }
+            public DateTime LastUpdatedOn { get; set; }
+            public int LastUpdatedBy { get; set; }
         }
     }
 }
