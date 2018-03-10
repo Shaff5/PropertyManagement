@@ -23,7 +23,13 @@ export class BuildingService {
     updateBuilding(id: number, building: Building) {
         this.http.put(this.apiUrl + 'Building/' + id, building)
             .subscribe(result => {
-                //alert('hi');
+            }, error => console.error(error));
+    }
+
+    deleteBuilding(id: number) {
+        this.http.delete(this.apiUrl + 'Building/' + id)
+            .subscribe(result => {
+
             }, error => console.error(error));
     }
 

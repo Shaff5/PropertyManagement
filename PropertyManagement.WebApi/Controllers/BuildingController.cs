@@ -1,12 +1,8 @@
 ﻿namespace PropertyManagement.WebApi.Controllers
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Threading;
     using System.Web.Http;
-    using System.Web.Http.Description;
-    //using Data;
     using Repositories.Abstract;
 
     public class BuildingController : ApiController
@@ -24,35 +20,10 @@
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        //[ResponseType(typeof(Building[]))]
-        public IEnumerable<Building> GetBuildings()
+        public IEnumerable<Models.Building> GetBuildings()
         {
             var buildings = _buildingRepository.GetAllBuildings();
-            var buildingList = new List<Building>();
-            foreach (var building in buildings)
-            {
-                var b = new Building();
-                b.BuildingId = building.BuildingId;
-                b.BuildingName = building.BuildingName;
-                b.AddressLine1 = building.AddressLine1;
-                b.AddressLine2 = building.AddressLine2;
-                b.AddressLine3 = building.AddressLine3;
-                b.City = building.City;
-                b.State = building.State;
-                b.ZipCode = building.ZipCode;
-                b.PurchaseDate = building.PurchaseDate;
-                b.PurchasePrice = building.PurchasePrice;
-                b.SellDate = building.SellDate;
-                b.SellPrice = building.SellPrice;
-                b.NumberOfUnits = building.NumberOfUnits;
-                b.CreatedOn = building.CreatedOn;
-                b.CreatedBy = building.CreatedBy;
-                b.LastUpdatedOn = building.LastUpdatedOn;
-                b.LastUpdatedBy = building.LastUpdatedBy;
-
-                buildingList.Add(b);
-            }
-            return buildingList.ToArray();
+            return buildings.ToArray();
         }
 
         // GET api/building/5
@@ -62,7 +33,6 @@
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
         [HttpGet]
-        //[ResponseType(typeof(Building))]
         public IHttpActionResult GetBuilding(int id)
         {
             var building = _buildingRepository.GetBuildingById(id);
@@ -70,27 +40,8 @@
             {
                 return NotFound();
             }
-
-            var b = new Building();
-            b.BuildingId = building.BuildingId;
-            b.BuildingName = building.BuildingName;
-            b.AddressLine1 = building.AddressLine1;
-            b.AddressLine2 = building.AddressLine2;
-            b.AddressLine3 = building.AddressLine3;
-            b.City = building.City;
-            b.State = building.State;
-            b.ZipCode = building.ZipCode;
-            b.PurchaseDate = building.PurchaseDate;
-            b.PurchasePrice = building.PurchasePrice;
-            b.SellDate = building.SellDate;
-            b.SellPrice = building.SellPrice;
-            b.NumberOfUnits = building.NumberOfUnits;
-            b.CreatedOn = building.CreatedOn;
-            b.CreatedBy = building.CreatedBy;
-            b.LastUpdatedOn = building.LastUpdatedOn;
-            b.LastUpdatedBy = building.LastUpdatedBy;
-
-            return Ok(b);
+            
+            return Ok(building);
         }
 
         // POST api/building
@@ -100,25 +51,14 @@
         /// <param name="building">The building.</param>
         /// <returns></returns>
         [HttpPost]
-        public IHttpActionResult CreateBuilding(Building building)
+        public IHttpActionResult CreateBuilding(Models.Building building)
         {
             if (_buildingRepository.GetBuildingById(building.BuildingId) != null)
             {
                 return Conflict();
             }
 
-            var b = new Models.Building();
-            b.BuildingId = building.BuildingId;
-            b.BuildingName = building.BuildingName;
-            b.AddressLine1 = building.AddressLine1;
-            b.AddressLine2 = building.AddressLine2;
-            b.AddressLine3 = building.AddressLine3;
-            b.City = building.City;
-            b.State = building.State;
-            b.ZipCode = building.ZipCode;
-            b.PurchaseDate = building.PurchaseDate;
-
-            _buildingRepository.AddBuilding(b);
+            _buildingRepository.AddBuilding(building);
             return CreatedAtRoute("DefaultApi", new { id = building.BuildingId }, building);
         }
 
@@ -130,7 +70,7 @@
         /// <param name="building">The building.</param>
         /// <returns></returns>
         [HttpPut]
-        public IHttpActionResult UpdateBuilding(int id, Building building)
+        public IHttpActionResult UpdateBuilding(int id, Models.Building building)
         {
             if (id != building.BuildingId)
             {
@@ -142,17 +82,8 @@
             {
                 return NotFound();
             }
-
-            b.BuildingName = building.BuildingName;
-            b.AddressLine1 = building.AddressLine1;
-            b.AddressLine2 = building.AddressLine2;
-            b.AddressLine3 = building.AddressLine3;
-            b.City = building.City;
-            b.State = building.State;
-            b.ZipCode = building.ZipCode;
-            b.PurchaseDate = building.PurchaseDate;
-
-            _buildingRepository.UpdateBuilding(b);
+            
+            _buildingRepository.UpdateBuilding(building);
             return Ok();
         }
 
@@ -162,32 +93,11 @@
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        //[HttpDelete]
-        //public IHttpActionResult DeleteBuilding(int id)
-        //{
-        //    _buildingRepository.DeleteBuilding(id);
-        //    return Ok();
-        //}
-
-        public class Building
+        [HttpDelete]
+        public IHttpActionResult DeleteBuilding(int id)
         {
-            public int BuildingId { get; set; }
-            public string BuildingName { get; set; }
-            public string AddressLine1 { get; set; }
-            public string AddressLine2 { get; set; }
-            public string AddressLine3 { get; set; }
-            public string City { get; set; }
-            public string State { get; set; }
-            public string ZipCode { get; set; }
-            public DateTime PurchaseDate { get; set; }
-            public decimal PurchasePrice { get; set; }
-            public DateTime? SellDate { get; set; }
-            public decimal? SellPrice { get; set; }
-            public decimal NumberOfUnits { get; set; }
-            public DateTime CreatedOn { get; set; }
-            public int CreatedBy { get; set; }
-            public DateTime LastUpdatedOn { get; set; }
-            public int LastUpdatedBy { get; set; }
+            _buildingRepository.DeleteBuilding(id);
+            return Ok();
         }
     }
 }

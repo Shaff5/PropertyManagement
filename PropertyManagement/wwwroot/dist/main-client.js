@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "be1b68d894b5318c498e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b997bd185feae43dc99a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -764,7 +764,11 @@ var BuildingService = (function () {
     BuildingService.prototype.updateBuilding = function (id, building) {
         this.http.put(this.apiUrl + 'Building/' + id, building)
             .subscribe(function (result) {
-            //alert('hi');
+        }, function (error) { return console.error(error); });
+    };
+    BuildingService.prototype.deleteBuilding = function (id) {
+        this.http.delete(this.apiUrl + 'Building/' + id)
+            .subscribe(function (result) {
         }, function (error) { return console.error(error); });
     };
     BuildingService = __decorate([
@@ -1835,12 +1839,6 @@ var BuildingDetailComponent = (function () {
     return BuildingDetailComponent;
 }());
 
-//interface Building {
-//    buildingId: number;
-//    buildingName: string;
-//    address1: string;
-//    city: string;
-//} 
 
 
 /***/ }),
@@ -1886,6 +1884,9 @@ var BuildingsComponent = (function () {
     BuildingsComponent.prototype.getBuildings = function () {
         var _this = this;
         this.buildingservice.getBuildings().subscribe(function (buildings) { return _this.buildings = buildings; });
+    };
+    BuildingsComponent.prototype.delete = function (id) {
+        this.buildingservice.deleteBuilding(id);
     };
     BuildingsComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({

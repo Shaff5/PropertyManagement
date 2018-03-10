@@ -61,10 +61,11 @@
             b.City = building.City;
             b.State = building.State;
             b.ZipCode = building.ZipCode;
-            //b.PurchaseDate = new System.DateTime(2010, 1, 1);
             b.PurchaseDate = building.PurchaseDate;
-            b.PurchasePrice = 100000;
-            b.NumberOfUnits = 6;
+            b.PurchasePrice = building.PurchasePrice;
+            b.SellDate = building.SellDate;
+            b.SellPrice = building.SellPrice;
+            b.NumberOfUnits = building.NumberOfUnits;
             b.CreatedBy = 4;
             b.CreatedOn = System.DateTime.Now;
             b.LastUpdatedBy = 4;
@@ -91,15 +92,14 @@
             b.City = building.City;
             b.State = building.State;
             b.ZipCode = building.ZipCode;
-            //b.PurchaseDate = new System.DateTime(2010, 1, 1);
             b.PurchaseDate = building.PurchaseDate;
-            b.PurchasePrice = 100000;
-            b.NumberOfUnits = 6;
+            b.PurchasePrice = building.PurchasePrice;
+            b.SellDate = building.SellDate;
+            b.SellPrice = building.SellPrice;
+            b.NumberOfUnits = building.NumberOfUnits;
             b.CreatedBy = 4;
-            b.CreatedOn = System.DateTime.Now;
             b.LastUpdatedBy = 4;
             b.LastUpdatedOn = System.DateTime.Now;
-            //_context.Entry(b).State = EntityState.Modified;
             
             _context.SaveChanges();
         }

@@ -18,4 +18,8 @@ export class BuildingsComponent implements OnInit {
     private getBuildings(): void {
         this.buildingservice.getBuildings().subscribe(buildings => this.buildings = buildings);
     }
+
+    private delete(id: number): void {
+        this.buildingservice.deleteBuilding(id);
+    }
 }

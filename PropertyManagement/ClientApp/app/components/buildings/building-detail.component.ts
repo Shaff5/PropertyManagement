@@ -78,10 +78,3 @@ export class BuildingDetailComponent implements OnInit {
             }, error => console.error(error));
     }
 }
-
-//interface Building {
-//    buildingId: number;
-//    buildingName: string;
-//    address1: string;
-//    city: string;
-//}
