@@ -20,6 +20,13 @@ export class BuildingService {
         return this.http.get(this.apiUrl + 'Building/' + id).map(response => response.json() as Building);
     }
 
+    addBuilding(building: Building) {
+        this.http.post(this.apiUrl + 'Building/', building)
+            .subscribe(result => {
+                //this.building = result.json() as Building;
+            }, error => console.error(error));
+    }
+
     updateBuilding(id: number, building: Building) {
         this.http.put(this.apiUrl + 'Building/' + id, building)
             .subscribe(result => {

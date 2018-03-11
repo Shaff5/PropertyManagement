@@ -55,11 +55,6 @@ export class BuildingDetailComponent implements OnInit {
     }
 
     private addBuilding() {
-        //let headers = new Headers({ 'Content-Type': 'application/json' });
-        //let options = new RequestOptions(headers: headers);
-        this.http.post('http://localhost:62579/api/Building/', this.building)
-            .subscribe(result => {
-                this.building = result.json() as Building;
-            }, error => console.error(error));
+        this.buildingservice.addBuilding(this.building);
     }
 }
