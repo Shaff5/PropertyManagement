@@ -17,31 +17,16 @@ export class BuildingDetailComponent implements OnInit {
     private http: Http;
 
     constructor(private buildingservice: BuildingService, http: Http, @Inject('BASE_URL') baseUrl: string, private activatedRoute: ActivatedRoute) {
-        //http.get(baseUrl + 'api/Building/Get').subscribe(result => {
         this.http = http;
-        //let id = this.activatedRoute.snapshot.params["id"];
-        //if (id > 0)
-        //{
-        //    //alert('hi');
-        //    //http.get('http://localhost:62579/api/Building/' + id)
-        //    //    .subscribe(result => {
-        //    //        alert(result);
-        //    //        //alert(result.json());
-        //    //        this.building = result.json() as Building;
-        //    //        alert(1);
-        //    //        alert(this.building.buildingName);
-        //    //        alert(2);
-        //    //    }/*, error => console.error(error)*/);
-        //    this.buildingservice.getBuilding(id).subscribe(building => this.building = building);
-        //}
-        //else
-        //{
-        //    this.building = new Building();
-        //}
     }
 
     ngOnInit(): void {
         this.getBuilding();
+    }
+
+    ngAfterViewInit(): void {
+        //need to figure out how to add jquery
+        //$('#datetimepicker1').datetimepicker();
     }
 
     private getBuilding() {
