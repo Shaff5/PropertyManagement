@@ -20,6 +20,9 @@ export class BuildingsComponent implements OnInit {
     }
 
     private delete(id: number): void {
-        this.buildingservice.deleteBuilding(id);
+        if (confirm("Are you sure you want to delete this building?")) {
+            this.buildingservice.deleteBuilding(id)
+                .subscribe(() => this.getBuildings(), errors => alert(errors[0]));
+        }
     }
 }

@@ -5,6 +5,18 @@
         </h1>
     </div>
     <div class="panel-body">
+        <div class="row" *ngIf="messages && messages.length">
+            <div class="col-xs-12">
+                <div class="alert alert-warning">
+                    <ul>
+                        <li *ngFor="let msg of messages">
+                            {{msg}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <div class="form-group">
             <label for="buildingId">Building Id</label>
             <input id="buildingId" type="number" class="form-control" [(ngModel)]="building.BuildingId" />

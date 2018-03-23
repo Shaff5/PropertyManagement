@@ -17,13 +17,14 @@
             <th>Name</th>
             <th>Address</th>
             <th>City</th>
+            <th>Zip Code</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let building of buildings">
             <td>{{ building.BuildingId }}</td>
             <td>{{ building.BuildingName }}</td>
-            <td>{{ building.Address }}</td>
+            <td>{{ building.AddressLine1 }}</td>
             <td>{{ building.City }}</td>
             <td>{{ building.ZipCode }}</td>
             <td>

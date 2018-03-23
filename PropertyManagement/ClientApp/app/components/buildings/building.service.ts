@@ -21,10 +21,8 @@ export class BuildingService {
     }
 
     addBuilding(building: Building) {
-        this.http.post(this.apiUrl + 'Building/', building)
-            .subscribe(result => {
-                //this.building = result.json() as Building;
-            }, error => console.error(error));
+        return this.http.post(this.apiUrl + 'Building/', building)
+            .map(() => null).catch(this.handleError);
     }
 
     updateBuilding(id: number, building: Building) {
@@ -33,11 +31,22 @@ export class BuildingService {
             }, error => console.error(error));
     }
 
-    deleteBuilding(id: number) {
-        this.http.delete(this.apiUrl + 'Building/' + id)
-            .subscribe(result => {
+    //deleteBuilding(id: number) {
+    //    this.http.delete(this.apiUrl + 'Building/' + id)
+    //        .subscribe(result => {
+    //            return
+    //        }, error => console.error(error));
+    //}
 
-            }, error => console.error(error));
+    deleteBuilding(id: number) {
+        return this.http.delete(this.apiUrl + 'Building/' + id).map(() => null).catch(this.handleError);
+    }
+
+    private handleError(error: any): Observable<any> {
+        let errors: string[] = [];
+        errors.push(error.json().exceptionMessage);
+
+        return Observable.throw(errors);
     }
 
 }

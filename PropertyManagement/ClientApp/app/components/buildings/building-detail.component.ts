@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/operator/map' 
 import 'rxjs/add/operator/catch'
 //import 'rxjs/add/operator/throw'
-import { ActivatedRoute } from '@angular/router'
+import { Router, ActivatedRoute } from '@angular/router'
 import { Building } from './building'
 import { BuildingService } from './building.service';
 
@@ -15,6 +15,8 @@ import { BuildingService } from './building.service';
 export class BuildingDetailComponent implements OnInit {
     public building: Building;
     private http: Http;
+    private router: Router;
+    private messages: string[] = [];
 
     constructor(private buildingservice: BuildingService, http: Http, @Inject('BASE_URL') baseUrl: string, private activatedRoute: ActivatedRoute) {
         this.http = http;
@@ -32,20 +34,18 @@ export class BuildingDetailComponent implements OnInit {
     private getBuilding() {
         let id = this.activatedRoute.snapshot.params["id"];
         if (id > 0) {
-            this.buildingservice.getBuilding(id).subscribe(building => this.building = building, errors => alert(errors) );
+            this.buildingservice.getBuilding(id).subscribe(building => this.building = building, errors => alert(errors));
         }
         else {
             this.building = new Building();
         }
     }
 
-    saveBuilding() {
-        if (this.building.BuildingId > 0)
-        {
+    private saveBuilding() {
+        if (this.building.BuildingId > 0) {
             this.updateBuilding();
         }
-        else
-        {
+        else {
             this.addBuilding();
         }
     }
@@ -55,6 +55,20 @@ export class BuildingDetailComponent implements OnInit {
     }
 
     private addBuilding() {
-        this.buildingservice.addBuilding(this.building);
+        this.buildingservice.addBuilding(this.building)
+            .subscribe(() => this.goBack(), errors => this.handleErrors(errors));
+    }
+
+    private handleErrors(errors: any) {
+        this.messages = [];
+        for (let msg of errors) {
+            this.messages.push(msg);
+        }
+    }
+
+    private goBack() {
+        alert('going back');
+        //this.location.back();
+        this.router.navigate(['./buildings']);
     }
 }

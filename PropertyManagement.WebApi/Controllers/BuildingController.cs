@@ -97,6 +97,7 @@
         public IHttpActionResult DeleteBuilding(int id)
         {
             _buildingRepository.DeleteBuilding(id);
+
             return Ok();
         }
     }
