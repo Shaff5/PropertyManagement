@@ -1,9 +1,6 @@
 ﻿import { Component, Inject, OnInit } from '@angular/core'
-import { Http, Response, Headers, RequestOptions } from '@angular/http'
-import { Observable } from 'rxjs/Observable'
-import 'rxjs/add/operator/map' 
+import { Http, } from '@angular/http'
 import 'rxjs/add/operator/catch'
-//import 'rxjs/add/operator/throw'
 import { Router, ActivatedRoute } from '@angular/router'
 import { Building } from './building'
 import { BuildingService } from './building.service';
@@ -18,8 +15,9 @@ export class BuildingDetailComponent implements OnInit {
     private router: Router;
     private messages: string[] = [];
 
-    constructor(private buildingservice: BuildingService, http: Http, @Inject('BASE_URL') baseUrl: string, private activatedRoute: ActivatedRoute) {
+    constructor(private buildingservice: BuildingService, http: Http, router: Router, @Inject('BASE_URL') baseUrl: string, private activatedRoute: ActivatedRoute) {
         this.http = http;
+        this.router = router;
     }
 
     ngOnInit(): void {
@@ -51,7 +49,8 @@ export class BuildingDetailComponent implements OnInit {
     }
 
     private updateBuilding() {
-        this.buildingservice.updateBuilding(this.building.BuildingId, this.building);
+        this.buildingservice.updateBuilding(this.building.BuildingId, this.building)
+            .subscribe(() => this.goBack(), errors => this.handleErrors(errors));
     }
 
     private addBuilding() {
@@ -67,8 +66,6 @@ export class BuildingDetailComponent implements OnInit {
     }
 
     private goBack() {
-        alert('going back');
-        //this.location.back();
-        this.router.navigate(['./buildings']);
+        this.router.navigateByUrl('/buildings');
     }
 }

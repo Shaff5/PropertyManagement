@@ -1,4 +1,4 @@
-﻿import { Http, Headers } from '@angular/http';
+﻿import { Http } from '@angular/http';
 import { Injectable, Inject } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -13,11 +13,13 @@ export class BuildingService {
     }
 
     getBuildings() {
-        return this.http.get(this.apiUrl + 'Building').map(result => result.json());
+        return this.http.get(this.apiUrl + 'Building')
+            .map(result => result.json() as Building[]);
     }
 
     getBuilding(id: number) : Observable<Building> {
-        return this.http.get(this.apiUrl + 'Building/' + id).map(response => response.json() as Building);
+        return this.http.get(this.apiUrl + 'Building/' + id)
+            .map(result => result.json() as Building);
     }
 
     addBuilding(building: Building) {
@@ -26,18 +28,10 @@ export class BuildingService {
     }
 
     updateBuilding(id: number, building: Building) {
-        this.http.put(this.apiUrl + 'Building/' + id, building)
-            .subscribe(result => {
-            }, error => console.error(error));
+        return this.http.put(this.apiUrl + 'Building/' + id, building)
+            .map(() => null).catch(this.handleError);
     }
-
-    //deleteBuilding(id: number) {
-    //    this.http.delete(this.apiUrl + 'Building/' + id)
-    //        .subscribe(result => {
-    //            return
-    //        }, error => console.error(error));
-    //}
-
+    
     deleteBuilding(id: number) {
         return this.http.delete(this.apiUrl + 'Building/' + id).map(() => null).catch(this.handleError);
     }

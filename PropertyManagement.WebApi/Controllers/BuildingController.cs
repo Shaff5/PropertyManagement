@@ -20,10 +20,10 @@
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<Models.Building> GetBuildings()
+        public IHttpActionResult GetBuildings()
         {
             var buildings = _buildingRepository.GetAllBuildings();
-            return buildings.ToArray();
+            return Ok(buildings);
         }
 
         // GET api/building/5
