@@ -1,5 +1,4 @@
 ﻿import { Component, Inject, OnInit } from '@angular/core'
-import { Http, } from '@angular/http'
 import 'rxjs/add/operator/catch'
 import { Router, ActivatedRoute } from '@angular/router'
 import { Building } from './building'
@@ -11,12 +10,10 @@ import { BuildingService } from './building.service';
 })
 export class BuildingDetailComponent implements OnInit {
     public building: Building;
-    private http: Http;
     private router: Router;
     private messages: string[] = [];
 
-    constructor(private buildingservice: BuildingService, http: Http, router: Router, @Inject('BASE_URL') baseUrl: string, private activatedRoute: ActivatedRoute) {
-        this.http = http;
+    constructor(private buildingservice: BuildingService, router: Router, @Inject('BASE_URL') baseUrl: string, private activatedRoute: ActivatedRoute) {
         this.router = router;
     }
 
@@ -32,7 +29,7 @@ export class BuildingDetailComponent implements OnInit {
     private getBuilding() {
         let id = this.activatedRoute.snapshot.params["id"];
         if (id > 0) {
-            this.buildingservice.getBuilding(id).subscribe(building => this.building = building, errors => alert(errors));
+            this.buildingservice.getBuilding(id).subscribe(building => this.building = building, error => this.handleError(error));
         }
         else {
             this.building = new Building();
@@ -50,19 +47,20 @@ export class BuildingDetailComponent implements OnInit {
 
     private updateBuilding() {
         this.buildingservice.updateBuilding(this.building.BuildingId, this.building)
-            .subscribe(() => this.goBack(), errors => this.handleErrors(errors));
+            .subscribe(() => this.goBack(), error => this.handleError(error));
     }
 
     private addBuilding() {
         this.buildingservice.addBuilding(this.building)
-            .subscribe(() => this.goBack(), errors => this.handleErrors(errors));
+            .subscribe(() => this.goBack(), error => this.handleError(error));
     }
 
-    private handleErrors(errors: any) {
-        this.messages = [];
-        for (let msg of errors) {
-            this.messages.push(msg);
-        }
+    private handleError(error: any) {
+        let msg: string = "";
+        msg = "Status: " + error.status;
+        msg += " Status Text: " + error.statusText;
+        
+        alert(msg);
     }
 
     private goBack() {

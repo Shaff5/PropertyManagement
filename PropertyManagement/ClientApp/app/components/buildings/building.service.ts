@@ -2,6 +2,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/throw';
 import { Building } from './building';
 
 @Injectable()
@@ -14,12 +15,14 @@ export class BuildingService {
 
     getBuildings() {
         return this.http.get(this.apiUrl + 'Building')
-            .map(result => result.json() as Building[]);
+            .map(result => result.json() as Building[])
+            .catch(this.handleError);
     }
 
     getBuilding(id: number) : Observable<Building> {
         return this.http.get(this.apiUrl + 'Building/' + id)
-            .map(result => result.json() as Building);
+            .map(result => result.json() as Building)
+            .catch(this.handleError);
     }
 
     addBuilding(building: Building) {
@@ -37,10 +40,7 @@ export class BuildingService {
     }
 
     private handleError(error: any): Observable<any> {
-        let errors: string[] = [];
-        errors.push(error.json().exceptionMessage);
-
-        return Observable.throw(errors);
+        return Observable.throw(error);
     }
 
 }
