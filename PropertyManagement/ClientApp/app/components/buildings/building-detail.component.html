@@ -1,111 +1,121 @@
-﻿<div class="panel panel-primary" *ngIf="building">
-    <div class="panel-heading">
-        <h1 class="panel-title">
-            Building Details
-        </h1>
+﻿<div *ngIf="building">
+    <div class="page-header">
+        <h1>{{ title }}</h1>
     </div>
-    <div class="panel-body">
-        <div class="row" *ngIf="messages && messages.length">
-            <div class="col-xs-12">
-                <div class="alert alert-warning">
-                    <ul>
-                        <li *ngFor="let msg of messages">
-                            {{msg}}
-                        </li>
-                    </ul>
+
+    <button class="btn btn-success" (click)="saveBuilding()">
+        Save
+    </button>
+    <button class=" = btn btn-primary" routerLink="/buildings">
+        Cancel
+    </button>
+    
+    <div class="form-group">
+        <label for="buildingName">Building Name</label>
+        <input id="buildingName" type="text" class="form-control" [(ngModel)]="building.BuildingName" />
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Address</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="address1">Address Line 1</label>
+                        <input id="address1" type="text" class="form-control" [(ngModel)]="building.AddressLine1" />
+                    </div>
+                    <div class="form-group">
+                        <label for="address2">Address Line 2</label>
+                        <input id="address2" type="text" class="form-control" [(ngModel)]="building.AddressLine2" />
+                    </div>
+                    <div class="form-group">
+                        <label for="address3">Address Line 3</label>
+                        <input id="address3" type="text" class="form-control" [(ngModel)]="building.AddressLine3" />
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input id="city" type="text" class="form-control" [(ngModel)]="building.City" />
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <input id="state" type="text" class="form-control" [(ngModel)]="building.State" />
+                    </div>
+                    <div class="form-group">
+                        <label for="zip">Zip Code</label>
+                        <input id="zip" type="text" class="form-control" [(ngModel)]="building.ZipCode" />
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="form-group">
-            <label for="buildingId">Building Id</label>
-            <input id="buildingId" type="number" class="form-control" [(ngModel)]="building.BuildingId" />
-        </div>
-        <div class="form-group">
-            <label for="buildingName">Building Name</label>
-            <input id="buildingName" type="text" class="form-control" [(ngModel)]="building.BuildingName" />
-        </div>
-        <div class="form-group">
-            <label for="address1">Address Line 1</label>
-            <input id="address1" type="text" class="form-control" [(ngModel)]="building.AddressLine1" />
-        </div>
-        <div class="form-group">
-            <label for="address2">Address Line 2</label>
-            <input id="address2" type="text" class="form-control" [(ngModel)]="building.AddressLine2" />
-        </div>
-        <div class="form-group">
-            <label for="address3">Address Line 3</label>
-            <input id="address3" type="text" class="form-control" [(ngModel)]="building.AddressLine3" />
-        </div>
-        <div class="form-group">
-            <label for="city">City</label>
-            <input id="city" type="text" class="form-control" [(ngModel)]="building.City" />
-        </div>
-        <div class="form-group">
-            <label for="state">State</label>
-            <input id="state" type="text" class="form-control" [(ngModel)]="building.State" />
-        </div>
-        <div class="form-group">
-            <label for="zip">Zip Code</label>
-            <input id="zip" type="text" class="form-control" [(ngModel)]="building.ZipCode" />
-        </div>
-        <div class="form-group">
-            <label for="purchaseDate">Purchase Date</label>
-            <div class="input-group">
-                <input class="form-control" name="purchaseDate" #c1="ngModel" [(ngModel)]="building.PurchaseDate" ngbDatepicker #purchaseDate="ngbDatepicker" />
-                <span class="input-group-btn">
-                    <button class="btn btn-outline-secondary" (click)="purchaseDate.toggle()" type="button">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </button>
-                </span>
+        <div class="col-sm-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Financials</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="purchaseDate">Purchase Date</label>
+                        <div class="input-group">
+                            <input class="form-control" name="purchaseDate" #c1="ngModel" [(ngModel)]="building.PurchaseDate" ngbDatepicker #purchaseDate="ngbDatepicker" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-outline-secondary" (click)="purchaseDate.toggle()" type="button">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="purchasePrice">Purchase Price</label>
+                        <input id="purchasePrice" type="text" class="form-control" [(ngModel)]="building.PurchasePrice" />
+                    </div>
+                    <div class="form-group">
+                        <label for="sellDate">Sell Date</label>
+                        <div class="input-group">
+                            <input class="form-control" name="sellDate" #c2="ngModel" [(ngModel)]="building.SellDate" ngbDatepicker #sellDate="ngbDatepicker" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-outline-secondary" (click)="sellDate.toggle()" type="button">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="sellPrice">Sell Price</label>
+                        <input id="sellPrice" type="text" class="form-control" [(ngModel)]="building.SellPrice" />
+                    </div>
+                    <div class="form-group">
+                        <label for="numberOfUnits">Number of Units</label>
+                        <input id="numberOfUnits" type="text" class="form-control" [(ngModel)]="building.NumberOfUnits" />
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <label for="purchasePrice">Purchase Price</label>
-            <input id="purchasePrice" type="text" class="form-control" [(ngModel)]="building.PurchasePrice" />
-        </div>
-        <div class="form-group">
-            <label for="sellDate">Sell Date</label>
-            <div class="input-group">
-                <input class="form-control" name="sellDate" #c2="ngModel" [(ngModel)]="building.SellDate" ngbDatepicker #sellDate="ngbDatepicker" />
-                <span class="input-group-btn">
-                    <button class="btn btn-outline-secondary" (click)="sellDate.toggle()" type="button">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </button>
-                </span>
+        <div class="col-sm-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">System Info</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="createdOn">Created On</label>
+                        <input id="createdOn" type="text" class="form-control" [ngModel]="building.CreatedOn | date:'MM/dd/yyyy'" [disabled]="true" />
+                    </div>
+                    <div class="form-group">
+                        <label for="createdBy">Created By</label>
+                        <input id="createdBy" type="text" class="form-control" [ngModel]="building.CreatedBy" [disabled]="true" />
+                    </div>
+                    <div class="form-group">
+                        <label for="lastUpdatedOn">Last Updated On</label>
+                        <input id="lastUpdatedOn" type="text" class="form-control" [ngModel]="building.LastUpdatedOn | date:'MM/dd/yyyy'" [disabled]="true" />
+                    </div>
+                    <div class="form-group">
+                        <label for="lastUpdatedBy">Last Updated By</label>
+                        <input id="lastUpdatedBy" type="text" class="form-control" [ngModel]="building.LastUpdatedBy" [disabled]="true" />
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <label for="sellPrice">Sell Price</label>
-            <input id="sellPrice" type="text" class="form-control" [(ngModel)]="building.SellPrice" />
-        </div>
-        <div class="form-group">
-            <label for="numberOfUnits">Number of Units</label>
-            <input id="numberOfUnits" type="text" class="form-control" [(ngModel)]="building.NumberOfUnits" />
-        </div>
-        <div class="form-group">
-            <label for="createdOn">Created On</label>
-            <input id="createdOn" type="text" class="form-control" [ngModel]="building.CreatedOn | date:'MM/dd/yyyy'" [disabled]="true" />
-        </div>
-        <div class="form-group">
-            <label for="createdBy">Created By</label>
-            <input id="createdBy" type="text" class="form-control" [(ngModel)]="building.CreatedBy" />
-        </div>
-        <div class="form-group">
-            <label for="lastUpdatedOn">Last Updated On</label>
-            <input id="lastUpdatedOn" type="text" class="form-control" [ngModel]="building.LastUpdatedOn | date:'shortDate'" [disabled]="true" />
-        </div>
-        <div class="form-group">
-            <label for="lastUpdatedBy">Last Updated By</label>
-            <input id="lastUpdatedBy" type="text" class="form-control" [(ngModel)]="building.LastUpdatedBy" />
-        </div>
-    </div>
-    <div class="panel-footer">
-        <button class="btn btn-success" (click)="saveBuilding()">
-            Save
-        </button>
-        <button class=" = btn btn-primary" routerLink="/buildings">
-            Cancel
-        </button>
     </div>
 </div>

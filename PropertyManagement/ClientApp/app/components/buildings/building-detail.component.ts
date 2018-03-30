@@ -13,6 +13,7 @@ export class BuildingDetailComponent implements OnInit {
     public building: Building;
     private router: Router;
     private messages: string[] = [];
+    public title: string;
 
     constructor(private buildingservice: BuildingService, private logservice: LogService, router: Router, @Inject('BASE_URL') baseUrl: string, private activatedRoute: ActivatedRoute) {
         this.router = router;
@@ -30,7 +31,7 @@ export class BuildingDetailComponent implements OnInit {
     private getBuilding() {
         let id = this.activatedRoute.snapshot.params["id"];
         if (id > 0) {
-            this.buildingservice.getBuilding(id).subscribe(building => this.building = building, error => this.handleError(error));
+            this.buildingservice.getBuilding(id).subscribe(building => this.handleGetBuilding(building), error => this.handleError(error));
         }
         else {
             this.building = new Building();
@@ -54,6 +55,11 @@ export class BuildingDetailComponent implements OnInit {
     private addBuilding() {
         this.buildingservice.addBuilding(this.building)
             .subscribe(() => this.goBack(), error => this.handleError(error));
+    }
+
+    private handleGetBuilding(building: Building) {
+        this.building = building;
+        this.title = building.BuildingName;
     }
 
     private handleError(error: any) {
