@@ -25,6 +25,7 @@
     <None Remove="ClientApp\app\components\buildings\building.service.ts" />
     <None Remove="ClientApp\app\components\buildings\building.ts" />
     <None Remove="ClientApp\app\components\buildings\buildings.component.ts" />
+    <None Remove="ClientApp\app\shared\datepicker-adapter.ts" />
     <None Remove="ClientApp\app\shared\log.service.ts" />
   </ItemGroup>
 
@@ -33,6 +34,7 @@
     <TypeScriptCompile Include="ClientApp\app\components\buildings\building.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\buildings\building.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\buildings\buildings.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\datepicker-adapter.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\log.service.ts" />
   </ItemGroup>
 

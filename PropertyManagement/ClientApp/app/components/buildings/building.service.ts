@@ -20,8 +20,8 @@ export class BuildingService {
     }
 
     getBuilding(id: number) : Observable<Building> {
-        return this.httpClient.get<Building>(this.apiUrl + 'Building/' + id)
-            .map(result => result)
+        return this.httpClient.get(this.apiUrl + 'Building/' + id, { responseType: 'text' })
+            .map(result => this.extractData(result))
             .catch(this.handleError);
     }
 
@@ -43,4 +43,24 @@ export class BuildingService {
         return Observable.throw(error);
     }
 
+    private extractData(response: string): Building {
+        var serverBuilding = JSON.parse(response);
+        var purchaseDate = serverBuilding.PurchaseDate;
+
+        var building = JSON.parse(response) as Building;
+        building.PurchaseDate = new Date(purchaseDate);
+
+        //var building = new Building;
+        //building.BuildingId = serverBuilding.BuildingId;
+        //building.BuildingName = serverBuilding.BuildingName;
+        //building.AddressLine1 = serverBuilding.AddressLine1;
+        //building.AddressLine2 = serverBuilding.AddressLine2;
+        //building.AddressLine3 = serverBuilding.AddressLine3;
+        //building.City = serverBuilding.City;
+        //building.State = serverBuilding.State;
+        //building.ZipCode = serverBuilding.ZipCode;
+        //building.PurchaseDate = new Date(serverBuilding.PurchaseDate);
+
+        return building;
+    }
 }

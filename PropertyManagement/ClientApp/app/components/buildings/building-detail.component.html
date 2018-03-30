@@ -51,7 +51,14 @@
         </div>
         <div class="form-group">
             <label for="purchaseDate">Purchase Date</label>
-            <input id="purchaseDate" type="text" class="form-control" [(ngModel)]="building.PurchaseDate" />
+            <div class="input-group">
+                <input class="form-control" name="purchaseDate" #c1="ngModel" [(ngModel)]="building.PurchaseDate" ngbDatepicker #purchaseDate="ngbDatepicker" />
+                <span class="input-group-btn">
+                    <button class="btn btn-outline-secondary" (click)="purchaseDate.toggle()" type="button">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </button>
+                </span>
+            </div>
         </div>
         <div class="form-group">
             <label for="purchasePrice">Purchase Price</label>
@@ -59,18 +66,14 @@
         </div>
         <div class="form-group">
             <label for="sellDate">Sell Date</label>
-            <div class='input-group date' id='datetimepicker1'>
-                <input id="sellDate" type="text" class="form-control" [(ngModel)]="building.SellDate" />
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
+            <div class="input-group">
+                <input class="form-control" name="sellDate" #c2="ngModel" [(ngModel)]="building.SellDate" ngbDatepicker #sellDate="ngbDatepicker" />
+                <span class="input-group-btn">
+                    <button class="btn btn-outline-secondary" (click)="sellDate.toggle()" type="button">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </button>
                 </span>
             </div>
-
-
-
-
-            <!--<label for="sellDate">Sell Date</label>
-            <input id="sellDate" type="text" class="form-control" [(ngModel)]="building.SellDate" />-->
         </div>
         <div class="form-group">
             <label for="sellPrice">Sell Price</label>
