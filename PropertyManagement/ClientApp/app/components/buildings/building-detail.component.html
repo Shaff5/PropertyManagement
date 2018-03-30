@@ -85,7 +85,7 @@
         </div>
         <div class="form-group">
             <label for="createdOn">Created On</label>
-            <input id="createdOn" type="text" class="form-control" [(ngModel)]="building.CreatedOn" />
+            <input id="createdOn" type="text" class="form-control" [ngModel]="building.CreatedOn | date:'MM/dd/yyyy'" [disabled]="true" />
         </div>
         <div class="form-group">
             <label for="createdBy">Created By</label>
@@ -93,7 +93,7 @@
         </div>
         <div class="form-group">
             <label for="lastUpdatedOn">Last Updated On</label>
-            <input id="lastUpdatedOn" type="text" class="form-control" [(ngModel)]="building.LastUpdatedOn" />
+            <input id="lastUpdatedOn" type="text" class="form-control" [ngModel]="building.LastUpdatedOn | date:'shortDate'" [disabled]="true" />
         </div>
         <div class="form-group">
             <label for="lastUpdatedBy">Last Updated By</label>
