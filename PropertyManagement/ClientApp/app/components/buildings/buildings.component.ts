@@ -1,6 +1,7 @@
 ﻿import { Component, Inject, OnInit } from '@angular/core';
 import { Building } from './building'
 import { BuildingService } from './building.service';
+import { LogService } from '../../shared/log.service';
 
 @Component({
     selector: 'buildings',
@@ -9,7 +10,7 @@ import { BuildingService } from './building.service';
 export class BuildingsComponent implements OnInit {
     public buildings: Building[];
 
-    constructor(private buildingservice: BuildingService) { }
+    constructor(private buildingservice: BuildingService, private logservice: LogService) { }
 
     ngOnInit(): void {
         this.getBuildings();
@@ -30,7 +31,8 @@ export class BuildingsComponent implements OnInit {
         let msg: string = "";
         msg = "Status: " + error.status;
         msg += " Status Text: " + error.statusText;
-        
+
         alert(msg);
+        this.logservice.log(msg);
     }
 }
