@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router'
 import { Building } from './building'
 import { BuildingService } from './building.service';
 import { LogService } from '../../shared/log.service';
+import { StatesService } from '../../shared/states.service';
 
 @Component({
     selector: 'building',
@@ -13,10 +14,14 @@ export class BuildingDetailComponent implements OnInit {
     public building: Building;
     private router: Router;
     private messages: string[] = [];
-    public title: string;
+    private title: string;
+    private states: any[];
 
-    constructor(private buildingservice: BuildingService, private logservice: LogService, router: Router, @Inject('BASE_URL') baseUrl: string, private activatedRoute: ActivatedRoute) {
+    constructor(private buildingservice: BuildingService, private logservice: LogService,
+        router: Router, @Inject('BASE_URL') baseUrl: string,
+        private activatedRoute: ActivatedRoute, private statesService: StatesService) {
         this.router = router;
+        this.states = statesService.getStates();
     }
 
     ngOnInit(): void {

@@ -27,6 +27,7 @@
     <None Remove="ClientApp\app\components\buildings\buildings.component.ts" />
     <None Remove="ClientApp\app\shared\datepicker-adapter.ts" />
     <None Remove="ClientApp\app\shared\log.service.ts" />
+    <None Remove="ClientApp\app\shared\states.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,6 +37,7 @@
     <TypeScriptCompile Include="ClientApp\app\components\buildings\buildings.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\datepicker-adapter.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\log.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\states.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

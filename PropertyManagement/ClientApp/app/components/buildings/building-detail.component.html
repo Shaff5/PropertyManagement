@@ -40,7 +40,9 @@
                     </div>
                     <div class="form-group">
                         <label for="state">State</label>
-                        <input id="state" type="text" class="form-control" [(ngModel)]="building.State" />
+                        <select id="state" class="form-control" [(ngModel)]="building.State">
+                            <option *ngFor="let s of states" [ngValue]="s.id">{{ s.name }}</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="zip">Zip Code</label>
@@ -83,7 +85,7 @@
                     </div>
                     <div class="form-group">
                         <label for="sellPrice">Sell Price</label>
-                        <input id="sellPrice" type="text" class="form-control" [(ngModel)]="building.SellPrice" />
+                        <input id="sellPrice" type="text" class="form-control" [ngModel]="building.SellPrice" />
                     </div>
                     <div class="form-group">
                         <label for="numberOfUnits">Number of Units</label>
