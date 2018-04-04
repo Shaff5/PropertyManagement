@@ -14,14 +14,14 @@ export class BuildingService {
     }
 
     getBuildings() : Observable<Building[]> {
-        return this.httpClient.get(this.apiUrl + 'Building')
-            .map(result => result)
+        return this.httpClient.get(this.apiUrl + 'Building', { responseType: 'text' })
+            .map(result => this.extractBuildings(result))
             .catch(this.handleError);
     }
 
     getBuilding(id: number) : Observable<Building> {
         return this.httpClient.get(this.apiUrl + 'Building/' + id, { responseType: 'text' })
-            .map(result => this.extractData(result))
+            .map(result => this.extractBuilding(result))
             .catch(this.handleError);
     }
 
@@ -43,7 +43,7 @@ export class BuildingService {
         return Observable.throw(error);
     }
 
-    private extractData(response: string): Building {
+    private extractBuilding(response: string): Building {
         var serverBuilding = JSON.parse(response);
         var purchaseDate = serverBuilding.PurchaseDate;
         var sellDate = serverBuilding.SellDate;
@@ -63,30 +63,29 @@ export class BuildingService {
         return building;
     }
 
-    //private extractData(response: string): Building[] {
-    //    var serverBuildings = JSON.parse(response);
-    //    alert(serverBuildings);
-    //    var buildings = [];
+    private extractBuildings(response: string): Building[] {
+        var serverBuildings = JSON.parse(response);
+        var buildings = [];
 
-    //    for (var i = 0; i < serverBuildings.length; i++) {
-    //        var purchaseDate = serverBuildings[i].PurchaseDate;
-    //        var sellDate = serverBuildings[i].SellDate;
-    //        var createdOn = serverBuildings[i].CreatedOn;
-    //        var lastUpdatedOn = serverBuildings[i].LastUpdatedOn;
+        for (var i = 0; i < serverBuildings.length; i++) {
+            var purchaseDate = serverBuildings[i].PurchaseDate;
+            var sellDate = serverBuildings[i].SellDate;
+            var createdOn = serverBuildings[i].CreatedOn;
+            var lastUpdatedOn = serverBuildings[i].LastUpdatedOn;
 
-    //        var building = JSON.parse(serverBuildings[i]) as Building;
-    //        building.PurchaseDate = new Date(purchaseDate);
+            var building = serverBuildings[i] as Building;
+            building.PurchaseDate = new Date(purchaseDate);
 
-    //        if (sellDate != null) {
-    //            building.SellDate = new Date(sellDate);
-    //        }
+            if (sellDate != null) {
+                building.SellDate = new Date(sellDate);
+            }
 
-    //        building.CreatedOn = new Date(createdOn);
-    //        building.LastUpdatedOn = new Date(lastUpdatedOn);
+            building.CreatedOn = new Date(createdOn);
+            building.LastUpdatedOn = new Date(lastUpdatedOn);
 
-    //        buildings.push(building);
-    //    }
+            buildings.push(building);
+        }
 
-    //    return buildings;
-    //}
+        return buildings;
+    }
 }

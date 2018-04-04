@@ -18,6 +18,7 @@
             <th>Address</th>
             <th>City</th>
             <th>Zip Code</th>
+            <th>Purchase Date</th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +28,7 @@
             <td>{{ building.AddressLine1 }}</td>
             <td>{{ building.City }}</td>
             <td>{{ building.ZipCode }}</td>
+            <td>{{ building.PurchaseDate | date:'MM/dd/yyyy' }}</td>
             <td>
                 <button class="btn btn-primary" [routerLink]="['/buildings/building-detail', building.BuildingId]">
                     <i class="glyphicon glyphicon-edit"></i>                
