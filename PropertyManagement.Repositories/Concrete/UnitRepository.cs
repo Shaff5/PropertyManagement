@@ -1,6 +1,6 @@
 ﻿namespace PropertyManagement.Repositories.Concrete
 {
-    using System.Data.Entity;
+    using System.Collections.Generic;
     using System.Linq;
     using Abstract;
     using Data;
@@ -18,9 +18,16 @@
         /// Gets all units.
         /// </summary>
         /// <returns></returns>
-        public IQueryable<Unit> GetAllUnits()
+        public IQueryable<WebApi.Models.Unit> GetAllUnits()
         {
-            return _context.Units;
+            var units = _context.Units;
+            var unitsList = new List<WebApi.Models.Unit>();
+            foreach (var unit in units)
+            {
+                unitsList.Add(new WebApi.Models.Unit(unit));
+            }
+
+            return unitsList.AsQueryable();
         }
 
         /// <summary>
@@ -28,9 +35,16 @@
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        public IQueryable<Unit> GetUnitsByBuildingId(int id)
+        public IQueryable<WebApi.Models.Unit> GetUnitsByBuildingId(int id)
         {
-            return _context.Units.Where(i => i.BuildingId == id);
+            var units = _context.Units.Where(i => i.BuildingId == id);
+            var unitsList = new List<WebApi.Models.Unit>();
+            foreach (var unit in units)
+            {
+                unitsList.Add(new WebApi.Models.Unit(unit));
+            }
+
+            return unitsList.AsQueryable();
         }
 
         /// <summary>
@@ -38,18 +52,36 @@
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        public Unit GetUnitById(int id)
+        public WebApi.Models.Unit GetUnitById(int id)
         {
-            return _context.Units.Find(id);
+            var u = _context.Units.Find(id);
+            if (u == null)
+            {
+                return null;
+            }
+
+            return new WebApi.Models.Unit(u);
         }
 
         /// <summary>
         /// Adds the unit.
         /// </summary>
         /// <param name="unit">The unit.</param>
-        public void AddUnit(Unit unit)
+        public void AddUnit(WebApi.Models.Unit unit)
         {
-            _context.Units.Add(unit);
+            var u = new Data.Unit();
+            u.UnitName = unit.UnitName;
+            u.BuildingId = unit.BuildingId;
+            u.SquareFootage = unit.SquareFootage;
+            u.NumberOfBedrooms = unit.NumberOfBedrooms;
+            u.NumberOfBathrooms = unit.NumberOfBathrooms;
+            u.CreatedBy = 4;
+            u.CreatedOn = System.DateTime.Now;
+            u.LastUpdatedBy = 4;
+            u.LastUpdatedOn = System.DateTime.Now;
+
+            _context.Units.Add(u);
+
             _context.SaveChanges();
         }
 
@@ -57,9 +89,19 @@
         /// Updates the unit.
         /// </summary>
         /// <param name="unit">The unit.</param>
-        public void UpdateUnit(Unit unit)
+        public void UpdateUnit(WebApi.Models.Unit unit)
         {
-            _context.Entry(unit).State = EntityState.Modified;
+            var u = _context.Units.Find(unit.UnitId);
+
+            u.UnitId = unit.UnitId;
+            u.UnitName = unit.UnitName;
+            u.BuildingId = unit.BuildingId;
+            u.SquareFootage = unit.SquareFootage;
+            u.NumberOfBedrooms = unit.NumberOfBedrooms;
+            u.NumberOfBathrooms = unit.NumberOfBathrooms;
+            u.LastUpdatedBy = 4;
+            u.LastUpdatedOn = System.DateTime.Now;
+
             _context.SaveChanges();
         }
 

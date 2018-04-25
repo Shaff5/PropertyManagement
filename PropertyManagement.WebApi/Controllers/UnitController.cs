@@ -1,9 +1,6 @@
 ﻿namespace PropertyManagement.WebApi.Controllers
 {
-    using System.Collections.Generic;
     using System.Web.Http;
-    using System.Web.Http.Description;
-    using Data;
     using Repositories.Abstract;
 
     public class UnitController : ApiController
@@ -21,9 +18,10 @@
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<Unit> GetUnits()
+        public IHttpActionResult GetUnits()
         {
-            return _unitRepository.GetAllUnits();
+            var units = _unitRepository.GetAllUnits();
+            return Ok(units);
         }
 
         // GET api/unit/5
@@ -33,7 +31,6 @@
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
         [HttpGet]
-        [ResponseType(typeof(Unit))]
         public IHttpActionResult GetUnit(int id)
         {
             var unit = _unitRepository.GetUnitById(id);
@@ -41,6 +38,7 @@
             {
                 return NotFound();
             }
+
             return Ok(unit);
         }
 
@@ -51,10 +49,9 @@
         /// <param name="unit">The unit.</param>
         /// <returns></returns>
         [HttpPost]
-        public IHttpActionResult CreateUnit(Unit unit)
+        public IHttpActionResult CreateUnit(Models.Unit unit)
         {
-            var u = _unitRepository.GetUnitById(unit.UnitId);
-            if (u != null)
+            if (_unitRepository.GetUnitById(unit.UnitId) != null)
             {
                 return Conflict();
             }
@@ -71,7 +68,7 @@
         /// <param name="unit">The unit.</param>
         /// <returns></returns>
         [HttpPut]
-        public IHttpActionResult UpdateUnit(int id, Unit unit)
+        public IHttpActionResult UpdateUnit(int id, Models.Unit unit)
         {
             if (id != unit.UnitId)
             {

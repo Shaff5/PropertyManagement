@@ -22,9 +22,10 @@
         /// <param name="buildingId">The building identifier.</param>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<Unit> GetBuildingUnits(int buildingId)
+        public IHttpActionResult GetBuildingUnits(int buildingId)
         {
-            return _unitRepository.GetUnitsByBuildingId(buildingId);
+            var units = _unitRepository.GetUnitsByBuildingId(buildingId);
+            return Ok(units);
         }
     }
 }

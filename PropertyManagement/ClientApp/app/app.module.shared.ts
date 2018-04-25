@@ -12,6 +12,7 @@ import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { BuildingsComponent } from './components/buildings/buildings.component';
 import { BuildingDetailComponent } from './components/buildings/building-detail.component';
+import { UnitsComponent } from './components/units/units.component';
 
 @NgModule({
     declarations: [
@@ -21,6 +22,7 @@ import { BuildingDetailComponent } from './components/buildings/building-detail.
         FetchDataComponent,
         BuildingsComponent,
         BuildingDetailComponent,
+        UnitsComponent,
         HomeComponent
     ],
     imports: [
@@ -35,6 +37,7 @@ import { BuildingDetailComponent } from './components/buildings/building-detail.
             { path: 'fetch-data', component: FetchDataComponent },
             { path: 'buildings', component: BuildingsComponent },
             { path: 'buildings/building-detail/:id', component: BuildingDetailComponent },
+            { path: 'units', component: UnitsComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ]

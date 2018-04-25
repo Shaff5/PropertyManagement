@@ -1,8 +1,7 @@
 ﻿namespace PropertyManagement.Repositories.Abstract
 {
     using System.Linq;
-    using Data;
-
+    
     public interface IBuildingRepository
     {
         IQueryable<WebApi.Models.Building> GetAllBuildings();

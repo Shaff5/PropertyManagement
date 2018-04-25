@@ -17,9 +17,14 @@
         public int LastUpdatedBy { get; set; }
         public byte[] Ts { get; set; }
 
-        public Building Building { get; set; }
-        public List<RentPayment> RentPayments { get; set; }
-        public List<Rent> Rents { get; set; }
+        //public Building Building { get; set; }
+        //public List<RentPayment> RentPayments { get; set; }
+        //public List<Rent> Rents { get; set; }
+
+        public Unit()
+        {
+
+        }
 
         public Unit(Data.Unit unit)
         {

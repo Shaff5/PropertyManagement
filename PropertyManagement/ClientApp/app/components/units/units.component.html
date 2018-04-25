@@ -1,0 +1,42 @@
+﻿<h1>Units</h1>
+
+<p *ngIf="!units"><em>Loading...</em></p>
+
+<!--<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-primary" [routerLink]="['/buildings/building-detail', -1]">
+            Add Building
+        </button>
+    </div>
+</div>-->
+
+<table class='table' *ngIf="units">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Square Footage</th>
+            <th>Number of Bedrooms</th>
+            <th>Number of Bathrooms</th>
+            <th>Created Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let unit of units">
+            <td>{{ unit.UnitId }}</td>
+            <td>{{ unit.UnitName }}</td>
+            <td>{{ unit.SquareFootage }}</td>
+            <td>{{ unit.NumberOfBedrooms }}</td>
+            <td>{{ unit.NumberOfBathrooms }}</td>
+            <td>{{ unit.CreatedOn | date:'MM/dd/yyyy' }}</td>
+            <!--<td>
+                <button class="btn btn-primary" [routerLink]="['/buildings/building-detail', building.BuildingId]">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </button>
+                <button class="btn btn-default" (click)="delete(building.BuildingId)">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </button>
+            </td>-->
+        </tr>
+    </tbody>
+</table>

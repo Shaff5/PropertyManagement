@@ -1,7 +1,5 @@
 ﻿namespace PropertyManagement.WebApi.Controllers
 {
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Web.Http;
     using Repositories.Abstract;
 
@@ -97,7 +95,6 @@
         public IHttpActionResult DeleteBuilding(int id)
         {
             _buildingRepository.DeleteBuilding(id);
-
             return Ok();
         }
     }

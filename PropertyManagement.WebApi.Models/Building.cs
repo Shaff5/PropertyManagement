@@ -52,11 +52,11 @@
             LastUpdatedBy = building.LastUpdatedBy;
             Ts = building.Ts;
 
-            //Units = new List<Unit>();
-            //foreach (var unit in building.Units)
-            //{
-            //    Units.Add(new Unit(unit));
-            //}
+            Units = new List<Unit>();
+            foreach (var unit in building.Units)
+            {
+                Units.Add(new Unit(unit));
+            }
         }
     }
 

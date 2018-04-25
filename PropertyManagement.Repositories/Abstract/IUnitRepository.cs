@@ -1,15 +1,14 @@
 ﻿namespace PropertyManagement.Repositories.Abstract
 {
     using System.Linq;
-    using Data;
-
+    
     public interface IUnitRepository
     {
-        IQueryable<Unit> GetAllUnits();
-        IQueryable<Unit> GetUnitsByBuildingId(int id);
-        Unit GetUnitById(int id);
-        void AddUnit(Unit unit);
-        void UpdateUnit(Unit unit);
+        IQueryable<WebApi.Models.Unit> GetAllUnits();
+        IQueryable<WebApi.Models.Unit> GetUnitsByBuildingId(int id);
+        WebApi.Models.Unit GetUnitById(int id);
+        void AddUnit(WebApi.Models.Unit unit);
+        void UpdateUnit(WebApi.Models.Unit unit);
         void DeleteUnit(int id);
     }
 }

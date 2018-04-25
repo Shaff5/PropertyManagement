@@ -1,10 +1,9 @@
 ﻿namespace PropertyManagement.Repositories.Concrete
 {
     using System.Collections.Generic;
-    using System.Data.Entity;
     using System.Linq;
-    using Data;
     using Abstract;
+    using Data;
 
     public class BuildingRepository : IBuildingRepository
     {
@@ -97,7 +96,6 @@
             b.SellDate = building.SellDate;
             b.SellPrice = building.SellPrice;
             b.NumberOfUnits = building.NumberOfUnits;
-            b.CreatedBy = 4;
             b.LastUpdatedBy = 4;
             b.LastUpdatedOn = System.DateTime.Now;
             
