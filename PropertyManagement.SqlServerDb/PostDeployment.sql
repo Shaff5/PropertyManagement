@@ -9,14 +9,20 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
+IF NOT EXISTS(SELECT UserId FROM Users WHERE userName = 'SYSTEM')
+BEGIN
+INSERT INTO Users(CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy, IsDeleted, UserName)
+     VALUES(GETDATE(), 1, GETDATE(), 1, 0, 'SYSTEM')
+END
+GO
 IF NOT EXISTS(SELECT BuildingId FROM Buildings WHERE BuildingName = '1 Haverhill')
 BEGIN
 	INSERT Buildings(BuildingName, AddressLine1, AddressLine2, AddressLine3,
 		City, [State], ZipCode, PurchaseDate, PurchasePrice, SellDate, SellPrice,
-		NumberOfUnits, CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy)
+		NumberOfUnits, CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy, IsDeleted)
 	VALUES('1 Haverhill', '1 Haverhill Street', NULL, NULL,
 		'Lawrence', 'MA', '01841', '1/8/2013', 340000.00, NULL, NULL,
-		8.0, GETDATE(), 1, GETDATE(), 1)
+		8.0, GETDATE(), 1, GETDATE(), 1, 0)
 END
 GO
 IF NOT EXISTS(SELECT UnitId FROM Units WHERE UnitName = '1 Haverhill #1'
@@ -26,9 +32,9 @@ BEGIN
 	SELECT @BuildingId = BuildingId FROM Buildings WHERE BuildingName = '1 Haverhill'
 
 	INSERT Units(UnitName, BuildingId, SquareFootage, NumberOfBedrooms, NumberOfBathrooms,
-		CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy)
+		CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy, isDeleted)
 	VALUES('1 Haverhill #1', @BuildingId, 900.0, 3.0, 1.0,
-		GETDATE(), 1, GETDATE(), 1)
+		GETDATE(), 1, GETDATE(), 1, 0)
 END
 GO
 IF NOT EXISTS(SELECT UnitId FROM Units WHERE UnitName = '1 Haverhill #2A'
@@ -38,9 +44,9 @@ BEGIN
 	SELECT @BuildingId = BuildingId FROM Buildings WHERE BuildingName = '1 Haverhill'
 
 	INSERT Units(UnitName, BuildingId, SquareFootage, NumberOfBedrooms, NumberOfBathrooms,
-		CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy)
+		CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy, IsDeleted)
 	VALUES('1 Haverhill #2A', @BuildingId, 450.0, 1.0, 1.0,
-		GETDATE(), 1, GETDATE(), 1)
+		GETDATE(), 1, GETDATE(), 1, 0)
 END
 GO
 IF NOT EXISTS(SELECT UnitId FROM Units WHERE UnitName = '1 Haverhill #2B'
@@ -50,9 +56,9 @@ BEGIN
 	SELECT @BuildingId = BuildingId FROM Buildings WHERE BuildingName = '1 Haverhill'
 
 	INSERT Units(UnitName, BuildingId, SquareFootage, NumberOfBedrooms, NumberOfBathrooms,
-		CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy)
+		CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy, isDeleted)
 	VALUES('1 Haverhill #2B', @BuildingId, 450.0, 1.0, 1.0,
-		GETDATE(), 1, GETDATE(), 1)
+		GETDATE(), 1, GETDATE(), 1, 0)
 END
 GO
 IF NOT EXISTS(SELECT UnitId FROM Units WHERE UnitName = '1 Haverhill #3'
@@ -62,9 +68,9 @@ BEGIN
 	SELECT @BuildingId = BuildingId FROM Buildings WHERE BuildingName = '1 Haverhill'
 
 	INSERT Units(UnitName, BuildingId, SquareFootage, NumberOfBedrooms, NumberOfBathrooms,
-		CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy)
+		CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy, isDeleted)
 	VALUES('1 Haverhill #3', @BuildingId, 900.0, 3.0, 1.0,
-		GETDATE(), 1, GETDATE(), 1)
+		GETDATE(), 1, GETDATE(), 1, 0)
 END
 GO
 IF NOT EXISTS(SELECT UnitId FROM Units WHERE UnitName = '1 Haverhill #4A'
@@ -74,9 +80,9 @@ BEGIN
 	SELECT @BuildingId = BuildingId FROM Buildings WHERE BuildingName = '1 Haverhill'
 
 	INSERT Units(UnitName, BuildingId, SquareFootage, NumberOfBedrooms, NumberOfBathrooms,
-		CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy)
+		CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy, IsDeleted)
 	VALUES('1 Haverhill #4A', @BuildingId, 450.0, 1.0, 1.0,
-		GETDATE(), 1, GETDATE(), 1)
+		GETDATE(), 1, GETDATE(), 1, 0)
 END
 GO
 IF NOT EXISTS(SELECT UnitId FROM Units WHERE UnitName = '1 Haverhill #4B'
@@ -86,9 +92,9 @@ BEGIN
 	SELECT @BuildingId = BuildingId FROM Buildings WHERE BuildingName = '1 Haverhill'
 
 	INSERT Units(UnitName, BuildingId, SquareFootage, NumberOfBedrooms, NumberOfBathrooms,
-		CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy)
+		CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy, isDeleted)
 	VALUES('1 Haverhill #4B', @BuildingId, 450.0, 1.0, 1.0,
-		GETDATE(), 1, GETDATE(), 1)
+		GETDATE(), 1, GETDATE(), 1, 0)
 END
 GO
 IF NOT EXISTS(SELECT UnitId FROM Units WHERE UnitName = '1 Haverhill #5'
@@ -98,9 +104,9 @@ BEGIN
 	SELECT @BuildingId = BuildingId FROM Buildings WHERE BuildingName = '1 Haverhill'
 
 	INSERT Units(UnitName, BuildingId, SquareFootage, NumberOfBedrooms, NumberOfBathrooms,
-		CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy)
+		CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy, isDeleted)
 	VALUES('1 Haverhill #5', @BuildingId, 900.0, 3.0, 1.0,
-		GETDATE(), 1, GETDATE(), 1)
+		GETDATE(), 1, GETDATE(), 1, 0)
 END
 GO
 IF NOT EXISTS(SELECT UnitId FROM Units WHERE UnitName = '1 Haverhill #6'
@@ -110,9 +116,9 @@ BEGIN
 	SELECT @BuildingId = BuildingId FROM Buildings WHERE BuildingName = '1 Haverhill'
 
 	INSERT Units(UnitName, BuildingId, SquareFootage, NumberOfBedrooms, NumberOfBathrooms,
-		CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy)
+		CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy, isDeleted)
 	VALUES('1 Haverhill #6', @BuildingId, 900.0, 3.0, 1.0,
-		GETDATE(), 1, GETDATE(), 1)
+		GETDATE(), 1, GETDATE(), 1, 0)
 END
 GO
 
@@ -121,8 +127,8 @@ BEGIN
 	DECLARE @UnitId int
 	SELECT @UnitId = UnitId FROM Units WHERE UnitName = '1 Haverhill #1'
 
-	INSERT Rents(UnitId, StartDate, EndDate, Amount, CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy)
-	VALUES(@UnitId, GETDATE(), NULL, 1100.00, GETDATE(), 1, GETDATE(), 1)
+	INSERT Rents(UnitId, StartDate, EndDate, Amount, CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy, isDeleted)
+	VALUES(@UnitId, GETDATE(), NULL, 1100.00, GETDATE(), 1, GETDATE(), 1, 0)
 END
 GO
 
@@ -131,8 +137,8 @@ BEGIN
 	DECLARE @UnitId int
 	SELECT @UnitId = UnitId FROM Units WHERE UnitName = '1 Haverhill #2A'
 
-	INSERT Rents(UnitId, StartDate, EndDate, Amount, CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy)
-	VALUES(@UnitId, GETDATE(), NULL, 600.00, GETDATE(), 1, GETDATE(), 1)
+	INSERT Rents(UnitId, StartDate, EndDate, Amount, CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy, isDeleted)
+	VALUES(@UnitId, GETDATE(), NULL, 600.00, GETDATE(), 1, GETDATE(), 1, 0)
 END
 GO
 
@@ -141,8 +147,8 @@ BEGIN
 	DECLARE @UnitId int
 	SELECT @UnitId = UnitId FROM Units WHERE UnitName = '1 Haverhill #2B'
 
-	INSERT Rents(UnitId, StartDate, EndDate, Amount, CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy)
-	VALUES(@UnitId, GETDATE(), NULL, 650.00, GETDATE(), 1, GETDATE(), 1)
+	INSERT Rents(UnitId, StartDate, EndDate, Amount, CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy, isDeleted)
+	VALUES(@UnitId, GETDATE(), NULL, 650.00, GETDATE(), 1, GETDATE(), 1, 0)
 END
 GO
 
@@ -151,8 +157,8 @@ BEGIN
 	DECLARE @UnitId int
 	SELECT @UnitId = UnitId FROM Units WHERE UnitName = '1 Haverhill #3'
 
-	INSERT Rents(UnitId, StartDate, EndDate, Amount, CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy)
-	VALUES(@UnitId, GETDATE(), NULL, 1200.00, GETDATE(), 1, GETDATE(), 1)
+	INSERT Rents(UnitId, StartDate, EndDate, Amount, CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy, isDeleted)
+	VALUES(@UnitId, GETDATE(), NULL, 1200.00, GETDATE(), 1, GETDATE(), 1, 0)
 END
 GO
 
@@ -161,8 +167,8 @@ BEGIN
 	DECLARE @UnitId int
 	SELECT @UnitId = UnitId FROM Units WHERE UnitName = '1 Haverhill #4A'
 
-	INSERT Rents(UnitId, StartDate, EndDate, Amount, CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy)
-	VALUES(@UnitId, GETDATE(), NULL, 650.00, GETDATE(), 1, GETDATE(), 1)
+	INSERT Rents(UnitId, StartDate, EndDate, Amount, CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy, isDeleted)
+	VALUES(@UnitId, GETDATE(), NULL, 650.00, GETDATE(), 1, GETDATE(), 1, 0)
 END
 GO
 
@@ -171,8 +177,8 @@ BEGIN
 	DECLARE @UnitId int
 	SELECT @UnitId = UnitId FROM Units WHERE UnitName = '1 Haverhill #4B'
 
-	INSERT Rents(UnitId, StartDate, EndDate, Amount, CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy)
-	VALUES(@UnitId, GETDATE(), NULL, 650.00, GETDATE(), 1, GETDATE(), 1)
+	INSERT Rents(UnitId, StartDate, EndDate, Amount, CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy, isDeleted)
+	VALUES(@UnitId, GETDATE(), NULL, 650.00, GETDATE(), 1, GETDATE(), 1, 0)
 END
 GO
 
@@ -181,8 +187,8 @@ BEGIN
 	DECLARE @UnitId int
 	SELECT @UnitId = UnitId FROM Units WHERE UnitName = '1 Haverhill #5'
 
-	INSERT Rents(UnitId, StartDate, EndDate, Amount, CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy)
-	VALUES(@UnitId, GETDATE(), NULL, 825.00, GETDATE(), 1, GETDATE(), 1)
+	INSERT Rents(UnitId, StartDate, EndDate, Amount, CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy, isDeleted)
+	VALUES(@UnitId, GETDATE(), NULL, 825.00, GETDATE(), 1, GETDATE(), 1, 0)
 END
 GO
 
@@ -191,8 +197,8 @@ BEGIN
 	DECLARE @UnitId int
 	SELECT @UnitId = UnitId FROM Units WHERE UnitName = '1 Haverhill #6'
 
-	INSERT Rents(UnitId, StartDate, EndDate, Amount, CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy)
-	VALUES(@UnitId, GETDATE(), NULL, 800.00, GETDATE(), 1, GETDATE(), 1)
+	INSERT Rents(UnitId, StartDate, EndDate, Amount, CreatedOn, CreatedBy, LastUpdatedOn, LastUpdatedBy, isDeleted)
+	VALUES(@UnitId, GETDATE(), NULL, 800.00, GETDATE(), 1, GETDATE(), 1, 0)
 END
 GO
 

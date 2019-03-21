@@ -1,9 +1,16 @@
-﻿namespace PropertyManagement.WebApi.Controllers
-{
-    using System.Web.Http;
-    using Repositories.Abstract;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using PropertyManagement.Domain;
+using PropertyManagement.Repositories.Abstract;
 
-    public class BuildingController : ApiController
+namespace PropertyManagement.WebApi.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class BuildingController : ControllerBase
     {
         private readonly IBuildingRepository _buildingRepository;
 
@@ -12,90 +19,37 @@
             _buildingRepository = buildingRepository;
         }
 
+
         // GET api/building
-        /// <summary>
-        /// Gets the buildings.
-        /// </summary>
-        /// <returns></returns>
         [HttpGet]
-        public IHttpActionResult GetBuildings()
+        public ActionResult<IEnumerable<Building>> Get()
         {
-            var buildings = _buildingRepository.GetAllBuildings();
-            return Ok(buildings);
+            return Ok(_buildingRepository.GetBuildings());
         }
 
         // GET api/building/5
-        /// <summary>
-        /// Gets the building.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns></returns>
-        [HttpGet]
-        public IHttpActionResult GetBuilding(int id)
+        [HttpGet("{id}")]
+        public ActionResult<Building> Get(int id)
         {
-            var building = _buildingRepository.GetBuildingById(id);
-            if (building == null)
-            {
-                return NotFound();
-            }
-            
-            return Ok(building);
+            return Ok(_buildingRepository.GetBuilding(id));
         }
 
         // POST api/building
-        /// <summary>
-        /// Creates the building.
-        /// </summary>
-        /// <param name="building">The building.</param>
-        /// <returns></returns>
         [HttpPost]
-        public IHttpActionResult CreateBuilding(Models.Building building)
+        public void Post([FromBody] string value)
         {
-            if (_buildingRepository.GetBuildingById(building.BuildingId) != null)
-            {
-                return Conflict();
-            }
-
-            _buildingRepository.AddBuilding(building);
-            return CreatedAtRoute("DefaultApi", new { id = building.BuildingId }, building);
         }
 
         // PUT api/building/5
-        /// <summary>
-        /// Updates the building.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <param name="building">The building.</param>
-        /// <returns></returns>
-        [HttpPut]
-        public IHttpActionResult UpdateBuilding(int id, Models.Building building)
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
         {
-            if (id != building.BuildingId)
-            {
-                return BadRequest();
-            }
-
-            var b = _buildingRepository.GetBuildingById(id);
-            if (b == null)
-            {
-                return NotFound();
-            }
-            
-            _buildingRepository.UpdateBuilding(building);
-            return Ok();
         }
 
         // DELETE api/building/5
-        /// <summary>
-        /// Deletes the building.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns></returns>
-        [HttpDelete]
-        public IHttpActionResult DeleteBuilding(int id)
+        [HttpDelete("{id}")]
+        public void Delete(int id)
         {
-            _buildingRepository.DeleteBuilding(id);
-            return Ok();
         }
     }
 }

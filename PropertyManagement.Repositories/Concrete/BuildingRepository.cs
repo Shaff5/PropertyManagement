@@ -2,31 +2,31 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using PropertyManagement.Data;
     using Abstract;
-    using Data;
 
     public class BuildingRepository : IBuildingRepository
     {
-        private readonly PropertyManagementEntities _context;
+        private readonly PropertyManagementContext _context;
 
         public BuildingRepository()
         {
-            _context = new PropertyManagementEntities();
+            _context = new PropertyManagementContext();
         }
 
         /// <summary>
         /// Gets all buildings.
         /// </summary>
         /// <returns></returns>
-        public IQueryable<WebApi.Models.Building> GetAllBuildings()
+        public IQueryable<Domain.Building> GetBuildings()
         {
             var buildings = _context.Buildings;
-            var buildingsList = new List<WebApi.Models.Building>();
+            var buildingsList = new List<Domain.Building>();
             foreach (var building in buildings)
             {
-                buildingsList.Add(new WebApi.Models.Building(building));
+                buildingsList.Add(building.MapToDomainBuilding());
             }
-            
+
             return buildingsList.AsQueryable();
         }
 
@@ -35,22 +35,22 @@
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        public WebApi.Models.Building GetBuildingById(int id)
+        public Domain.Building GetBuilding(int id)
         {
-            var b = _context.Buildings.Find(id);
-            if (b == null)
+            var building = _context.Buildings.Find(id);
+            if (building == null)
             {
                 return null;
             }
 
-            return new WebApi.Models.Building(b);
+            return building.MapToDomainBuilding();
         }
 
         /// <summary>
         /// Adds the building.
         /// </summary>
         /// <param name="building">The building.</param>
-        public void AddBuilding(WebApi.Models.Building building)
+        public void AddBuilding(Domain.Building building)
         {
             var b = new Data.Building();
             b.BuildingName = building.BuildingName;
@@ -69,6 +69,7 @@
             b.CreatedOn = System.DateTime.Now;
             b.LastUpdatedBy = 4;
             b.LastUpdatedOn = System.DateTime.Now;
+            b.IsDeleted = building.IsDeleted;
 
             _context.Buildings.Add(b);
 
@@ -79,7 +80,7 @@
         /// Updates the building.
         /// </summary>
         /// <param name="building">The building.</param>
-        public void UpdateBuilding(WebApi.Models.Building building)
+        public void UpdateBuilding(Domain.Building building)
         {
             var b = _context.Buildings.Find(building.BuildingId);
 
@@ -98,7 +99,8 @@
             b.NumberOfUnits = building.NumberOfUnits;
             b.LastUpdatedBy = 4;
             b.LastUpdatedOn = System.DateTime.Now;
-            
+            b.IsDeleted = building.IsDeleted;
+
             _context.SaveChanges();
         }
 
