@@ -1,0 +1,131 @@
+﻿@using PropertyManagement.Domain
+
+@model Building
+@{
+}
+
+<form>
+    <div>
+        <div class="page-header">
+            <h1>Edit Building</h1>
+        </div>
+
+        <button class="btn btn-success" asp-action="Save">
+            Save
+        </button>
+        <button class=" = btn btn-primary" asp-controller="Building" asp-action="Index">
+            Cancel
+        </button>
+
+        <input type="hidden" asp-for="BuildingId" />
+
+        <div class="form-group">
+            <label asp-for="BuildingName"></label>
+            <input type="text" class="form-control" asp-for="BuildingName" />
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Address</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label asp-for="AddressLine1"></label>
+                            <input type="text" class="form-control" asp-for="AddressLine1" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="AddressLine2"></label>
+                            <input type="text" class="form-control" asp-for="AddressLine2" />
+                        </div>
+                         <div class="form-group">
+                             <label asp-for="AddressLine3"></label>
+                             <input type="text" class="form-control" asp-for="AddressLine3" />
+                         </div>
+                         <div class="form-group">
+                             <label asp-for="City"></label>
+                             <input type="text" class="form-control" asp-for="City" />
+                         </div>
+                         <div class="form-group">
+                             <label asp-for="State"></label>
+                             <select type="text" class="form-control" asp-for="State"></select>
+                         </div>
+                         <div class="form-group">
+                             <label asp-for="ZipCode"></label>
+                             <input type="text" class="form-control" asp-for="ZipCode" />
+                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Financials</h3>
+                    </div>
+                    <div class="panel-body">
+                        @*<div class="form-group">
+                            <label for="purchaseDate">Purchase Date</label>
+                            <div class="input-group">
+                                <input class="form-control" name="purchaseDate" #c1="ngModel" [(ngModel)]="building.PurchaseDate" ngbDatepicker #purchaseDate="ngbDatepicker" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-outline-secondary" (click)="purchaseDate.toggle()" type="button">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>*@
+                        <div class="form-group">
+                            <label asp-for="PurchasePrice"></label>
+                            <input type="text" class="form-control" asp-for="PurchasePrice" />
+                        </div>
+                        @*<div class="form-group">
+                            <label for="sellDate">Sell Date</label>
+                            <div class="input-group">
+                                <input class="form-control" name="sellDate" #c2="ngModel" [(ngModel)]="building.SellDate" ngbDatepicker #sellDate="ngbDatepicker" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-outline-secondary" (click)="sellDate.toggle()" type="button">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>*@
+                        <div class="form-group">
+                            <label asp-for="SellPrice"></label>
+                            <input type="text" class="form-control" asp-for="SellPrice" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="NumberOfUnits"></label>
+                            <input type="text" class="form-control" asp-for="NumberOfUnits" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">System Info</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label asp-for="CreatedOn"></label>
+                            <input type="text" class="form-control" asp-for="CreatedOn" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CreatedBy"></label>
+                            <input type="text" class="form-control" asp-for="CreatedBy" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="LastUpdatedOn"></label>
+                            <input type="text" class="form-control" asp-for="LastUpdatedOn" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="LastUpdatedBy"></label>
+                            <input type="text" class="form-control" asp-for="LastUpdatedBy" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

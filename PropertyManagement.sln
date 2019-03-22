@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PropertyManagement.Domain",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PropertyManagement.WebApi", "PropertyManagement.WebApi\PropertyManagement.WebApi.csproj", "{76D751C8-D5F5-41FB-9D05-2331E4E1538B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertyManagement.Repositories", "PropertyManagement.Repositories\PropertyManagement.Repositories.csproj", "{5143111D-12D9-4CC1-ADFA-D02E197E50D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PropertyManagement.Repositories", "PropertyManagement.Repositories\PropertyManagement.Repositories.csproj", "{5143111D-12D9-4CC1-ADFA-D02E197E50D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertyManagement.Ui.Mvc", "PropertyManagement.Ui.Mvc\PropertyManagement.Ui.Mvc.csproj", "{93D54E67-4F3E-43A5-9117-72C406B3E838}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{5143111D-12D9-4CC1-ADFA-D02E197E50D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5143111D-12D9-4CC1-ADFA-D02E197E50D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5143111D-12D9-4CC1-ADFA-D02E197E50D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93D54E67-4F3E-43A5-9117-72C406B3E838}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93D54E67-4F3E-43A5-9117-72C406B3E838}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93D54E67-4F3E-43A5-9117-72C406B3E838}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93D54E67-4F3E-43A5-9117-72C406B3E838}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
