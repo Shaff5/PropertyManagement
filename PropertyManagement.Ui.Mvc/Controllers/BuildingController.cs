@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PropertyManagement.Domain;
 using PropertyManagement.Repositories.Abstract;
+using PropertyManagement.Ui.Mvc.Models.Building;
 
 namespace PropertyManagement.Ui.Mvc.Controllers
 {
@@ -38,7 +39,26 @@ namespace PropertyManagement.Ui.Mvc.Controllers
                 building = _buildingRepository.GetBuilding(id);
             }
 
-            return View(building);
+            return View(new BuildingViewModel
+            {
+                BuildingId = building.BuildingId,
+                CreatedOn = building.CreatedOn,
+                CreatedBy = building.CreatedBy,
+                LastUpdatedOn = building.LastUpdatedOn,
+                LastUpdatedBy = building.LastUpdatedBy,
+                BuildingName = building.BuildingName,
+                AddressLine1 = building.AddressLine1,
+                AddressLine2 = building.AddressLine2,
+                AddressLine3 = building.AddressLine3,
+                City = building.City,
+                State = building.State,
+                ZipCode = building.ZipCode,
+                PurchaseDate = building.PurchaseDate,
+                PurchasePrice = building.PurchasePrice,
+                SellDate = building.SellDate,
+                SellPrice = building.SellPrice,
+                NumberOfUnits = building.NumberOfUnits
+            });
         }
 
         public IActionResult Save(Building building)
