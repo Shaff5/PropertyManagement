@@ -15,7 +15,7 @@
         }
 
         /// <summary>
-        /// Gets all buildings.
+        /// Gets all users.
         /// </summary>
         /// <returns></returns>
         public IQueryable<Domain.User> GetUsers()
@@ -31,7 +31,7 @@
         }
 
         /// <summary>
-        /// Gets the building by identifier.
+        /// Gets the user by identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>

@@ -5,9 +5,11 @@
     public interface IBuildingRepository
     {
         IQueryable<Domain.Building> GetBuildings();
+        IQueryable<Domain.Building> GetDeletedBuildings();
         Domain.Building GetBuilding(int id);
         void AddBuilding(Domain.Building building);
         void UpdateBuilding(Domain.Building building);
-        void DeleteBuilding(int id);
+        void SoftDeleteBuilding(int id);
+        void HardDeleteBuilding(int id);
     }
 }

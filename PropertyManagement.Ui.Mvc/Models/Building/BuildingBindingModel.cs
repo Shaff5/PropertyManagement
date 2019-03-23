@@ -13,13 +13,13 @@ namespace PropertyManagement.Ui.Mvc.Models.Building
         [Editable(false)]
         public DateTime CreatedOn { get; set; }
 
-        [Display(Name = "Created By")]
+        [Editable(false)]
         public int CreatedBy { get; set; }
 
-        [Display(Name = "Last Updated On")]
+        [Editable(false)]
         public DateTime LastUpdatedOn { get; set; }
 
-        [Display(Name = "Last Updated By")]
+        [Editable(false)]
         public int LastUpdatedBy { get; set; }
 
         [Display(Name = "Building Name")]

@@ -107,7 +107,7 @@ namespace PropertyManagement.Ui.Mvc.Controllers
 
         public IActionResult Delete(int id)
         {
-            _buildingRepository.DeleteBuilding(id);
+            _buildingRepository.SoftDeleteBuilding(id);
 
             return RedirectToAction("Index");
         }

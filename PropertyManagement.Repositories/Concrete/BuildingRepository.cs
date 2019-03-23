@@ -20,7 +20,19 @@
         /// <returns></returns>
         public IQueryable<Domain.Building> GetBuildings()
         {
-            var buildings = _context.Buildings;
+            var buildings = _context.Buildings.Where(b => !b.IsDeleted);
+            var buildingsList = new List<Domain.Building>();
+            foreach (var building in buildings)
+            {
+                buildingsList.Add(building.MapToDomainBuilding());
+            }
+
+            return buildingsList.AsQueryable();
+        }
+
+        public IQueryable<Domain.Building> GetDeletedBuildings()
+        {
+            var buildings = _context.Buildings.Where(b => b.IsDeleted);
             var buildingsList = new List<Domain.Building>();
             foreach (var building in buildings)
             {
@@ -106,11 +118,18 @@
             _context.SaveChanges();
         }
 
+        public void SoftDeleteBuilding(int id)
+        {
+            var building = _context.Buildings.Find(id);
+            building.IsDeleted = true;
+            _context.SaveChanges();
+        }
+
         /// <summary>
         /// Deletes the building.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        public void DeleteBuilding(int id)
+        public void HardDeleteBuilding(int id)
         {
             var building = _context.Buildings.Find(id);
             _context.Buildings.Remove(building);
