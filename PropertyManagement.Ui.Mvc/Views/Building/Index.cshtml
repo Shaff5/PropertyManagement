@@ -36,7 +36,7 @@
                     <td>@building.AddressLine1</td>
                     <td>@building.City</td>
                     <td>@building.ZipCode</td>
-                    <td>@building.PurchaseDate</td>
+                    <td>@building.PurchaseDate.ToShortDateString()</td>
                     <td>
                         <button class="btn btn-primary" asp-action="Edit" asp-route-id=@building.BuildingId>
                             <i class="fa fa-edit"></i>

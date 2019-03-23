@@ -61,9 +61,27 @@ namespace PropertyManagement.Ui.Mvc.Controllers
             });
         }
 
-        public IActionResult Save(Building building)
+        public IActionResult Save(BuildingBindingModel model)
         {
-            if (building.BuildingId > 0)
+            var building = new Building();
+
+            if (model.BuildingId > 0)
+            {
+                building = _buildingRepository.GetBuilding(model.BuildingId);
+            }
+      
+            building.BuildingName = model.BuildingName;
+            building.AddressLine1 = model.AddressLine1;
+            building.AddressLine2 = model.AddressLine2;
+            building.AddressLine3 = model.AddressLine3;
+            building.City = model.City;
+            building.State = model.State;
+            building.ZipCode = model.ZipCode;
+            building.PurchaseDate = model.PurchaseDate;
+            building.PurchasePrice = model.PurchasePrice;
+            building.NumberOfUnits = model.NumberOfUnits;
+
+            if (model.BuildingId > 0)
             {
                 _buildingRepository.UpdateBuilding(building);
             }

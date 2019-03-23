@@ -22,7 +22,7 @@
 
         <div class="form-group">
             <label asp-for="BuildingName"></label>
-            <input type="text" class="form-control" asp-for="BuildingName" />
+            <input class="form-control" asp-for="BuildingName" />
         </div>
 
         <div class="row">
@@ -34,27 +34,27 @@
                     <div class="panel-body">
                         <div class="form-group">
                             <label asp-for="AddressLine1"></label>
-                            <input type="text" class="form-control" asp-for="AddressLine1" />
+                            <input class="form-control" asp-for="AddressLine1" />
                         </div>
                         <div class="form-group">
                             <label asp-for="AddressLine2"></label>
-                            <input type="text" class="form-control" asp-for="AddressLine2" />
+                            <input class="form-control" asp-for="AddressLine2" />
                         </div>
                          <div class="form-group">
                              <label asp-for="AddressLine3"></label>
-                             <input type="text" class="form-control" asp-for="AddressLine3" />
+                             <input class="form-control" asp-for="AddressLine3" />
                          </div>
                          <div class="form-group">
                              <label asp-for="City"></label>
-                             <input type="text" class="form-control" asp-for="City" />
+                             <input class="form-control" asp-for="City" />
                          </div>
                          <div class="form-group">
                              <label asp-for="State"></label>
-                             <select type="text" class="form-control" asp-for="State"></select>
+                             <select class="form-control" asp-for="State" asp-items="Model.States"></select>
                          </div>
                          <div class="form-group">
                              <label asp-for="ZipCode"></label>
-                             <input type="text" class="form-control" asp-for="ZipCode" />
+                             <input class="form-control" asp-for="ZipCode" />
                          </div>
                     </div>
                 </div>
@@ -65,6 +65,17 @@
                         <h3 class="panel-title">Financials</h3>
                     </div>
                     <div class="panel-body">
+                        <div class="form-group">
+                            <label asp-for="PurchaseDate"></label>
+                            <div class="input-group">
+                                <input class="form-control" asp-for="PurchaseDate" />
+                                @*<span class="input-group-btn">
+                                    <button class="btn btn-outline-secondary" (click)="purchaseDate.toggle()" type="button">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </button>
+                                </span>*@
+                            </div>
+                        </div>
                         @*<div class="form-group">
                             <label for="purchaseDate">Purchase Date</label>
                             <div class="input-group">
@@ -110,19 +121,19 @@
                     <div class="panel-body">
                         <div class="form-group">
                             <label asp-for="CreatedOn"></label>
-                            <input type="text" class="form-control" asp-for="CreatedOn" />
+                            <input class="form-control" asp-for="CreatedOn" disabled />
                         </div>
                         <div class="form-group">
                             <label asp-for="CreatedBy"></label>
-                            <input type="text" class="form-control" asp-for="CreatedBy" />
+                            <input class="form-control" asp-for="CreatedBy" disabled />
                         </div>
                         <div class="form-group">
                             <label asp-for="LastUpdatedOn"></label>
-                            <input type="text" class="form-control" asp-for="LastUpdatedOn" />
+                            <input type="text" class="form-control" asp-for="LastUpdatedOn" disabled />
                         </div>
                         <div class="form-group">
                             <label asp-for="LastUpdatedBy"></label>
-                            <input type="text" class="form-control" asp-for="LastUpdatedBy" />
+                            <input type="text" class="form-control" asp-for="LastUpdatedBy" disabled />
                         </div>
                     </div>
                 </div>

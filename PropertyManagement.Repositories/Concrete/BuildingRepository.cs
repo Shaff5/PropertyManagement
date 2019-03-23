@@ -65,9 +65,9 @@
             b.SellDate = building.SellDate;
             b.SellPrice = building.SellPrice;
             b.NumberOfUnits = building.NumberOfUnits;
-            b.CreatedBy = 4;
+            b.CreatedBy = 1;
             b.CreatedOn = System.DateTime.Now;
-            b.LastUpdatedBy = 4;
+            b.LastUpdatedBy = 1;
             b.LastUpdatedOn = System.DateTime.Now;
             b.IsDeleted = building.IsDeleted;
 
@@ -85,6 +85,11 @@
             var b = _context.Buildings.Find(building.BuildingId);
 
             b.BuildingId = building.BuildingId;
+            b.CreatedOn = System.DateTime.Now;
+            b.CreatedBy = building.CreatedBy;
+            b.LastUpdatedOn = System.DateTime.Now;
+            b.LastUpdatedBy = building.LastUpdatedBy;
+            b.IsDeleted = building.IsDeleted;
             b.BuildingName = building.BuildingName;
             b.AddressLine1 = building.AddressLine1;
             b.AddressLine2 = building.AddressLine2;
@@ -97,10 +102,7 @@
             b.SellDate = building.SellDate;
             b.SellPrice = building.SellPrice;
             b.NumberOfUnits = building.NumberOfUnits;
-            b.LastUpdatedBy = 4;
-            b.LastUpdatedOn = System.DateTime.Now;
-            b.IsDeleted = building.IsDeleted;
-
+            
             _context.SaveChanges();
         }
 
