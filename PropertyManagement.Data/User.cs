@@ -22,5 +22,21 @@ namespace PropertyManagement.Data
 
         public virtual ICollection<Building> BuildingsCreatedByNavigation { get; set; }
         public virtual ICollection<Building> BuildingsLastUpdatedByNavigation { get; set; }
+
+        public Domain.User MapToDomainUser()
+        {
+            var u = new Domain.User();
+
+            u.UserId = UserId;
+            u.CreatedOn = CreatedOn;
+            u.CreatedBy = CreatedBy;
+            u.LastUpdatedOn = LastUpdatedOn;
+            u.LastUpdatedBy = LastUpdatedBy;
+            u.Ts = Ts;
+            u.IsDeleted = IsDeleted;
+            u.UserName = UserName;
+            
+            return u;
+        }
     }
 }

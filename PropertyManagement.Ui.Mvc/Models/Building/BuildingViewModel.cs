@@ -12,16 +12,16 @@ namespace PropertyManagement.Ui.Mvc.Models.Building
         public int BuildingId { get; set; }
 
         [Display(Name = "Created On")]
-        public DateTime CreatedOn { get; set; }
+        public DateTime? CreatedOn { get; set; }
 
         [Display(Name = "Created By")]
-        public int CreatedBy { get; set; }
+        public string CreatedBy { get; set; }
 
         [Display(Name = "Last Updated On")]
-        public DateTime LastUpdatedOn { get; set; }
+        public DateTime? LastUpdatedOn { get; set; }
 
         [Display(Name = "Last Updated By")]
-        public int LastUpdatedBy { get; set; }
+        public string LastUpdatedBy { get; set; }
 
         [Display (Name = "Building Name")]
         [Required]
@@ -58,13 +58,15 @@ namespace PropertyManagement.Ui.Mvc.Models.Building
 
         [Display(Name = "Purchase Date")]
         [DataType(DataType.Date)]
-        public DateTime PurchaseDate { get; set; }
+        public DateTime? PurchaseDate { get; set; }
 
         [Display(Name = "Purchase Price")]
         [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "C")]
         public decimal PurchasePrice { get; set; }
 
+        [Display(Name = "Sell Date")]
+        [DataType(DataType.Date)]
         public DateTime? SellDate { get; set; }
 
         [Display(Name = "Sell Price")]

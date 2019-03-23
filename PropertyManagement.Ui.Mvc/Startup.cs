@@ -39,6 +39,7 @@ namespace PropertyManagement.Ui.Mvc
             var connectionString = Configuration.GetConnectionString("PropertyManagementConnectionString");
 
             services.AddScoped<IBuildingRepository>(p => new BuildingRepository());
+            services.AddScoped<IUserRepository>(u => new UserRepository());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

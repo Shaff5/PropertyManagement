@@ -69,39 +69,16 @@
                             <label asp-for="PurchaseDate"></label>
                             <div class="input-group">
                                 <input class="form-control" asp-for="PurchaseDate" />
-                                @*<span class="input-group-btn">
-                                    <button class="btn btn-outline-secondary" (click)="purchaseDate.toggle()" type="button">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </button>
-                                </span>*@
                             </div>
                         </div>
-                        @*<div class="form-group">
-                            <label for="purchaseDate">Purchase Date</label>
-                            <div class="input-group">
-                                <input class="form-control" name="purchaseDate" #c1="ngModel" [(ngModel)]="building.PurchaseDate" ngbDatepicker #purchaseDate="ngbDatepicker" />
-                                <span class="input-group-btn">
-                                    <button class="btn btn-outline-secondary" (click)="purchaseDate.toggle()" type="button">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </button>
-                                </span>
-                            </div>
-                        </div>*@
                         <div class="form-group">
                             <label asp-for="PurchasePrice"></label>
                             <input type="text" class="form-control" asp-for="PurchasePrice" />
                         </div>
-                        @*<div class="form-group">
-                            <label for="sellDate">Sell Date</label>
-                            <div class="input-group">
-                                <input class="form-control" name="sellDate" #c2="ngModel" [(ngModel)]="building.SellDate" ngbDatepicker #sellDate="ngbDatepicker" />
-                                <span class="input-group-btn">
-                                    <button class="btn btn-outline-secondary" (click)="sellDate.toggle()" type="button">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </button>
-                                </span>
-                            </div>
-                        </div>*@
+                        <label asp-for="SellDate"></label>
+                        <div class="input-group">
+                            <input class="form-control" asp-for="SellDate" />
+                        </div>
                         <div class="form-group">
                             <label asp-for="SellPrice"></label>
                             <input type="text" class="form-control" asp-for="SellPrice" />
@@ -121,11 +98,11 @@
                     <div class="panel-body">
                         <div class="form-group">
                             <label asp-for="CreatedOn"></label>
-                            <input class="form-control" asp-for="CreatedOn" disabled />
+                            <input type="text" class="form-control" asp-for="CreatedOn" disabled />
                         </div>
                         <div class="form-group">
                             <label asp-for="CreatedBy"></label>
-                            <input class="form-control" asp-for="CreatedBy" disabled />
+                            <input type="text" class="form-control" asp-for="CreatedBy" disabled />
                         </div>
                         <div class="form-group">
                             <label asp-for="LastUpdatedOn"></label>

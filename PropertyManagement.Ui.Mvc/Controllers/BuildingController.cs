@@ -12,15 +12,22 @@ namespace PropertyManagement.Ui.Mvc.Controllers
     public class BuildingController : Controller
     {
         private readonly IBuildingRepository _buildingRepository;
+        private readonly IUserRepository _userRepository;
 
-        public BuildingController(IBuildingRepository buildingRepository)
+        public BuildingController(IBuildingRepository buildingRepository,
+            IUserRepository userRepository)
         {
             if (buildingRepository == null)
             {
                 throw new ArgumentNullException("buildingRepository");
             }
+            if (userRepository == null)
+            {
+                throw new ArgumentNullException("userRepository");
+            }
 
             _buildingRepository = buildingRepository;
+            _userRepository = userRepository;
         }
 
         public IActionResult Index()
@@ -33,19 +40,23 @@ namespace PropertyManagement.Ui.Mvc.Controllers
         public IActionResult Edit(int id)
         {
             var building = new Building();
+            var createdBy = string.Empty;
+            var lastUpdatedBy = string.Empty;
 
             if (id > 0)
             {
                 building = _buildingRepository.GetBuilding(id);
+                createdBy = _userRepository.GetUser(building.CreatedBy).UserName;
+                lastUpdatedBy = _userRepository.GetUser(building.LastUpdatedBy).UserName;
             }
 
             return View(new BuildingViewModel
             {
                 BuildingId = building.BuildingId,
-                CreatedOn = building.CreatedOn,
-                CreatedBy = building.CreatedBy,
-                LastUpdatedOn = building.LastUpdatedOn,
-                LastUpdatedBy = building.LastUpdatedBy,
+                CreatedOn = id > 0 ? building.CreatedOn : (DateTime?)null,
+                CreatedBy = createdBy,
+                LastUpdatedOn = id > 0 ? building.LastUpdatedOn : (DateTime?)null,
+                LastUpdatedBy = lastUpdatedBy,
                 BuildingName = building.BuildingName,
                 AddressLine1 = building.AddressLine1,
                 AddressLine2 = building.AddressLine2,
@@ -53,9 +64,9 @@ namespace PropertyManagement.Ui.Mvc.Controllers
                 City = building.City,
                 State = building.State,
                 ZipCode = building.ZipCode,
-                PurchaseDate = building.PurchaseDate,
+                PurchaseDate = id > 0 ? building.PurchaseDate : (DateTime?)null,
                 PurchasePrice = building.PurchasePrice,
-                SellDate = building.SellDate,
+                SellDate = id > 0 ? building.SellDate : null,
                 SellPrice = building.SellPrice,
                 NumberOfUnits = building.NumberOfUnits
             });
