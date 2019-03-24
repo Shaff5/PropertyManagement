@@ -3,15 +3,10 @@
 @model IEnumerable<Building>
 @{
     Layout = "_LayoutModal";
-    ViewData["Title"] = "Buildings";
+    ViewData["Title"] = "Recycle Bin";
 }
 
-<h1>@ViewData["Title"]</h1>
-
 <form>
-    <button type="button" id="closebtn" class="btn btn-primary button button4">
-        Hide
-    </button>
     <table class='table'>
         <thead>
             <tr>
@@ -44,11 +39,15 @@
     </table>
 </form>
 
+<button type="button" id="btnClose" class="btn btn-primary button button4">
+    Close
+</button>
+
 @section scripts
     {
     <script>
         $(function () {
-            $("#closebtn").click(function () {
+            $("#btnClose").click(function () {
                 $('#myModal').modal('hide');
             });
         });

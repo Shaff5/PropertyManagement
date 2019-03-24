@@ -9,7 +9,7 @@
 
 <form>
     <div id='myModal' class='modal' role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div id='myModalContent'></div>
             </div>
@@ -80,7 +80,7 @@
                     type: "GET",
                     url: RecycleBinUrl,
                     contentType: "application/json; charset=utf-8",
-                    data: { "Id": id },
+                    //data: { "Id": id },
                     datatype: "json",
                     success: function (data) {
                         //debugger;
@@ -97,9 +97,9 @@
             //$("#closebtn").on('click',function(){
             //    $('#myModal').modal('hide');
 
-            $("#closebtn").click(function () {
-                $('#myModal').modal('hide');
-            });
+            //$("#closebtn").click(function () {
+            //    $('#myModal').modal('hide');
+            //});
         });
     </script>
 }
