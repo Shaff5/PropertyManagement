@@ -74,6 +74,30 @@ namespace PropertyManagement.Ui.Mvc.Controllers
 
         public IActionResult Save(BuildingBindingModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("Edit", new BuildingViewModel
+                {
+                    BuildingId = model.BuildingId,
+                    CreatedOn = model.CreatedOn,
+                    CreatedBy = "SYSTEM", // model.CreatedBy,
+                    LastUpdatedOn = model.LastUpdatedOn,
+                    LastUpdatedBy = "SYSTEM", // model.LastUpdatedBy,
+                    BuildingName = model.BuildingName,
+                    AddressLine1 = model.AddressLine1,
+                    AddressLine2 = model.AddressLine2,
+                    AddressLine3 = model.AddressLine3,
+                    City = model.City,
+                    State = model.State,
+                    ZipCode = model.ZipCode,
+                    PurchaseDate = model.PurchaseDate,
+                    PurchasePrice = model.PurchasePrice,
+                    SellDate = model.SellDate,
+                    SellPrice = model.SellPrice,
+                    NumberOfUnits = model.NumberOfUnits
+                });
+            }
+
             var building = new Building();
 
             if (model.BuildingId > 0)

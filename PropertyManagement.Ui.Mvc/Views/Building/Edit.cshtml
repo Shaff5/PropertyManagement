@@ -23,6 +23,7 @@
         <div class="form-group">
             <label asp-for="BuildingName"></label>
             <input class="form-control" asp-for="BuildingName" />
+            <span asp-validation-for="BuildingName"></span>
         </div>
 
         <div class="row">
@@ -35,6 +36,7 @@
                         <div class="form-group">
                             <label asp-for="AddressLine1"></label>
                             <input class="form-control" asp-for="AddressLine1" />
+                            <span asp-validation-for="AddressLine1"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="AddressLine2"></label>
@@ -47,14 +49,17 @@
                          <div class="form-group">
                              <label asp-for="City"></label>
                              <input class="form-control" asp-for="City" />
+                             <span asp-validation-for="City"></span>
                          </div>
                          <div class="form-group">
                              <label asp-for="State"></label>
                              <select class="form-control" asp-for="State" asp-items="Model.States"></select>
+                             <span asp-validation-for="State"></span>
                          </div>
                          <div class="form-group">
                              <label asp-for="ZipCode"></label>
                              <input class="form-control" asp-for="ZipCode" />
+                             <span asp-validation-for="ZipCode"></span>
                          </div>
                     </div>
                 </div>
@@ -69,11 +74,13 @@
                             <label asp-for="PurchaseDate"></label>
                             <div class="input-group">
                                 <input class="form-control" asp-for="PurchaseDate" />
+                                <span asp-validation-for="PurchaseDate"></span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label asp-for="PurchasePrice"></label>
                             <input type="text" class="form-control" asp-for="PurchasePrice" />
+                            <span asp-validation-for="PurchasePrice"></span>
                         </div>
                         <label asp-for="SellDate"></label>
                         <div class="input-group">
@@ -82,10 +89,12 @@
                         <div class="form-group">
                             <label asp-for="SellPrice"></label>
                             <input type="text" class="form-control" asp-for="SellPrice" />
+                            <span asp-validation-for="SellPrice"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="NumberOfUnits"></label>
                             <input type="text" class="form-control" asp-for="NumberOfUnits" />
+                            <span asp-validation-for="NumberOfUnits"></span>
                         </div>
                     </div>
                 </div>
@@ -118,3 +127,7 @@
         </div>
     </div>
 </form>
+
+@section Scripts{
+    @Html.Partial("_ValidationScriptsPartial")
+}
