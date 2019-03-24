@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PropertyManagement.Domain;
 using PropertyManagement.Repositories.Abstract;
-using PropertyManagement.Ui.Mvc.Models.Building;
+using PropertyManagement.Ui.Mvc.Models.RecycleBin;
 
 namespace PropertyManagement.Ui.Mvc.Controllers
 {
@@ -27,14 +27,32 @@ namespace PropertyManagement.Ui.Mvc.Controllers
         {
             var buildings = _buildingRepository.GetDeletedBuildings();
 
-            return View(buildings);
+            var viewModel = buildings.Select(b => new RecycleBinViewModel
+            {
+                Id = b.BuildingId,
+                EntityName = typeof(Building).Name,
+                Description = b.BuildingName,
+                DeletedBy = "not implemented",
+                DeletedOn = b.LastUpdatedOn
+            });
+
+            return View(viewModel); 
         }
 
         public IActionResult Delete(int id)
         {
             _buildingRepository.HardDeleteBuilding(id);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Building");
+        }
+
+        public IActionResult Restore(int id)
+        {
+            var building = _buildingRepository.GetBuilding(id);
+            building.IsDeleted = false;
+            _buildingRepository.UpdateBuilding(building);
+
+            return RedirectToAction("Index", "Building");
         }
     }
 }
