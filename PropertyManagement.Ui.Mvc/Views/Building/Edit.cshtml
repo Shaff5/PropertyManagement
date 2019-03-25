@@ -14,9 +14,11 @@
         <button class="btn btn-success" asp-action="Save">
             Save
         </button>
-        <button class=" = btn btn-primary" asp-controller="Building" asp-action="Index">
+        <button class=" = btn btn-primary" asp-controller="Building" asp-action="Index" formnovalidate>
             Cancel
         </button>
+
+        <div asp-validation-summary="All"></div>
 
         <input type="hidden" asp-for="BuildingId" />
 
@@ -72,18 +74,16 @@
                     <div class="panel-body">
                         <div class="form-group">
                             <label asp-for="PurchaseDate"></label>
-                            <div class="input-group">
-                                <input class="form-control" asp-for="PurchaseDate" />
-                                <span asp-validation-for="PurchaseDate"></span>
-                            </div>
+                            <input class="form-control" asp-for="PurchaseDate" />
+                            <span asp-validation-for="PurchaseDate"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="PurchasePrice"></label>
                             <input type="text" class="form-control" asp-for="PurchasePrice" />
                             <span asp-validation-for="PurchasePrice"></span>
                         </div>
-                        <label asp-for="SellDate"></label>
-                        <div class="input-group">
+                        <div class="form-group">
+                            <label asp-for="SellDate"></label>
                             <input class="form-control" asp-for="SellDate" />
                         </div>
                         <div class="form-group">
