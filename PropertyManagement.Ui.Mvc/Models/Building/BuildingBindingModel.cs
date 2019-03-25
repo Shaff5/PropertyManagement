@@ -10,21 +10,17 @@ namespace PropertyManagement.Ui.Mvc.Models.Building
     {
         public int BuildingId { get; set; }
 
-        [Editable(false)]
         [Display(Name = "Created On")]
         public DateTime CreatedOn { get; set; }
 
-        [Editable(false)]
         [Display(Name = "Created By")]
-        public int CreatedBy { get; set; }
+        public string CreatedBy { get; set; }
 
-        [Editable(false)]
         [Display(Name = "Last Updated On")]
         public DateTime LastUpdatedOn { get; set; }
 
-        [Editable(false)]
         [Display(Name = "Last Updated By")]
-        public int LastUpdatedBy { get; set; }
+        public string LastUpdatedBy { get; set; }
 
         [Display(Name = "Building Name")]
         [Required]

@@ -12,22 +12,15 @@ namespace PropertyManagement.Ui.Mvc.Controllers
     public class BuildingController : Controller
     {
         private readonly IBuildingRepository _buildingRepository;
-        private readonly IUserRepository _userRepository;
-
-        public BuildingController(IBuildingRepository buildingRepository,
-            IUserRepository userRepository)
+        
+        public BuildingController(IBuildingRepository buildingRepository)
         {
             if (buildingRepository == null)
             {
                 throw new ArgumentNullException("buildingRepository");
             }
-            if (userRepository == null)
-            {
-                throw new ArgumentNullException("userRepository");
-            }
-
+            
             _buildingRepository = buildingRepository;
-            _userRepository = userRepository;
         }
 
         public IActionResult Index()
@@ -40,23 +33,19 @@ namespace PropertyManagement.Ui.Mvc.Controllers
         public IActionResult Edit(int id)
         {
             var building = new Building();
-            var createdBy = string.Empty;
-            var lastUpdatedBy = string.Empty;
-
+            
             if (id > 0)
             {
                 building = _buildingRepository.GetBuilding(id);
-                createdBy = _userRepository.GetUser(building.CreatedBy).UserName;
-                lastUpdatedBy = _userRepository.GetUser(building.LastUpdatedBy).UserName;
             }
 
             return View(new BuildingViewModel
             {
                 BuildingId = building.BuildingId,
                 CreatedOn = id > 0 ? building.CreatedOn : (DateTime?)null,
-                CreatedBy = createdBy,
+                CreatedBy = building.CreatedByName,
                 LastUpdatedOn = id > 0 ? building.LastUpdatedOn : (DateTime?)null,
-                LastUpdatedBy = lastUpdatedBy,
+                LastUpdatedBy = building.LastUpdatedByName,
                 BuildingName = building.BuildingName,
                 AddressLine1 = building.AddressLine1,
                 AddressLine2 = building.AddressLine2,
@@ -80,9 +69,9 @@ namespace PropertyManagement.Ui.Mvc.Controllers
                 {
                     BuildingId = model.BuildingId,
                     CreatedOn = model.CreatedOn,
-                    CreatedBy = "SYSTEM", // model.CreatedBy,
+                    CreatedBy = model.CreatedBy,
                     LastUpdatedOn = model.LastUpdatedOn,
-                    LastUpdatedBy = "SYSTEM", // model.LastUpdatedBy,
+                    LastUpdatedBy = model.LastUpdatedBy,
                     BuildingName = model.BuildingName,
                     AddressLine1 = model.AddressLine1,
                     AddressLine2 = model.AddressLine2,

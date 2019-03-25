@@ -41,8 +41,10 @@ namespace PropertyManagement.Data
             b.BuildingId = BuildingId;
             b.CreatedOn = CreatedOn;
             b.CreatedBy = CreatedBy;
+            b.CreatedByName = CreatedByNavigation.UserName;
             b.LastUpdatedOn = LastUpdatedOn;
             b.LastUpdatedBy = LastUpdatedBy;
+            b.LastUpdatedByName = LastUpdatedByNavigation.UserName;
             b.Ts = Ts;
             b.IsDeleted = IsDeleted;
             b.BuildingName = BuildingName;

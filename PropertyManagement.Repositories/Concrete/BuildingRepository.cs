@@ -1,5 +1,6 @@
 ﻿namespace PropertyManagement.Repositories.Concrete
 {
+    using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
     using System.Linq;
     using PropertyManagement.Data;
@@ -20,7 +21,11 @@
         /// <returns></returns>
         public IQueryable<Domain.Building> GetBuildings()
         {
-            var buildings = _context.Buildings.Where(b => !b.IsDeleted);
+            var buildings = _context.Buildings
+                .Include(u => u.CreatedByNavigation)
+                .Include(u => u.LastUpdatedByNavigation)
+                .Where(b => !b.IsDeleted);
+
             var buildingsList = new List<Domain.Building>();
             foreach (var building in buildings)
             {
@@ -32,7 +37,11 @@
 
         public IQueryable<Domain.Building> GetDeletedBuildings()
         {
-            var buildings = _context.Buildings.Where(b => b.IsDeleted);
+            var buildings = _context.Buildings
+                .Include(u => u.CreatedByNavigation)
+                .Include(u => u.LastUpdatedByNavigation)
+                .Where(b => b.IsDeleted);
+
             var buildingsList = new List<Domain.Building>();
             foreach (var building in buildings)
             {
@@ -49,7 +58,11 @@
         /// <returns></returns>
         public Domain.Building GetBuilding(int id)
         {
-            var building = _context.Buildings.Find(id);
+            var building = _context.Buildings
+                .Include(u => u.CreatedByNavigation)
+                .Include(u => u.LastUpdatedByNavigation)
+                .FirstOrDefault(b => b.BuildingId == id);
+
             if (building == null)
             {
                 return null;
