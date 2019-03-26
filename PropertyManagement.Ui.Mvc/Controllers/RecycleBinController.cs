@@ -32,7 +32,7 @@ namespace PropertyManagement.Ui.Mvc.Controllers
                 Id = b.BuildingId,
                 EntityName = typeof(Building).Name,
                 Description = b.BuildingName,
-                DeletedBy = "not implemented",
+                DeletedBy = b.LastUpdatedByName,
                 DeletedOn = b.LastUpdatedOn
             });
 
