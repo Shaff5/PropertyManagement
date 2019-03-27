@@ -37,6 +37,10 @@ namespace PropertyManagement.Ui.Mvc.Controllers
             if (id > 0)
             {
                 building = _buildingRepository.GetBuilding(id);
+                if (building == null)
+                {
+                    return NotFound();
+                }
             }
 
             return View(new BuildingViewModel
@@ -123,6 +127,30 @@ namespace PropertyManagement.Ui.Mvc.Controllers
             _buildingRepository.SoftDeleteBuilding(id);
 
             return RedirectToAction("Index");
+        }
+
+        public IActionResult Download()
+        {
+            byte[] fileContents;
+
+            System.IO.MemoryStream stream = new System.IO.MemoryStream();
+            System.IO.StreamWriter writer = new System.IO.StreamWriter(stream);
+            writer.Write("Hello, World!");
+            writer.Flush();
+            stream.Position = 0;
+
+            fileContents = stream.ToArray();
+
+            if (fileContents == null || fileContents.Length == 0)
+            {
+                return NotFound();
+            }
+
+            return File(
+                fileContents: fileContents,
+                contentType: "text/csv",
+                fileDownloadName: "test.csv"
+            );
         }
     }
 }
