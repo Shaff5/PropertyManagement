@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PropertyManagement.Domain;
+using PropertyManagement.Domain.Reporting;
 using PropertyManagement.Repositories.Abstract;
 using PropertyManagement.Ui.Mvc.Models.Building;
 
@@ -47,7 +48,7 @@ namespace PropertyManagement.Ui.Mvc.Controllers
             {
                 BuildingId = building.BuildingId,
                 CreatedOn = id > 0 ? building.CreatedOn : (DateTime?)null,
-                CreatedBy = building.CreatedByName,
+                CreatedBy = id > 0 ? building.CreatedByName : string.Empty,
                 LastUpdatedOn = id > 0 ? building.LastUpdatedOn : (DateTime?)null,
                 LastUpdatedBy = building.LastUpdatedByName,
                 BuildingName = building.BuildingName,
@@ -69,13 +70,27 @@ namespace PropertyManagement.Ui.Mvc.Controllers
         {
             if (!ModelState.IsValid)
             {
+                DateTime? createdOn = (DateTime?)null;
+                var createdBy = string.Empty;
+                DateTime? lastUpdatedOn = (DateTime?)null;
+                var lastUpdatedBy = string.Empty;
+
+                if (model.BuildingId > 0)
+                {
+                    var b = _buildingRepository.GetBuilding(model.BuildingId);
+                    createdOn = b.CreatedOn;
+                    createdBy = b.CreatedByName;
+                    lastUpdatedOn = b.LastUpdatedOn;
+                    lastUpdatedBy = b.LastUpdatedByName;
+                }
+
                 return View("Edit", new BuildingViewModel
                 {
                     BuildingId = model.BuildingId,
-                    CreatedOn = model.CreatedOn,
-                    CreatedBy = model.CreatedBy,
-                    LastUpdatedOn = model.LastUpdatedOn,
-                    LastUpdatedBy = model.LastUpdatedBy,
+                    CreatedOn = createdOn,
+                    CreatedBy = createdBy,
+                    LastUpdatedOn = lastUpdatedOn,
+                    LastUpdatedBy = lastUpdatedBy,
                     BuildingName = model.BuildingName,
                     AddressLine1 = model.AddressLine1,
                     AddressLine2 = model.AddressLine2,
@@ -131,16 +146,26 @@ namespace PropertyManagement.Ui.Mvc.Controllers
 
         public IActionResult Download()
         {
-            byte[] fileContents;
+            var buildings = _buildingRepository.GetBuildings();
+            var header = new string[] { "Id", "Name", "Address", "City", "Zip Code" };
 
-            System.IO.MemoryStream stream = new System.IO.MemoryStream();
-            System.IO.StreamWriter writer = new System.IO.StreamWriter(stream);
-            writer.Write("Hello, World!");
-            writer.Flush();
-            stream.Position = 0;
+            var data = new List<string[]>
+            {
+                header
+            };
 
-            fileContents = stream.ToArray();
-
+            data.AddRange(buildings.Select(b => new string[]
+            {
+                b.BuildingId.ToString(),
+                b.BuildingName,
+                b.AddressLine1,
+                b.City,
+                b.ZipCode
+            }).ToList());
+                                 
+            var csvReport = new CsvReport();
+            var fileContents = csvReport.GenerateByteArray(data);
+                
             if (fileContents == null || fileContents.Length == 0)
             {
                 return NotFound();
