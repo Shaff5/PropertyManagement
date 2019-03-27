@@ -177,5 +177,10 @@ namespace PropertyManagement.Ui.Mvc.Controllers
                 fileDownloadName: "test.csv"
             );
         }
+
+        public IActionResult Search()
+        {
+            return View("Search", new BuildingViewModel());
+        }
     }
 }
