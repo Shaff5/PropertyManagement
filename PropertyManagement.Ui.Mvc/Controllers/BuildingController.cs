@@ -185,9 +185,15 @@ namespace PropertyManagement.Ui.Mvc.Controllers
 
         public IActionResult SearchResults(BuildingSearchViewModel model)
         {
-            var whereClause = $"WHERE BuildingName LIKE '%{model.BuildingName}%'";
+            var filters = new List<Tuple<string, string>>();
+            filters.Add(new Tuple<string, string>("BuildingName LIKE {0}", $"%{model.BuildingName}%"));
+            filters.Add(new Tuple<string, string>("AddressLine1 LIKE {0}", "%av%"));
 
-            var buildings = _buildingRepository.GetBuildings(whereClause);
+
+
+            //var whereClause = $"WHERE BuildingName LIKE '%{model.BuildingName}%'";
+
+            var buildings = _buildingRepository.GetBuildings(filters);
 
             return View("Index", buildings);
         }

@@ -1,8 +1,11 @@
 ﻿namespace PropertyManagement.Repositories.Concrete
 {
     using Microsoft.EntityFrameworkCore;
+    using System;
     using System.Collections.Generic;
+    using System.Data.SqlClient;
     using System.Linq;
+    using System.Text;
     using PropertyManagement.Data;
     using Abstract;
 
@@ -51,15 +54,45 @@
             return buildingsList.AsQueryable();
         }
 
-        public IQueryable<Domain.Building> GetBuildings(string whereClause)
+        public IQueryable<Domain.Building> GetBuildings(List<Tuple<string, string>> filters)
         {
             //need to figure out how to do this without risking sql injection
-            var sql = $"SELECT * FROM Buildings {whereClause} AND IsDeleted = 0";
+            //var sql = $"SELECT * FROM Buildings {whereClause} AND IsDeleted = 0";
+            //var buildings = _context.Buildings
+            //    .FromSql(sql)
+            //    .Include(u => u.CreatedByNavigation)
+            //    .Include(u => u.LastUpdatedByNavigation)
+            //    .ToList();
+
+
+
+            var rawQuery = new StringBuilder("SELECT * FROM Buildings WHERE ");
+            var sqlParameters = new List<object>();
+
+            foreach (var f in filters)
+            {
+                var parameterName = $"@p{filters.IndexOf(f)}";
+                var parameterizedCondition = string.Format(f.Item1, parameterName);
+                // f.condition is something like "Name LIKE {0}"
+
+                rawQuery.Append(parameterizedCondition);
+                rawQuery.Append(" AND ");
+                sqlParameters.Add(new SqlParameter(parameterName, f.Item2));
+            }
+            rawQuery.Append("IsDeleted = 0");
+
             var buildings = _context.Buildings
-                .FromSql(sql)
-                .Include(u => u.CreatedByNavigation)
-                .Include(u => u.LastUpdatedByNavigation)
-                .ToList();
+              .FromSql(rawQuery.ToString(), sqlParameters.ToArray())
+              .Include(u => u.CreatedByNavigation)
+              .Include(u => u.LastUpdatedByNavigation)
+              .ToList();
+
+
+
+
+
+
+
 
             var buildingsList = new List<Domain.Building>();
             foreach (var building in buildings)
