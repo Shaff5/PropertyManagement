@@ -180,7 +180,16 @@ namespace PropertyManagement.Ui.Mvc.Controllers
 
         public IActionResult Search()
         {
-            return View("Search", new BuildingViewModel());
+            return View("Search", new BuildingSearchViewModel());
+        }
+
+        public IActionResult SearchResults(BuildingSearchViewModel model)
+        {
+            var whereClause = $"WHERE BuildingName LIKE '%{model.BuildingName}%'";
+
+            var buildings = _buildingRepository.GetBuildings(whereClause);
+
+            return View("Index", buildings);
         }
     }
 }

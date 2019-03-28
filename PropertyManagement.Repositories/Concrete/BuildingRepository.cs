@@ -51,6 +51,25 @@
             return buildingsList.AsQueryable();
         }
 
+        public IQueryable<Domain.Building> GetBuildings(string whereClause)
+        {
+            //need to figure out how to do this without risking sql injection
+            var sql = $"SELECT * FROM Buildings {whereClause} AND IsDeleted = 0";
+            var buildings = _context.Buildings
+                .FromSql(sql)
+                .Include(u => u.CreatedByNavigation)
+                .Include(u => u.LastUpdatedByNavigation)
+                .ToList();
+
+            var buildingsList = new List<Domain.Building>();
+            foreach (var building in buildings)
+            {
+                buildingsList.Add(building.MapToDomainBuilding());
+            }
+
+            return buildingsList.AsQueryable();
+        }
+
         /// <summary>
         /// Gets the building by identifier.
         /// </summary>
