@@ -38,8 +38,13 @@
             <div class="menu-list">
                 <ul id="menu-content" class="menu-content collapse out">
                     <li>
-                        <a href="#">
-                            <i class="fa fa-home fa-lg"></i> Dashboard
+                        <a asp-controller="Home" asp-action="Index">
+                            <i class="fa fa-home fa-lg"></i> Home
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Dashboard" asp-action="Index">
+                            <i class="fa fa-chart-line fa-lg"></i> Dashboard
                         </a>
                     </li>
                     <li data-toggle="collapse" data-target="#searchTypes" class="collapsed active">
@@ -86,7 +91,7 @@
         <div class="container" id="main">
             <div class="row">
                 <div class="col-md-12">
-                    <h4>This is suppose to be in the main content</h4>
+                    <h4>@ViewData["Title"]</h4>
                     @RenderBody()
                 </div>
             </div>
