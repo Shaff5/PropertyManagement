@@ -2,186 +2,61 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
+
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
 }
+
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
 }
-
-
-
-
-
-
-
-
-
-
-/*
-        * Base structure
-        */
-/* Move down content because we have a fixed navbar that is 50px tall */
-body {
-    padding-top: 50px;
-}
-
-
-/*
-        * Global add-ons
-        */
-
-.sub-header {
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-}
-
-/*
-        * Top navigation
-        * Hide default border to remove 1px line.
-        */
-.navbar-fixed-top {
-    border: 0;
-}
-
-/*
-        * Sidebar
-        */
-
-/* Hide for mobile, show later */
-.sidebar {
-    display: none;
-}
-
-@media (min-width: 768px) {
-    .sidebar {
-        position: fixed;
-        top: 51px;
-        bottom: 0;
-        left: 0;
-        z-index: 1000;
-        display: block;
-        padding: 20px;
-        overflow-x: hidden;
-        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-        background-color: #f5f5f5;
-        border-right: 1px solid #eee;
-        width: 240px;
-        margin-bottom: 60px;
-    }
-}
-
-/* Sidebar navigation */
-.nav-sidebar {
-    margin-right: -21px; /* 20px padding + 1px border */
-    margin-bottom: 20px;
-    margin-left: -20px;
-}
-
-    .nav-sidebar > li > a {
-        padding-right: 20px;
-        padding-left: 20px;
-    }
-
-    .nav-sidebar > .active > a,
-    .nav-sidebar > .active > a:hover,
-    .nav-sidebar > .active > a:focus {
-        color: #fff;
-        background-color: #428bca;
-    }
-
-
-/*
-        * Main content
-        */
-.main {
-    padding: 20px;
-}
-
-@media (min-width: 768px) {
-    .main {
-        padding-right: 40px;
-        padding-left: 220px;
-    }
-}
-
-.main .page-header {
-    margin-top: 0;
-}
-
-
-/*
-        * Placeholder dashboard ideas
-        */
-
-.placeholders {
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-    .placeholders h4 {
-        margin-bottom: 0;
-    }
-
-.placeholder {
-    margin-bottom: 20px;
-}
-
-    .placeholder img {
-        display: inline-block;
-        border-radius: 50%;
-    }
-
-
-
-
-
 
 
 
@@ -198,7 +73,7 @@ body {
     position: fixed;
     top: 40px;
     width: 300px;
-    height: 100%;
+    height: calc(100% - 100px);
     color: #e1ffff;
     margin-bottom: 60px;
 }
@@ -315,6 +190,12 @@ body {
             transition: all 1s ease;
         }
 
+@media (max-width: 576px) {
+    #main {
+        margin-top: 110px;
+    }
+}
+
 @media (max-width: 767px) {
     .nav-side-menu {
         position: relative;
@@ -342,6 +223,10 @@ body {
         padding-left: 20px;
         line-height: 50px !important;
     }
+
+    #btnMenuToggle {
+        display: block;
+    }
 }
 
 @media (min-width: 767px) {
@@ -352,10 +237,14 @@ body {
     #main {
         width: calc(100% - 300px);
         float: right;
+        padding-top: 50px;
+    }
+
+    #btnMenuToggle {
+        display:none;
     }
 }
 
 body {
     margin-bottom: 60px;
-    padding-top: 50px;
 }
