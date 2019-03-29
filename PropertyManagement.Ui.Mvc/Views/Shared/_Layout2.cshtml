@@ -48,13 +48,13 @@
                         </a>
                     </li>
                     <li data-toggle="collapse" data-target="#searchTypes" class="collapsed active">
-                        <a href="#"><i class="fa fa-search fa-lg"></i> Search <span class="arrow"></span></a>
+                        <a href="#"><i class="fa fa-search fa-lg"></i> Search <span class="arrow"><i class="fa fa-chevron-down"></i></span></a>
                     </li>
                     <ul class="sub-menu collapse" id="searchTypes">
-                        <li class="active"><a asp-controller="Building" asp-action="Search">Buildings</a></li>
-                        <li><a href="#">Units</a></li>
-                        <li><a href="#">Contacts</a></li>
-                        <li><a href="#">Vendors</a></li>
+                        <li class="active"><a asp-controller="Building" asp-action="Search"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Buildings </a></li>
+                        <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Units </a></li>
+                        <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Contacts </a></li>
+                        <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Vendors </a></li>
                     </ul>
                     <li>
                         <a href="#">
@@ -72,13 +72,13 @@
                         </a>
                     </li>
                     <li data-toggle="collapse" data-target="#importTypes" class="collapsed">
-                        <a href="#"><i class="fa fa-upload fa-lg"></i> Import Data <span class="arrow"></span></a>
+                        <a href="#"><i class="fa fa-upload fa-lg"></i> Import Data <span class="arrow"><i class="fa fa-chevron-down"></i></span></a>
                     </li>
                     <ul class="sub-menu collapse" id="importTypes">
-                        <li>Buildings</li>
-                        <li>Units</li>
-                        <li>Contacts</li>
-                        <li>Vendors</li>
+                        <li class="active"><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Buildings </a></li>
+                        <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Units </a></li>
+                        <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Contacts </a></li>
+                        <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Vendors </a></li>
                     </ul>
                     <li>
                         <a asp-controller="Todo" asp-action="Index">
@@ -88,7 +88,7 @@
                 </ul>
             </div>
         </div>
-        <div class="container" id="main">
+        <div class="container-fluid" id="main">
             <div class="row">
                 <div class="col-md-12">
                     <h4>@ViewData["Title"]</h4>
