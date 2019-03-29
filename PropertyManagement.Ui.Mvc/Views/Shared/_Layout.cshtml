@@ -21,16 +21,17 @@
 <body>
     <header>
         <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Property Management</a>
-            
-                <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search">
-                <a class="nav-link" asp-controller="RecycleBin" asp-action="Index"><i class="fa fa-trash text-white"></i></a>
-                <a class="nav-link" href="#"><i class="fa fa-cog text-white"></i></a>
-                <a class="nav-link" href="#"><i class="fa fa-sign-out-alt text-white"></i></a>
+            <div class="col justify-content-sm-start">
+                <a class="navbar-brand" href="#">Property Management</a>
+            </div>
+            <input class="form-control form-control-dark col-sm-3" type="text" placeholder="Search" aria-label="Search">
+            <a class="nav-link" asp-controller="RecycleBin" asp-action="Index"><i class="fa fa-trash text-white"></i></a>
+            <a class="nav-link" href="#"><i class="fa fa-cog text-white"></i></a>
+            <a class="nav-link" href="#"><i class="fa fa-sign-out-alt text-white"></i></a>
         </nav>
     </header>
 
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                 <div class="sidebar-sticky">
@@ -117,7 +118,7 @@
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     @RenderBody()
-                </div>     
+                </div>
             </main>
         </div>
     </div>
