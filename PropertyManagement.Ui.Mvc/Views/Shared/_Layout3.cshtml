@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PropertyManagement</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+              crossorigin="anonymous"
+              integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" />
+    </environment>
+    <link rel="stylesheet" href="~/css/site3.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+            <div class="col justify-content-sm-start">
+                <a class="navbar-brand" href="#">Property Management</a>
+            </div>
+            <input class="form-control form-control-dark col-sm-3" type="text" placeholder="Search" aria-label="Search">
+            <i id="btnMenuToggle" class="fa fa-bars fa-2x text-white toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+            <a class="nav-link" asp-controller="RecycleBin" asp-action="Index"><i class="fa fa-trash text-white"></i></a>
+            <a class="nav-link" href="#"><i class="fa fa-cog text-white"></i></a>
+            <a class="nav-link" href="#"><i class="fa fa-sign-out-alt text-white"></i></a>
+        </nav>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row content">
+            <div class="col-sm-3 nav-side-menu">
+
+                <div class="menu-list">
+                    <ul id="menu-content" class="menu-content collapse out">
+                        <li class="active">
+                            <a asp-controller="Home" asp-action="Index">
+                                <i class="fa fa-home fa-lg"></i> Home
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="Dashboard" asp-action="Index">
+                                <i class="fa fa-chart-line fa-lg"></i> Dashboard
+                            </a>
+                        </li>
+                        <li data-toggle="collapse" data-target="#searchTypes" class="collapsed">
+                            <a href="#"><i class="fa fa-search fa-lg"></i> Search <span class="arrow"><i class="fa fa-chevron-down"></i></span></a>
+                        </li>
+                        <ul class="sub-menu collapse" id="searchTypes">
+                            <li><a asp-controller="Building" asp-action="Search"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Buildings </a></li>
+                            <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Units </a></li>
+                            <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Contacts </a></li>
+                            <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Vendors </a></li>
+                        </ul>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-user fa-lg"></i> Users
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-list fa-lg"></i> Picklists
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-scroll fa-lg"></i> Reports
+                            </a>
+                        </li>
+                        <li data-toggle="collapse" data-target="#importTypes" class="collapsed">
+                            <a href="#"><i class="fa fa-upload fa-lg"></i> Import Data <span class="arrow"><i class="fa fa-chevron-down"></i></span></a>
+                        </li>
+                        <ul class="sub-menu collapse" id="importTypes">
+                            <li class="active"><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Buildings </a></li>
+                            <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Units </a></li>
+                            <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Contacts </a></li>
+                            <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Vendors </a></li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-sm-9" id="main">
+                <h4>@ViewData["Title"]</h4>
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    @*<footer class="container-fluid">
+            <p>Footer Text</p>
+        </footer>*@
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2019 - PropertyManagement
+        </div>
+    </footer>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha256-E/V4cWE4qvAeO5MOhjtGtqDzPndRO1LBk8lJ/PR7CA4=">
+        </script>
+    </environment>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>
