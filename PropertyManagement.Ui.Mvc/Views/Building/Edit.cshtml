@@ -5,7 +5,7 @@
 @{
 }
 
-<form>
+<form id="detailForm">
     <div>
         <div class="page-header">
             <h1>Edit Building</h1>
@@ -18,14 +18,11 @@
             Cancel
         </button>
 
-        <div asp-validation-summary="All"></div>
-
         <input type="hidden" asp-for="BuildingId" />
 
         <div class="form-group">
             <label asp-for="BuildingName"></label>
             <input class="form-control" asp-for="BuildingName" />
-            <span asp-validation-for="BuildingName"></span>
         </div>
 
         <div class="row">
@@ -38,31 +35,27 @@
                         <div class="form-group">
                             <label asp-for="AddressLine1"></label>
                             <input class="form-control" asp-for="AddressLine1" />
-                            <span asp-validation-for="AddressLine1"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="AddressLine2"></label>
                             <input class="form-control" asp-for="AddressLine2" />
                         </div>
-                         <div class="form-group">
-                             <label asp-for="AddressLine3"></label>
-                             <input class="form-control" asp-for="AddressLine3" />
-                         </div>
-                         <div class="form-group">
-                             <label asp-for="City"></label>
-                             <input class="form-control" asp-for="City" />
-                             <span asp-validation-for="City"></span>
-                         </div>
-                         <div class="form-group">
-                             <label asp-for="State"></label>
-                             <select class="form-control" asp-for="State" asp-items="Model.States"></select>
-                             <span asp-validation-for="State"></span>
-                         </div>
-                         <div class="form-group">
-                             <label asp-for="ZipCode"></label>
-                             <input class="form-control" asp-for="ZipCode" />
-                             <span asp-validation-for="ZipCode"></span>
-                         </div>
+                        <div class="form-group">
+                            <label asp-for="AddressLine3"></label>
+                            <input class="form-control" asp-for="AddressLine3" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="City"></label>
+                            <input class="form-control" asp-for="City" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="State"></label>
+                            <select class="form-control" asp-for="State" asp-items="Model.States"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ZipCode"></label>
+                            <input class="form-control" asp-for="ZipCode" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -75,12 +68,10 @@
                         <div class="form-group">
                             <label asp-for="PurchaseDate"></label>
                             <input class="form-control" asp-for="PurchaseDate" />
-                            <span asp-validation-for="PurchaseDate"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="PurchasePrice"></label>
                             <input type="text" class="form-control" asp-for="PurchasePrice" />
-                            <span asp-validation-for="PurchasePrice"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="SellDate"></label>
@@ -89,12 +80,10 @@
                         <div class="form-group">
                             <label asp-for="SellPrice"></label>
                             <input type="text" class="form-control" asp-for="SellPrice" />
-                            <span asp-validation-for="SellPrice"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="NumberOfUnits"></label>
                             <input type="text" class="form-control" asp-for="NumberOfUnits" />
-                            <span asp-validation-for="NumberOfUnits"></span>
                         </div>
                     </div>
                 </div>
@@ -130,4 +119,44 @@
 
 @section Scripts{
     @Html.Partial("_ValidationScriptsPartial")
+
+    <script>
+        $(document).ready(function () {
+            $('#detailForm').bind('invalid-form.validate', function (form, validator) {
+                showErrorMessagesOnValidate(validator.errorList);
+            });
+        });
+
+        showErrorMessagesOnValidate = function (errors) {
+            if (!errors)
+                return;
+            
+            var msg = '<ul>';
+            errors.forEach(function (item) {
+                //var label = $(item.element.labels[0]).text();
+                //var msg = {
+                //    Title: label,
+                //    Message: item.message,
+                //    Type: "Warning"
+                //};
+                //toastrObj.ToastMessages.push(msg);
+                msg += '<li>' + item.message + '</li>';
+            });
+            msg += '</ul>';
+                                   
+            //Use toaster
+            $('#toastTitle').text('Please correct the following errors:');
+            $('.toast-body').html(msg);
+            //$('.toast').toast({ delay: 2000 });
+            $('.toast').toast('show');
+            
+            //Use snackbar
+            //$('#snackbarBody').html(msg);
+            //var snackbar = document.getElementById("snackbar");
+            //snackbar.className = "show";
+            
+            //// After 3 seconds, remove the show class from DIV
+            //setTimeout(function () { snackbar.className = snackbar.className.replace("show", ""); }, 3000);
+        }
+    </script>
 }

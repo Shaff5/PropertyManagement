@@ -20,83 +20,94 @@
 </head>
 
 <body>
-       <header>
-            <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-                <div class="col justify-content-sm-start">
-                    <a class="navbar-brand" href="#">Property Management</a>
-                </div>
-                <input class="form-control form-control-dark col-sm-3" type="text" placeholder="Search" aria-label="Search">
-                <i id="btnMenuToggle" class="fa fa-bars fa-2x text-white toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
-                <a class="nav-link" asp-controller="RecycleBin" asp-action="Index"><i class="fa fa-trash text-white"></i></a>
-                <a class="nav-link" href="#"><i class="fa fa-cog text-white"></i></a>
-                <a class="nav-link" href="#"><i class="fa fa-sign-out-alt text-white"></i></a>
-            </nav>
-        </header>
+    <header>
+        <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+            <div class="col justify-content-sm-start">
+                <a class="navbar-brand" href="#">Property Management</a>
+            </div>
+            <input class="form-control form-control-dark col-sm-3" type="text" placeholder="Search" aria-label="Search">
+            <i id="btnMenuToggle" class="fa fa-bars fa-2x text-white toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+            <a class="nav-link" asp-controller="RecycleBin" asp-action="Index"><i class="fa fa-trash text-white"></i></a>
+            <a class="nav-link" href="#"><i class="fa fa-cog text-white"></i></a>
+            <a class="nav-link" href="#"><i class="fa fa-sign-out-alt text-white"></i></a>
+        </nav>
+    </header>
 
-        <div class="nav-side-menu">
+    <div class="nav-side-menu">
 
-            <div class="menu-list">
-                <ul id="menu-content" class="menu-content collapse out">
-                    <li>
-                        <a asp-controller="Home" asp-action="Index">
-                            <i class="fa fa-home fa-lg"></i> Home
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-controller="Dashboard" asp-action="Index">
-                            <i class="fa fa-chart-line fa-lg"></i> Dashboard
-                        </a>
-                    </li>
-                    <li data-toggle="collapse" data-target="#searchTypes" class="collapsed active">
-                        <a href="#"><i class="fa fa-search fa-lg"></i> Search <span class="arrow"><i class="fa fa-chevron-down"></i></span></a>
-                    </li>
-                    <ul class="sub-menu collapse" id="searchTypes">
-                        <li class="active"><a asp-controller="Building" asp-action="Search"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Buildings </a></li>
-                        <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Units </a></li>
-                        <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Contacts </a></li>
-                        <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Vendors </a></li>
-                    </ul>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-user fa-lg"></i> Users
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-list fa-lg"></i> Picklists
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-scroll fa-lg"></i> Reports
-                        </a>
-                    </li>
-                    <li data-toggle="collapse" data-target="#importTypes" class="collapsed">
-                        <a href="#"><i class="fa fa-upload fa-lg"></i> Import Data <span class="arrow"><i class="fa fa-chevron-down"></i></span></a>
-                    </li>
-                    <ul class="sub-menu collapse" id="importTypes">
-                        <li class="active"><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Buildings </a></li>
-                        <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Units </a></li>
-                        <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Contacts </a></li>
-                        <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Vendors </a></li>
-                    </ul>
+        <div class="menu-list">
+            <ul id="menu-content" class="menu-content collapse out">
+                <li class="active">
+                    <a asp-controller="Home" asp-action="Index">
+                        <i class="fa fa-home fa-lg"></i> Home
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Dashboard" asp-action="Index">
+                        <i class="fa fa-chart-line fa-lg"></i> Dashboard
+                    </a>
+                </li>
+                <li data-toggle="collapse" data-target="#searchTypes" class="collapsed">
+                    <a href="#"><i class="fa fa-search fa-lg"></i> Search <span class="arrow"><i class="fa fa-chevron-down"></i></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="searchTypes">
+                    <li><a asp-controller="Building" asp-action="Search"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Buildings </a></li>
+                    <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Units </a></li>
+                    <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Contacts </a></li>
+                    <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Vendors </a></li>
                 </ul>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-user fa-lg"></i> Users
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-list fa-lg"></i> Picklists
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-scroll fa-lg"></i> Reports
+                    </a>
+                </li>
+                <li data-toggle="collapse" data-target="#importTypes" class="collapsed">
+                    <a href="#"><i class="fa fa-upload fa-lg"></i> Import Data <span class="arrow"><i class="fa fa-chevron-down"></i></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="importTypes">
+                    <li class="active"><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Buildings </a></li>
+                    <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Units </a></li>
+                    <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Contacts </a></li>
+                    <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Vendors </a></li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid" id="main">
+        <div class="toast" style="position: fixed; top: 35px; left: 50%;" data-autohide="false">
+            <div class="toast-header">
+                <strong class="mr-auto" id="toastTitle"></strong>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body"></div>
+        </div>
+        @*</div>*@
+        @*<div id="snackbar"><div id="snackbarBody">snackbarBody</div></div>*@
+        <div class="row">
+            <div class="col-md-12">
+                <h4>@ViewData["Title"]</h4>
+                @RenderBody()
             </div>
         </div>
-        <div class="container-fluid" id="main">
-            <div class="row">
-                <div class="col-md-12">
-                    <h4>@ViewData["Title"]</h4>
-                    @RenderBody()
-                </div>
-            </div>
-        </div>
+    </div>
 
-        <footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; 2019 - PropertyManagement
-            </div>
-        </footer>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2019 - PropertyManagement
+        </div>
+    </footer>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>

@@ -2,11 +2,74 @@
     ViewData["Title"] = "Dashboard";
 }
 
-    <div class="row">
-        <div class="col" style="background-color:red;">Column 1</div>
-        <div class="col" style="background-color:green;">Column 2</div>
-        <div class="w-100"></div>
-        <div class="col" style="background-color:green;">Column 3</div>
-        <div class="col" style="background-color:red;">Column 4</div>
-    </div>
+@*<div class="row">
+    <div id="chart-container" class="col h-50" style="background-color:red;">Column 1</div>
+    <div class="col h-50" style="background-color:green;">Column 2</div>
+    <div class="w-100"></div>
+    <div class="col h-50" style="background-color:green;">Column 3</div>
+    <div class="col h-50" style="background-color:red;">Column 4</div>
+</div>*@
+
+<div class="row">
+    <div id="chart-container" class="col h-50" style="background-color:red;">Column 1</div>
+    <div class="col h-50" style="background-color:green;">Column 2</div>
+    <div class="w-100"></div>
+    <div class="col h-50" style="background-color:green;">Column 3</div>
+    <div class="col h-50" style="background-color:red;">Column 4</div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript" src="~/lib/fusioncharts/js/fusioncharts.js"></script>
+    <script>
+        $(function () {
+            var chartInstance = new FusionCharts({
+                type: 'column2D',
+                width: '580', // Width of the chart
+                height: '350', // Height of the chart
+                dataFormat: 'json', // Data type
+                renderAt: 'chart-container', //container where the chart will render
+                dataSource: {
+                    "chart": {
+                        "caption": "Countries With Most Oil Reserves [2017-18]",
+                        "subCaption": "In MMbbl = One Million barrels",
+                        "xAxisName": "Country",
+                        "yAxisName": "Reserves (MMbbl)",
+                        "numberSuffix": "K",
+                        "theme": "fusion",
+                    },
+                    // Chart Data
+                    "data": [{
+                        "label": "Venezuela",
+                        "value": "290"
+                    }, {
+                        "label": "Saudi",
+                        "value": "260"
+                    }, {
+                        "label": "Canada",
+                        "value": "180"
+                    }, {
+                        "label": "Iran",
+                        "value": "140"
+                    }, {
+                        "label": "Russia",
+                        "value": "115"
+                    }, {
+                        "label": "UAE",
+                        "value": "100"
+                    }, {
+                        "label": "US",
+                        "value": "30"
+                    }, {
+                        "label": "China",
+                        "value": "30"
+                    }]
+                }
+            });
+            // Render
+            chartInstance.render();
+        });
+    </script>
+}
+
 
