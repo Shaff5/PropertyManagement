@@ -24,6 +24,8 @@ namespace PropertyManagement.Data
         public decimal NumberOfBedrooms { get; set; }
         public decimal NumberOfBathrooms { get; set; }
 
+        public virtual User CreatedByNavigation { get; set; }
+        public virtual User LastUpdatedByNavigation { get; set; }
         public virtual Building Building { get; set; }
         public virtual ICollection<RentPayment> RentPayments { get; set; }
         public virtual ICollection<Rent> Rents { get; set; }
