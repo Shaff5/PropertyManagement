@@ -4,39 +4,69 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using PropertyManagement.Repositories.Abstract;
 
 namespace PropertyManagement.Ui.Mvc.Controllers
 {
     public class DashboardController : Controller
     {
+        private readonly IBuildingRepository _buildingRepository;
+
+        public DashboardController(IBuildingRepository buildingRepository)
+        {
+            if (buildingRepository == null)
+            {
+                throw new ArgumentNullException("buildingRepository");
+            }
+
+            _buildingRepository = buildingRepository;
+        }
+
         public IActionResult Index()
         {
-            var chartJson = new
+            return View(GetBuildingsByStateChart());
+        }
+
+        private object GetBuildingsByStateChart()
+        {
+            var chartData = _buildingRepository.GetBuildings()
+                .GroupBy(b => b.State)
+                .Select(group => new
+                {
+                    label = group.Key,
+                    value = group.Count()
+                }).ToArray();
+
+            var dataSource = new
             {
                 chart = new
                 {
-                    caption = "Countries With Most Oil Reserves [2017-18]",
-                    subCaption = "In MMbbl = One Million barrels",
-                    xAxisName = "Country",
-                    yAxisName = "Reserves (MMbbl)",
-                    numberSuffix = "K",
-                    theme = "fusion"
+                    caption = "Buildings by State",
+                    subCaption = "this is the subcaption",
+                    xAxisName = "State",
+                    yAxisName = "Number of Buildings",
+                    //numberSuffix = "K",
+                    theme = "ocean"
                 },
-                data = new[]
-                {
-                    new {label = "Venezuela", value = "290"},
-                    new {label = "Saudi", value = "260"},
-                    new {label = "Canada", value = "180"},
-                    new {label = "Iran", value = "140"},
-                    new {label = "Russia", value = "115"},
-                    new {label = "UAE", value = "100"},
-                    new {label = "USA", value = "30"},
-                    new {label = "China", value = "30"}
-                }
+
+                data = chartData
             };
 
-            //return Json(chartJson);
-            return View(chartJson);
+            var chartJson = new
+            {
+                type = "column2D",
+                width = "100%",
+                height = "100%",
+                dataFormat = "json",
+                dataSource = dataSource
+            };
+
+            return chartJson;
         }
+
+        //private object GetUnitSquareFootage()
+        //{
+
+        //}
     }
 }
