@@ -11,13 +11,15 @@
 </div>
 
 @section scripts
-{
+    {
     <script type="text/javascript" src="~/lib/fusioncharts/js/fusioncharts.js"></script>
+    <script type="text/javascript" src="~/lib/fusioncharts/js/themes/fusioncharts.theme.ocean.js"></script>
+
     <script>
         $('#menuDashboard').addClass("active");
 
         $(function () {
-            
+
             var chartInstance = new FusionCharts(@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model) as String))
             chartInstance.render("chart-container");
         });
