@@ -8,7 +8,7 @@ body {
 }
 
 .body-container {
-    height: calc(100% - 100px);
+    height: calc(100% - 70px);
     overflow: hidden;
     position:absolute;
     top: 40px;
@@ -26,8 +26,8 @@ body {
     width: 100%;
     white-space: nowrap;
     /* Set the fixed height of the footer here */
-    height: 60px;
-    line-height: 60px; /* Vertically center the text there */
+    height: 30px;
+    line-height: 30px; /* Vertically center the text there */
 }
 
 .nav-side-menu {
@@ -38,7 +38,7 @@ body {
     background-color: #2e353d;
     position: fixed;
     width: 300px;
-    height: calc(100% - 100px);
+    height: calc(100% - 70px);
     color: #e1ffff;
 }
 
@@ -134,7 +134,7 @@ body {
 
 @media (max-width: 767px) {
     .body-container {
-        height: calc(100% - 100px);
+        height: calc(100% - 70px);
         overflow: hidden;
         position: absolute;
         top: 40px;
@@ -179,7 +179,7 @@ body {
     }
 
     .body-container {
-        height: calc(100% - 180px);
+        height: calc(100% - 150px);
         overflow: hidden;
         position: absolute;
         top: 120px;
