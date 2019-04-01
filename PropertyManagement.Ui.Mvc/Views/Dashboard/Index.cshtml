@@ -2,20 +2,12 @@
     ViewData["Title"] = "Dashboard";
 }
 
-@*<div class="row">
-    <div id="chart-container" class="col h-50" style="background-color:red;">Column 1</div>
-    <div class="col h-50" style="background-color:green;">Column 2</div>
+<div class="row" style="height:100%;">
+    <div id="chart-container" class="col h-50 w-50" style="background-color:red;">Column 1</div>
+    <div class="col h-50 w-50" style="background-color:green;">Column 2</div>
     <div class="w-100"></div>
-    <div class="col h-50" style="background-color:green;">Column 3</div>
-    <div class="col h-50" style="background-color:red;">Column 4</div>
-</div>*@
-
-<div class="row">
-    <div id="chart-container" class="col h-50" style="background-color:red;">Column 1</div>
-    <div class="col h-50" style="background-color:green;">Column 2</div>
-    <div class="w-100"></div>
-    <div class="col h-50" style="background-color:green;">Column 3</div>
-    <div class="col h-50" style="background-color:red;">Column 4</div>
+    <div class="col h-50 w-50" style="background-color:green;">Column 3</div>
+    <div class="col h-50 w-50" style="background-color:red;">Column 4</div>
 </div>
 
 @section scripts
@@ -25,8 +17,8 @@
         $(function () {
             var chartInstance = new FusionCharts({
                 type: 'column2D',
-                width: '580', // Width of the chart
-                height: '350', // Height of the chart
+                width: '100%', // Width of the chart
+                height: '100%', // Height of the chart
                 dataFormat: 'json', // Data type
                 renderAt: 'chart-container', //container where the chart will render
                 dataSource: {
