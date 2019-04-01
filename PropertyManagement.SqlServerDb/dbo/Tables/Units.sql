@@ -12,6 +12,8 @@
     [NumberOfBedrooms]  DECIMAL (3, 1) NOT NULL,
     [NumberOfBathrooms] DECIMAL (3, 1) NOT NULL,
     CONSTRAINT [PK_Units] PRIMARY KEY CLUSTERED ([UnitId] ASC),
+	CONSTRAINT [FK_UnitsCreatedBy_Users] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[Users] ([UserId]),
+    CONSTRAINT [FK_UnitsLastUpdatedBy_Users] FOREIGN KEY ([LastUpdatedBy]) REFERENCES [dbo].[Users] ([UserId]),
     CONSTRAINT [FK_Units_Buildings] FOREIGN KEY ([BuildingId]) REFERENCES [dbo].[Buildings] ([BuildingId])
 );
 
