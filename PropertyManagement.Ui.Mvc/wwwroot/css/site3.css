@@ -1,7 +1,27 @@
-﻿/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+﻿html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+.body-container {
+    height: calc(100% - 100px);
+    overflow: hidden;
+    position:absolute;
+    top: 40px;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
 .row.content {
     /*height: 1500px;*/
-    min-height: 750px;
+    /*min-height: 960px;*/
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /*top: 200px;*/
 }
 
 /* Set black background color, white text and some padding */
@@ -12,7 +32,7 @@
 }*/
 
 .footer {
-    /*position: absolute;*/
+    position: absolute;
     bottom: 0;
     width: 100%;
     white-space: nowrap;
@@ -22,7 +42,7 @@
 }
 
 /* On small screens, set height to 'auto' for sidenav and grid */
-@media screen and (max-width: 767px) {
+/*@media screen and (max-width: 767px) {
     .sidenav {
         height: auto;
         padding: 15px;
@@ -31,7 +51,7 @@
     .row.content {
         height: auto;
     }
-}
+}*/
 
 .nav-side-menu {
     overflow: auto;
@@ -40,7 +60,7 @@
     font-weight: 200;
     background-color: #2e353d;
     position: fixed;
-    padding-top: 50px;
+    /*padding-top: 50px;*/
     width: 300px;
     height: 100%;
     color: #e1ffff;
@@ -131,22 +151,25 @@
         transition: all 1s ease;
     }
 
-@media (max-width: 576px) {
-    #main {
-        margin-top: 50px;
-    }
-
-    .nav-side-menu {
-        position: relative;
-        width: 100%;
-        margin-top: 60px;
-    }
-}
-
 @media (max-width: 767px) {
+    .body-container {
+        height: calc(100% - 100px);
+        overflow: hidden;
+        position: absolute;
+        top: 40px;
+    }
+
+    .row.content {
+        height: 100%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        /*top: 200px;*/
+    }
+    
     .nav-side-menu {
         position: relative;
         width: 100%;
+        height:auto;
     }
 
         .nav-side-menu .toggle-btn {
@@ -168,6 +191,27 @@
     }
 }
 
+@media (max-width: 576px) {
+    .nav-side-menu {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .body-container {
+        height: calc(100% - 180px);
+        overflow: hidden;
+        position: absolute;
+        top: 120px;
+    }
+
+    .row.content {
+        height: 100%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+}
+
 @media (min-width: 767px) {
     .nav-side-menu .menu-list .menu-content {
         display: block;
@@ -177,7 +221,7 @@
         width: calc(100% - 300px);
         float: right;
         margin-left: 300px;
-        padding-top: 50px;
+        /*padding-top: 50px;*/
     }
 
     #btnMenuToggle {
