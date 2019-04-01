@@ -14,22 +14,11 @@ body {
     top: 40px;
 }
 
-/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
 .row.content {
-    /*height: 1500px;*/
-    /*min-height: 960px;*/
     height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
-    /*top: 200px;*/
 }
-
-/* Set black background color, white text and some padding */
-/*footer {
-    background-color: #555;
-    color: white;
-    padding: 15px;
-}*/
 
 .footer {
     position: absolute;
@@ -41,18 +30,6 @@ body {
     line-height: 60px; /* Vertically center the text there */
 }
 
-/* On small screens, set height to 'auto' for sidenav and grid */
-/*@media screen and (max-width: 767px) {
-    .sidenav {
-        height: auto;
-        padding: 15px;
-    }
-
-    .row.content {
-        height: auto;
-    }
-}*/
-
 .nav-side-menu {
     overflow: auto;
     font-family: verdana;
@@ -60,11 +37,9 @@ body {
     font-weight: 200;
     background-color: #2e353d;
     position: fixed;
-    /*padding-top: 50px;*/
     width: 300px;
-    height: 100%;
+    height: calc(100% - 100px);
     color: #e1ffff;
-    /*margin-bottom: 300px;*/
 }
 
     .nav-side-menu .toggle-btn {
@@ -80,66 +55,66 @@ body {
         cursor: pointer;
     }
 
-.arrow {
-    padding-left: 10px;
-    padding-right: 0px;
-    vertical-align: middle;
-    float: right;
-}
+    .arrow {
+        padding-left: 10px;
+        padding-right: 0px;
+        vertical-align: middle;
+        float: right;
+    }
 
-.arrowSubitem {
-    padding-left: 10px;
-    padding-right: 10px;
-    vertical-align: middle;
-    float: left;
-}
+    .arrowSubitem {
+        padding-left: 10px;
+        padding-right: 10px;
+        vertical-align: middle;
+        float: left;
+    }
 
-.nav-side-menu ul .active,
-.nav-side-menu li .active {
-    border-left: 3px solid #d19b3d;
-    background-color: #4f5b69;
-}
+    .nav-side-menu ul .active,
+    .nav-side-menu li .active {
+        border-left: 3px solid #d19b3d;
+        background-color: #4f5b69;
+    }
 
-.nav-side-menu ul .sub-menu li.active,
-.nav-side-menu li .sub-menu li.active {
-    color: #d19b3d;
-}
+    .nav-side-menu ul .sub-menu li.active,
+    .nav-side-menu li .sub-menu li.active {
+        color: #d19b3d;
+    }
 
     .nav-side-menu ul .sub-menu li.active a,
     .nav-side-menu li .sub-menu li.active a {
         color: #d19b3d;
     }
 
-.nav-side-menu ul .sub-menu li,
-.nav-side-menu li .sub-menu li {
-    background-color: #181c20;
-    border: none;
-    line-height: 28px;
-    border-bottom: 1px solid #23282e;
-    margin-left: 0px;
-}
+    .nav-side-menu ul .sub-menu li,
+    .nav-side-menu li .sub-menu li {
+        background-color: #181c20;
+        border: none;
+        line-height: 28px;
+        border-bottom: 1px solid #23282e;
+        margin-left: 0px;
+    }
 
     .nav-side-menu ul .sub-menu li:hover,
     .nav-side-menu li .sub-menu li:hover {
         background-color: #020203;
     }
 
-.nav-side-menu li {
-    padding-left: 0px;
-    border-left: 3px solid #2e353d;
-    border-bottom: 1px solid #23282e;
-}
+    .nav-side-menu li {
+        padding-left: 0px;
+        border-left: 3px solid #2e353d;
+        border-bottom: 1px solid #23282e;
+    }
 
     .nav-side-menu li a {
         text-decoration: none;
         color: #e1ffff;
     }
 
-        .nav-side-menu li a i {
-            padding-left: 10px;
-            width: 20px;
-            padding-right: 20px;
-        }
+    .nav-side-menu li a i {
+        padding-left: 10px;
+        width: 20px;
+        padding-right: 20px;
+    }
 
     .nav-side-menu li:hover {
         border-left: 3px solid #d19b3d;
@@ -150,6 +125,12 @@ body {
         -ms-transition: all 1s ease;
         transition: all 1s ease;
     }
+
+.toast {
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+}
 
 @media (max-width: 767px) {
     .body-container {
@@ -163,7 +144,6 @@ body {
         height: 100%;
         overflow-y: scroll;
         overflow-x: hidden;
-        /*top: 200px;*/
     }
     
     .nav-side-menu {
@@ -221,10 +201,83 @@ body {
         width: calc(100% - 300px);
         float: right;
         margin-left: 300px;
-        /*padding-top: 50px;*/
     }
 
     #btnMenuToggle {
         display: none;
+    }
+}
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    top: 30px; /* 30px from the bottom */
+}
+
+    /* Show the snackbar when clicking on a button (class added with JavaScript) */
+    #snackbar.show {
+        visibility: visible; /* Show the snackbar */
+        /* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+  However, delay the fade out process for 2.5 seconds */
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {
+        top: 0;
+        opacity: 0;
+    }
+
+    to {
+        top: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        top: 0;
+        opacity: 0;
+    }
+
+    to {
+        top: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        top: 30px;
+        opacity: 1;
+    }
+
+    to {
+        top: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        top: 30px;
+        opacity: 1;
+    }
+
+    to {
+        top: 0;
+        opacity: 0;
     }
 }
