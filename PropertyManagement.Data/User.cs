@@ -9,6 +9,8 @@ namespace PropertyManagement.Data
         {
             BuildingsCreatedByNavigation = new HashSet<Building>();
             BuildingsLastUpdatedByNavigation = new HashSet<Building>();
+            UnitsCreatedByNavigation = new HashSet<Unit>();
+            UnitsLastUpdatedByNavigation = new HashSet<Unit>();
         }
 
         public int UserId { get; set; }
@@ -22,7 +24,9 @@ namespace PropertyManagement.Data
 
         public virtual ICollection<Building> BuildingsCreatedByNavigation { get; set; }
         public virtual ICollection<Building> BuildingsLastUpdatedByNavigation { get; set; }
-
+        public virtual ICollection<Unit> UnitsCreatedByNavigation { get; set; }
+        public virtual ICollection<Unit> UnitsLastUpdatedByNavigation { get; set; }
+        
         public Domain.User MapToDomainUser()
         {
             var u = new Domain.User();

@@ -2,12 +2,21 @@
     ViewData["Title"] = "Dashboard";
 }
 
-<div class="row" style="height:100%;">
-    <div id="chart-container" class="col h-50 w-50" style="background-color:red;">Column 1</div>
-    <div class="col h-50 w-50" style="background-color:green;">Column 2</div>
+@*<div class="row" style="height:100%;">
+    <div id="chart-topLeft" class="col h-50 w-50"></div>
+    <div id="chart-topRight" class="col h-50 w-50"></div>
     <div class="w-100"></div>
-    <div class="col h-50 w-50" style="background-color:green;">Column 3</div>
-    <div class="col h-50 w-50" style="background-color:red;">Column 4</div>
+    <div id="chart-bottomLeft" class="col h-50 w-50"></div>
+    <div id="chart-bottomRight" class="col h-50 w-50"></div>
+</div>*@
+
+<div class="row" style="height:50%;">
+    <div id="chart-topLeft" class="col"></div>
+    <div id="chart-topRight" class="col"></div>
+</div>
+<div class="row" style="height:50%;">
+    <div id="chart-bottomLeft" class="col"></div>
+    <div id="chart-bottomRight" class="col"></div>
 </div>
 
 @section scripts
@@ -20,8 +29,19 @@
 
         $(function () {
 
-            var chartInstance = new FusionCharts(@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model) as String))
-            chartInstance.render("chart-container");
+            var charts = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model) as String);
+
+            var chartTopLeft = new FusionCharts(charts[0]);
+            chartTopLeft.render("chart-topLeft");
+
+            var chartTopRight = new FusionCharts(charts[1]);
+            chartTopRight.render("chart-topRight");
+
+            var chartBottomLeft = new FusionCharts(charts[0]);
+            chartBottomLeft.render("chart-bottomLeft");
+
+            var chartBottomRight = new FusionCharts(charts[1]);
+            chartBottomRight.render("chart-bottomRight");
         });
     </script>
 }

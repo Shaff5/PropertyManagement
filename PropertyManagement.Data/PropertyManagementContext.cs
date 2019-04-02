@@ -274,6 +274,19 @@ namespace PropertyManagement.Data
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
+                entity.HasOne(d => d.CreatedByNavigation)
+                    .WithMany(p => p.UnitsCreatedByNavigation)
+                    .HasForeignKey(d => d.CreatedBy)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_UnitsCreatedBy_Users");
+
+                entity.HasOne(d => d.LastUpdatedByNavigation)
+                    .WithMany(p => p.UnitsLastUpdatedByNavigation)
+                    .HasForeignKey(d => d.LastUpdatedBy)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_UnitsLastUpdatedBy_Users");
+
+
                 entity.HasOne(d => d.Building)
                     .WithMany(p => p.Units)
                     .HasForeignKey(d => d.BuildingId)

@@ -11,20 +11,33 @@ namespace PropertyManagement.Ui.Mvc.Controllers
     public class DashboardController : Controller
     {
         private readonly IBuildingRepository _buildingRepository;
+        private readonly IUnitRepository _unitRepository;
 
-        public DashboardController(IBuildingRepository buildingRepository)
+        public DashboardController(IBuildingRepository buildingRepository,
+            IUnitRepository unitRepository)
         {
             if (buildingRepository == null)
             {
                 throw new ArgumentNullException("buildingRepository");
             }
+            if (unitRepository == null)
+            {
+                throw new ArgumentNullException("unitRepository");
+            }
 
             _buildingRepository = buildingRepository;
+            _unitRepository = unitRepository;
         }
 
         public IActionResult Index()
         {
-            return View(GetBuildingsByStateChart());
+            var json = new[]
+            {
+                GetBuildingsByStateChart(),
+                GetUnitSquareFootage()
+            };
+
+            return View(json);
         }
 
         private object GetBuildingsByStateChart()
@@ -55,8 +68,8 @@ namespace PropertyManagement.Ui.Mvc.Controllers
             var chartJson = new
             {
                 type = "column2D",
-                width = "100%",
-                height = "100%",
+                //width = "100%",
+                //height = "100%",
                 dataFormat = "json",
                 dataSource = dataSource
             };
@@ -64,9 +77,40 @@ namespace PropertyManagement.Ui.Mvc.Controllers
             return chartJson;
         }
 
-        //private object GetUnitSquareFootage()
-        //{
+        private object GetUnitSquareFootage()
+        {
+            var chartData = _unitRepository.GetUnits()
+                .Select(u => new
+                {
+                    label = u.UnitName,
+                    value = u.SquareFootage
+                }).ToArray();
 
-        //}
+            var dataSource = new
+            {
+                chart = new
+                {
+                    caption = "Unit Square Footage",
+                    subCaption = "this is the subcaption",
+                    //xAxisName = "Unit Name",
+                    yAxisName = "Square Footage",
+                    //numberSuffix = "K",
+                    theme = "ocean"
+                },
+
+                data = chartData
+            };
+
+            var chartJson = new
+            {
+                type = "bar2D",
+                //width = "100%",
+                //height = "100%",
+                dataFormat = "json",
+                dataSource = dataSource
+            };
+
+            return chartJson;
+        }
     }
 }
