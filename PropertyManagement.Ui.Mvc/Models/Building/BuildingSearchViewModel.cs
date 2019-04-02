@@ -17,5 +17,44 @@ namespace PropertyManagement.Ui.Mvc.Models.Building
         [Display(Name = "Building Name")]
         [StringLength(75)]
         public string BuildingName { get; set; }
+
+        [Display(Name = "Address Line 1")]
+        [StringLength(50)]
+        public string AddressLine1 { get; set; }
+
+        [Display(Name = "Address Line 2")]
+        [StringLength(50)]
+        public string AddressLine2 { get; set; }
+
+        [Display(Name = "Address Line 3")]
+        [StringLength(50)]
+        public string AddressLine3 { get; set; }
+
+        [StringLength(50)]
+        public string City { get; set; }
+
+        [Display(Name = "Zip Code")]
+        [Required]
+        [StringLength(10)]
+        public string ZipCode { get; set; }
+
+        //[Display(Name = "Purchase Date")]
+        //[DataType(DataType.Date)]
+        //[Required]
+        //public DateTime? PurchaseDate { get; set; }
+
+        [Display(Name = "Purchase Price")]
+        [DataType(DataType.Currency)]
+        [DisplayFormat(DataFormatString = "C")]
+        [Range(1, int.MaxValue)]
+        public decimal PurchasePrice { get; set; }
+
+        [Display(Name = "Sell Price")]
+        [Range(0, int.MaxValue)]
+        public decimal? SellPrice { get; set; }
+
+        [Display(Name = "Number of Units")]
+        [Range(1, int.MaxValue)]
+        public decimal NumberOfUnits { get; set; }
     }
 }

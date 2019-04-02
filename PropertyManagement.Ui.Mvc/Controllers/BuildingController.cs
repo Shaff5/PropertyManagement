@@ -186,12 +186,20 @@ namespace PropertyManagement.Ui.Mvc.Controllers
         public IActionResult SearchResults(BuildingSearchViewModel model)
         {
             var filters = new List<Tuple<string, string>>();
-            filters.Add(new Tuple<string, string>("BuildingName LIKE {0}", $"%{model.BuildingName}%"));
-            filters.Add(new Tuple<string, string>("AddressLine1 LIKE {0}", "%av%"));
 
+            foreach (var property in model.GetType().GetProperties())
+            {
+                var value = property.GetValue(model);
+                if (value == null)
+                {
+                    continue;
+                }
 
-
-            //var whereClause = $"WHERE BuildingName LIKE '%{model.BuildingName}%'";
+                if (property.PropertyType == typeof(string) && !string.IsNullOrEmpty(value.ToString()))
+                {
+                    filters.Add(new Tuple<string, string>($"{property.Name} LIKE {{0}}", $"%{value.ToString()}%"));
+                }
+            }
 
             var buildings = _buildingRepository.GetBuildings(filters);
 

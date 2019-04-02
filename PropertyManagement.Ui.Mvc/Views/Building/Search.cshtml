@@ -22,63 +22,63 @@
         </div>
 
         <div class="row">
-            @*<div class="col-sm-4">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Address</h3>
+            <div class="col-sm-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Address</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label asp-for="AddressLine1"></label>
+                            <input class="form-control" asp-for="AddressLine1" />
+                            <span asp-validation-for="AddressLine1"></span>
                         </div>
-                        <div class="panel-body">
-                            <div class="form-group">
-                                <label asp-for="AddressLine1"></label>
-                                <input class="form-control" asp-for="AddressLine1" />
-                                <span asp-validation-for="AddressLine1"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="AddressLine2"></label>
-                                <input class="form-control" asp-for="AddressLine2" />
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="AddressLine3"></label>
-                                <input class="form-control" asp-for="AddressLine3" />
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="City"></label>
-                                <input class="form-control" asp-for="City" />
-                                <span asp-validation-for="City"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="State"></label>
-                                <select class="form-control" asp-for="State" asp-items="Model.States"></select>
-                                <span asp-validation-for="State"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="ZipCode"></label>
-                                <input class="form-control" asp-for="ZipCode" />
-                                <span asp-validation-for="ZipCode"></span>
-                            </div>
+                        <div class="form-group">
+                            <label asp-for="AddressLine2"></label>
+                            <input class="form-control" asp-for="AddressLine2" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="AddressLine3"></label>
+                            <input class="form-control" asp-for="AddressLine3" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="City"></label>
+                            <input class="form-control" asp-for="City" />
+                            <span asp-validation-for="City"></span>
+                        </div>
+                        @*<div class="form-group">
+                            <label asp-for="State"></label>
+                            <select class="form-control" asp-for="State" asp-items="Model.States"></select>
+                            <span asp-validation-for="State"></span>
+                        </div>*@
+                        <div class="form-group">
+                            <label asp-for="ZipCode"></label>
+                            <input class="form-control" asp-for="ZipCode" />
+                            <span asp-validation-for="ZipCode"></span>
                         </div>
                     </div>
-                </div>*@
-            @*<div class="col-sm-4">
+                </div>
+            </div>
+            <div class="col-sm-4">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <h3 class="panel-title">Financials</h3>
                         </div>
                         <div class="panel-body">
-                            <div class="form-group">
+                            @*<div class="form-group">
                                 <label asp-for="PurchaseDate"></label>
                                 <input class="form-control" asp-for="PurchaseDate" />
                                 <span asp-validation-for="PurchaseDate"></span>
-                            </div>
+                            </div>*@
                             <div class="form-group">
                                 <label asp-for="PurchasePrice"></label>
                                 <input type="text" class="form-control" asp-for="PurchasePrice" />
                                 <span asp-validation-for="PurchasePrice"></span>
                             </div>
-                            <div class="form-group">
+                            @*<div class="form-group">
                                 <label asp-for="SellDate"></label>
                                 <input class="form-control" asp-for="SellDate" />
-                            </div>
+                            </div>*@
                             <div class="form-group">
                                 <label asp-for="SellPrice"></label>
                                 <input type="text" class="form-control" asp-for="SellPrice" />
@@ -91,7 +91,7 @@
                             </div>
                         </div>
                     </div>
-                </div>*@
+                </div>
             <div class="col-sm-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
