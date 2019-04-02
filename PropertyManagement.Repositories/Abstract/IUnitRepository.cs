@@ -8,7 +8,7 @@
     {
         IQueryable<Domain.Unit> GetUnits();
         IQueryable<Domain.Unit> GetDeletedUnits();
-        IQueryable<Domain.Unit> GetUnits(List<Tuple<string, string>> filters);
+        IQueryable<Domain.Unit> GetUnits(List<Tuple<string, object>> filters);
         Domain.Unit GetUnit(int id);
         void AddUnit(Domain.Unit unit);
         void UpdateUnit(Domain.Unit unit);

@@ -9,9 +9,11 @@ namespace PropertyManagement.Ui.Mvc.Models.Building
     public class BuildingSearchViewModel
     {
         [Display(Name = "Created On Start")]
+        [DataType(DataType.Date)]
         public DateTime? CreatedOnStart { get; set; }
 
         [Display(Name = "Created On End")]
+        [DataType(DataType.Date)]
         public DateTime? CreatedOnEnd { get; set; }
 
         [Display(Name = "Building Name")]

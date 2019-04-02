@@ -8,7 +8,7 @@
     {
         IQueryable<Domain.Building> GetBuildings();
         IQueryable<Domain.Building> GetDeletedBuildings();
-        IQueryable<Domain.Building> GetBuildings(List<Tuple<string, string>> filters);
+        IQueryable<Domain.Building> GetBuildings(List<Tuple<string, object>> filters);
         Domain.Building GetBuilding(int id);
         void AddBuilding(Domain.Building building);
         void UpdateBuilding(Domain.Building building);

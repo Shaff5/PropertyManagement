@@ -54,7 +54,7 @@
             return unitsList.AsQueryable();
         }
 
-        public IQueryable<Domain.Unit> GetUnits(List<Tuple<string, string>> filters)
+        public IQueryable<Domain.Unit> GetUnits(List<Tuple<string, object>> filters)
         {
             var rawQuery = new StringBuilder("SELECT * FROM Units WHERE ");
             var sqlParameters = new List<object>();

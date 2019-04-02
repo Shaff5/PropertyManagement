@@ -54,7 +54,7 @@
             return buildingsList.AsQueryable();
         }
 
-        public IQueryable<Domain.Building> GetBuildings(List<Tuple<string, string>> filters)
+        public IQueryable<Domain.Building> GetBuildings(List<Tuple<string, object>> filters)
         {
             //need to figure out how to do this without risking sql injection
             //var sql = $"SELECT * FROM Buildings {whereClause} AND IsDeleted = 0";
