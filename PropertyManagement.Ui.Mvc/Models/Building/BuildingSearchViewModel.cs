@@ -16,6 +16,14 @@ namespace PropertyManagement.Ui.Mvc.Models.Building
         [DataType(DataType.Date)]
         public DateTime? CreatedOnEnd { get; set; }
 
+        [Display(Name = "Last Updated On Start")]
+        [DataType(DataType.Date)]
+        public DateTime? LastUpdatedOnStart { get; set; }
+
+        [Display(Name = "Last Updated On End")]
+        [DataType(DataType.Date)]
+        public DateTime? LastUpdatedOnEnd { get; set; }
+
         [Display(Name = "Building Name")]
         [StringLength(75)]
         public string BuildingName { get; set; }
