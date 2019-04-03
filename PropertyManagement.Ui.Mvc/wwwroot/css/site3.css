@@ -130,6 +130,7 @@ body {
     position: fixed;
     z-index: 1;
     left: 50%;
+    top: 45px;
 }
 
 @media (max-width: 767px) {
@@ -189,6 +190,10 @@ body {
         height: 100%;
         overflow-y: scroll;
         overflow-x: hidden;
+    }
+
+    .toast {
+        top: 125px;
     }
 }
 

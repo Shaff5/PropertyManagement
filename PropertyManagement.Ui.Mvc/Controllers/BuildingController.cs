@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using PropertyManagement.Domain;
 using PropertyManagement.Domain.Reporting;
 using PropertyManagement.Repositories.Abstract;
@@ -68,6 +69,11 @@ namespace PropertyManagement.Ui.Mvc.Controllers
 
         public IActionResult Save(BuildingBindingModel model)
         {
+            if (model.PurchaseDate > model.SellDate)
+            {
+                ModelState.AddModelError(string.Empty, "Sell Date cannot be earlier than Purchase Date");
+            }
+
             if (!ModelState.IsValid)
             {
                 DateTime? createdOn = (DateTime?)null;
@@ -185,6 +191,17 @@ namespace PropertyManagement.Ui.Mvc.Controllers
 
         public IActionResult SearchResults(BuildingSearchViewModel model)
         {
+            foreach (var modelState in ViewData.ModelState.Values)
+            {
+                foreach (ModelError error in modelState.Errors)
+                {
+                    var x = error;
+                }
+            }
+
+
+
+
             var filters = new List<Tuple<string, object>>();
 
             foreach (var property in model.GetType().GetProperties())
@@ -193,6 +210,18 @@ namespace PropertyManagement.Ui.Mvc.Controllers
                 if (value == null)
                 {
                     continue;
+                }
+
+                if (property.PropertyType == typeof(decimal?))
+                {
+                    if (property.Name.EndsWith("Low"))
+                    {
+                        filters.Add(new Tuple<string, object>($"{property.Name.Substring(0, property.Name.Length - 3)} > {{0}}", $"{(decimal)value}"));
+                    }
+                    else
+                    {
+                        filters.Add(new Tuple<string, object>($"{property.Name.Substring(0, property.Name.Length - 4)} < {{0}}", $"{(decimal)value}"));
+                    }
                 }
 
                 if (property.PropertyType == typeof(DateTime?))

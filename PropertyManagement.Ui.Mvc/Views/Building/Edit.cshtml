@@ -5,7 +5,7 @@
 @{
 }
 
-<form id="detailForm">
+<form>
     <div>
         <div class="page-header">
             <h1>Edit Building</h1>
@@ -117,46 +117,7 @@
     </div>
 </form>
 
-@section Scripts{
+@section Scripts
+{
     @Html.Partial("_ValidationScriptsPartial")
-
-    <script>
-        $(document).ready(function () {
-            $('#detailForm').bind('invalid-form.validate', function (form, validator) {
-                showErrorMessagesOnValidate(validator.errorList);
-            });
-        });
-
-        showErrorMessagesOnValidate = function (errors) {
-            if (!errors)
-                return;
-            
-            var msg = '<ul>';
-            errors.forEach(function (item) {
-                //var label = $(item.element.labels[0]).text();
-                //var msg = {
-                //    Title: label,
-                //    Message: item.message,
-                //    Type: "Warning"
-                //};
-                //toastrObj.ToastMessages.push(msg);
-                msg += '<li>' + item.message + '</li>';
-            });
-            msg += '</ul>';
-                                   
-            //Use toaster
-            $('#toastTitle').text('Please correct the following errors:');
-            $('.toast-body').html(msg);
-            //$('.toast').toast({ delay: 2000 });
-            $('.toast').toast('show');
-            
-            //Use snackbar
-            //$('#snackbarBody').html(msg);
-            //var snackbar = document.getElementById("snackbar");
-            //snackbar.className = "show";
-            
-            //// After 3 seconds, remove the show class from DIV
-            //setTimeout(function () { snackbar.className = snackbar.className.replace("show", ""); }, 3000);
-        }
-    </script>
 }

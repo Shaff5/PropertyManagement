@@ -44,7 +44,6 @@ namespace PropertyManagement.Ui.Mvc.Models.Building
         public string City { get; set; }
 
         [Display(Name = "Zip Code")]
-        [Required]
         [StringLength(10)]
         public string ZipCode { get; set; }
 
@@ -53,11 +52,17 @@ namespace PropertyManagement.Ui.Mvc.Models.Building
         //[Required]
         //public DateTime? PurchaseDate { get; set; }
 
-        [Display(Name = "Purchase Price")]
+        [Display(Name = "Purchase Price Low")]
         [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "C")]
         [Range(1, int.MaxValue)]
-        public decimal PurchasePrice { get; set; }
+        public decimal? PurchasePriceLow { get; set; }
+
+        [Display(Name = "Purchase Price High")]
+        [DataType(DataType.Currency)]
+        [DisplayFormat(DataFormatString = "C")]
+        [Range(1, int.MaxValue)]
+        public decimal? PurchasePriceHigh { get; set; }
 
         [Display(Name = "Sell Price")]
         [Range(0, int.MaxValue)]
@@ -65,6 +70,6 @@ namespace PropertyManagement.Ui.Mvc.Models.Building
 
         [Display(Name = "Number of Units")]
         [Range(1, int.MaxValue)]
-        public decimal NumberOfUnits { get; set; }
+        public decimal? NumberOfUnits { get; set; }
     }
 }
