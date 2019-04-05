@@ -25,7 +25,7 @@
     //Delete Action
     $(".delete").on('click', (e) => {
         e.preventDefault();
-
+        
         target = e.target;
         var Id = $(target).data('id');
         var controller = $(target).data('controller');
@@ -34,7 +34,6 @@
         redirectUrl = $(target).data('redirect-url');
 
         url = "/" + controller + "/" + action + "?Id=" + Id;
-        alert(url);
         $(".delete-modal-body").text(bodyMessage);
         $("#deleteModal").modal('show');
     });
@@ -53,7 +52,6 @@
         //    }).always(() => {
         //        $("#deleteModal").modal('hide');
         //    });
-        alert(url);
         window.location.href = url;
     });
 
