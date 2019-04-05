@@ -148,9 +148,10 @@ body {
     }
     
     .nav-side-menu {
-        position: relative;
+        position: absolute;
         width: 100%;
-        height:auto;
+        height: auto;
+        z-index: 1;
     }
 
         .nav-side-menu .toggle-btn {
@@ -174,16 +175,17 @@ body {
 
 @media (max-width: 576px) {
     .nav-side-menu {
-        position: relative;
+        position: absolute;
         width: 100%;
         height: auto;
+        z-index: 1;
     }
 
     .body-container {
         height: calc(100% - 150px);
         overflow: hidden;
         position: absolute;
-        top: 120px;
+        top: 118px;
     }
 
     .row.content {
