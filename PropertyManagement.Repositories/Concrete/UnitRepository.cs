@@ -19,7 +19,7 @@
         }
 
         /// <summary>
-        /// Gets all buildings.
+        /// Gets all units.
         /// </summary>
         /// <returns></returns>
         public IQueryable<Domain.Unit> GetUnits()
@@ -87,7 +87,7 @@
         }
 
         /// <summary>
-        /// Gets the building by identifier.
+        /// Gets the unit by identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
@@ -107,9 +107,9 @@
         }
 
         /// <summary>
-        /// Adds the building.
+        /// Adds the unit.
         /// </summary>
-        /// <param name="building">The building.</param>
+        /// <param name="unit">The unit.</param>
         public void AddUnit(Domain.Unit unit)
         {
             var u = new Data.Unit();
@@ -130,9 +130,9 @@
         }
 
         /// <summary>
-        /// Updates the building.
+        /// Updates the unit.
         /// </summary>
-        /// <param name="building">The building.</param>
+        /// <param name="unit">The unit.</param>
         public void UpdateUnit(Domain.Unit unit)
         {
             var u = _context.Units.Find(unit.UnitId);
@@ -160,7 +160,7 @@
         }
 
         /// <summary>
-        /// Deletes the building.
+        /// Deletes the unit.
         /// </summary>
         /// <param name="id">The identifier.</param>
         public void HardDeleteUnit(int id)
