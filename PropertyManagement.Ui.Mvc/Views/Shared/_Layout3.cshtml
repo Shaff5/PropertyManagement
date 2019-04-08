@@ -26,7 +26,7 @@
                 <a class="navbar-brand" href="#">Property Management</a>
                 <i id="btnMenuToggle" style="float:right;" class="fa fa-bars fa-2x text-white toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
             </div>
-            <input class="form-control form-control-dark col-sm-3" type="text" placeholder="Search" aria-label="Search">
+            <input id="txtFastFind" class="form-control form-control-dark col-sm-3" type="text" placeholder="Fast Find" aria-label="Fast Find" />
             <a class="nav-link" asp-controller="RecycleBin" asp-action="Index"><i class="fa fa-trash text-white"></i></a>
             <a class="nav-link" href="#"><i class="fa fa-cog text-white"></i></a>
             <a class="nav-link" href="#"><i class="fa fa-sign-out-alt text-white"></i></a>
@@ -118,7 +118,17 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/delete.js" asp-append-version="true"></script>
 
+    <script>
+        $('#txtFastFind').keypress(function (e) {
+            if (e.which == 13) {
+                var url = "/FastFind/Index?searchTerm=" + $('#txtFastFind').val();
+                window.location.href = url;
+            }
+        });
+    </script>
+
     @RenderSection("Scripts", required: false)
+
 
 </body>
 </html>
