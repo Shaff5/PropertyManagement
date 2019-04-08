@@ -1,0 +1,87 @@
+﻿@using PropertyManagement.Domain
+@using PropertyManagement.Ui.Mvc.Models.Unit
+
+@model UnitViewModel
+@{
+}
+
+<form>
+    <div>
+        <div class="page-header">
+            <h1>Edit Unit</h1>
+        </div>
+
+        <button class="btn btn-success" asp-action="Save">
+            Save
+        </button>
+        <button class=" = btn btn-primary" asp-controller="Unit" asp-action="Index" formnovalidate>
+            Cancel
+        </button>
+
+        <input type="hidden" asp-for="UnitId" />
+
+        <div class="form-group">
+            <label asp-for="UnitName"></label>
+            <input class="form-control" asp-for="UnitName" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="BuildingName"></label>
+            <input class="form-control" asp-for="BuildingName" readonly />
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Unit Info</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label asp-for="SquareFootage"></label>
+                            <input class="form-control" asp-for="SquareFootage" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="NumberOfBedrooms"></label>
+                            <input class="form-control" asp-for="NumberOfBedrooms" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="NumberOfBathrooms"></label>
+                            <input class="form-control" asp-for="NumberOfBathrooms" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">System Info</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label asp-for="CreatedOn"></label>
+                            <input type="text" class="form-control" asp-for="CreatedOn" readonly />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CreatedBy"></label>
+                            <input type="text" class="form-control" asp-for="CreatedBy" readonly />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="LastUpdatedOn"></label>
+                            <input type="text" class="form-control" asp-for="LastUpdatedOn" readonly />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="LastUpdatedBy"></label>
+                            <input type="text" class="form-control" asp-for="LastUpdatedBy" readonly />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+}

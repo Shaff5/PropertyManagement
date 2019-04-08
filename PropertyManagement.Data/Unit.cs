@@ -37,12 +37,15 @@ namespace PropertyManagement.Data
             u.UnitId = UnitId;
             u.CreatedOn = CreatedOn;
             u.CreatedBy = CreatedBy;
+            u.CreatedByName = CreatedByNavigation.UserName;
             u.LastUpdatedOn = LastUpdatedOn;
             u.LastUpdatedBy = LastUpdatedBy;
+            u.LastUpdatedByName = LastUpdatedByNavigation.UserName;
             u.Ts = Ts;
             u.IsDeleted = IsDeleted;
             u.UnitName = UnitName;
             u.BuildingId = BuildingId;
+            u.BuildingName = Building.BuildingName;
             u.SquareFootage = SquareFootage;
             u.NumberOfBedrooms = NumberOfBedrooms;
             u.NumberOfBathrooms = NumberOfBathrooms;

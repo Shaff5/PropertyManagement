@@ -27,6 +27,7 @@
             var units = _context.Units
                 .Include(u => u.CreatedByNavigation)
                 .Include(u => u.LastUpdatedByNavigation)
+                .Include(u => u.Building)
                 .Where(u => !u.IsDeleted);
 
             var unitsList = new List<Domain.Unit>();
@@ -43,6 +44,7 @@
             var units = _context.Units
                 .Include(u => u.CreatedByNavigation)
                 .Include(u => u.LastUpdatedByNavigation)
+                .Include(u => u.Building)
                 .Where(u => u.IsDeleted);
 
             var unitsList = new List<Domain.Unit>();
@@ -75,6 +77,7 @@
               .FromSql(rawQuery.ToString(), sqlParameters.ToArray())
               .Include(u => u.CreatedByNavigation)
               .Include(u => u.LastUpdatedByNavigation)
+              .Include(u => u.Building)
               .ToList();
 
             var unitsList = new List<Domain.Unit>();
@@ -96,6 +99,7 @@
             var unit = _context.Units
                 .Include(u => u.CreatedByNavigation)
                 .Include(u => u.LastUpdatedByNavigation)
+                .Include(u => u.Building)
                 .FirstOrDefault(u => u.UnitId == id);
 
             if (unit == null)
