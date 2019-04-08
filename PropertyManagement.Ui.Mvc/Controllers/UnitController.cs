@@ -116,5 +116,12 @@ namespace PropertyManagement.Ui.Mvc.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public IActionResult Delete(int id)
+        {
+            _unitRepository.SoftDeleteUnit(id);
+
+            return RedirectToAction("Index");
+        }
     }
 }

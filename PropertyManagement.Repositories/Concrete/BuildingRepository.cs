@@ -187,6 +187,7 @@
         {
             var building = _context.Buildings.Find(id);
             building.IsDeleted = true;
+            building.LastUpdatedOn = DateTime.Now;
             _context.SaveChanges();
         }
 

@@ -160,6 +160,7 @@
         {
             var unit = _context.Units.Find(id);
             unit.IsDeleted = true;
+            unit.LastUpdatedOn = DateTime.Now;
             _context.SaveChanges();
         }
 

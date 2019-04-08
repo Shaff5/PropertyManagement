@@ -25,10 +25,10 @@
                     <td>@entity.DeletedBy</td>
                     <td>@entity.DeletedOn</td>
                     <td>
-                        <a class="btn btn-primary" asp-action="Restore" asp-route-id=@entity.Id>
+                        <a class="btn btn-primary" asp-action="Restore" asp-route-entity="@entity.EntityName" asp-route-id=@entity.Id>
                             Restore
                         </a>
-                        <button class="btn btn-danger" asp-action="Delete" asp-route-id=@entity.Id>
+                        <button class="btn btn-danger" asp-action="Delete" asp-route-entity="@entity.EntityName" asp-route-id=@entity.Id>
                             <i class="fa fa-trash"></i>
                         </button>
                     </td>
