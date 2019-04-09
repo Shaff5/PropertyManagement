@@ -123,5 +123,10 @@ namespace PropertyManagement.Ui.Mvc.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public IActionResult Search()
+        {
+            return View("Search", new UnitSearchViewModel());
+        }
     }
 }

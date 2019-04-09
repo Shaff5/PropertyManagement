@@ -1,0 +1,106 @@
+﻿@using PropertyManagement.Domain
+@using PropertyManagement.Ui.Mvc.Models.Unit
+
+@model UnitSearchViewModel
+@{
+}
+
+<form>
+    <div>
+        <div class="page-header">
+            <h1>Search Units</h1>
+        </div>
+
+        <button class="btn btn-success" asp-action="SearchResults">
+            Search
+        </button>
+
+        <div class="form-group">
+            <label asp-for="BuildingName"></label>
+            <input class="form-control" asp-for="BuildingName" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="UnitName"></label>
+            <input class="form-control" asp-for="UnitName" />
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Financials</h3>
+                    </div>
+                    <div class="panel-body">
+                        @*<div class="form-group">
+                            <label asp-for="PurchaseDate"></label>
+                            <input class="form-control" asp-for="PurchaseDate" />
+                        </div>*@
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label asp-for="SquareFootageLow"></label>
+                                <input type="text" class="form-control" asp-for="SquareFootageLow" />
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <label asp-for="SquareFootageHigh"></label>
+                                <input type="number" class="form-control" asp-for="SquareFootageHigh" />
+                            </div>
+                        </div>
+                        @*<div class="form-group">
+                            <label asp-for="SellDate"></label>
+                            <input class="form-control" asp-for="SellDate" />
+                        </div>*@
+                        @*<div class="form-group">
+                            <label asp-for="SellPrice"></label>
+                            <input type="text" class="form-control" asp-for="SellPrice" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="NumberOfUnits"></label>
+                            <input type="text" class="form-control" asp-for="NumberOfUnits" />
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">System Info</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label asp-for="CreatedOnStart"></label>
+                                <input class="form-control" asp-for="CreatedOnStart" />
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <label asp-for="CreatedOnEnd"></label>
+                                <input class="form-control" asp-for="CreatedOnEnd" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label asp-for="LastUpdatedOnStart"></label>
+                                <input class="form-control" asp-for="LastUpdatedOnStart" />
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <label asp-for="LastUpdatedOnEnd"></label>
+                                <input class="form-control" asp-for="LastUpdatedOnEnd" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        $('#searchTypes').removeClass("collapse");
+        $('#menuSearch').addClass("active");
+        $('#searchUnits').addClass("active");
+    </script>
+}

@@ -3,27 +3,8 @@
     var redirectUrl;
     var target;
 
-    $('body').append(`
-                    <div class="modal fade" id="deleteModal" tabindex="-1" data-keyboard="false" data-backdrop="static" role="dialog" aria-labelledby="myModalLabel">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" id="myModalLabel">Warning</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        </div>
-                        <div class="modal-body delete-modal-body">
-                            
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal" id="cancel-delete">Cancel</button>
-                            <button type="button" class="btn btn-danger" id="confirm-delete">Delete</button>
-                        </div>
-                        </div>
-                    </div>
-                    </div>`);
-
     //Delete Action
-    $(".delete").on('click', (e) => {
+    $(".delete").on('click', function(e) {
         e.preventDefault();
         
         target = e.target;
@@ -38,7 +19,7 @@
         $("#deleteModal").modal('show');
     });
 
-    $("#confirm-delete").on('click', () => {
+    $("#confirm-delete").on('click', function() {
         //$.get(url)
         //    .done((result) => {
         //        if (!redirectUrl) {
