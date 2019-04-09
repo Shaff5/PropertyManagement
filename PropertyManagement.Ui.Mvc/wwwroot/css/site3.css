@@ -147,7 +147,11 @@ body {
         overflow-y: auto;
         overflow-x: hidden;
     }
-    
+
+    #main {
+        width: 100%;
+    }
+
     .nav-side-menu {
         position: absolute;
         width: 100%;
@@ -193,6 +197,10 @@ body {
         height: 100%;
         overflow-y: auto;
         overflow-x: hidden;
+    }
+
+    #main {
+        width: 100%;
     }
 
     .toast {

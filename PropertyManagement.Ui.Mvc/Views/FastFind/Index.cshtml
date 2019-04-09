@@ -32,7 +32,7 @@
                         <td class="text-nowrap">@building.ZipCode</td>
                         <td class="text-nowrap">@building.PurchaseDate.ToShortDateString()</td>
                         <td class="btn-group">
-                            <a class="btn btn-primary mr-2" asp-action="Edit" asp-route-id=@building.BuildingId>
+                            <a class="btn btn-primary mr-2" asp-controller="Building" asp-action="Edit" asp-route-id=@building.BuildingId>
                                 <i class="fa fa-edit"></i>
                             </a>
                             <a class="btn btn-warning delete"
