@@ -11,6 +11,8 @@
     [EndDate]       DATETIME        NULL,
     [Amount]        DECIMAL (10, 2) NOT NULL,
     CONSTRAINT [PK_Rents] PRIMARY KEY CLUSTERED ([RentId] ASC),
+	CONSTRAINT [FK_RentsCreatedBy_Users] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[Users] ([UserId]),
+    CONSTRAINT [FK_RentsLastUpdatedBy_Users] FOREIGN KEY ([LastUpdatedBy]) REFERENCES [dbo].[Users] ([UserId]),
     CONSTRAINT [FK_Rents_Units] FOREIGN KEY ([UnitId]) REFERENCES [dbo].[Units] ([UnitId])
 );
 

@@ -17,6 +17,8 @@ namespace PropertyManagement.Data
         public DateTime? EndDate { get; set; }
         public decimal Amount { get; set; }
 
+        public virtual User CreatedByNavigation { get; set; }
+        public virtual User LastUpdatedByNavigation { get; set; }
         public virtual Unit Unit { get; set; }
 
         public Domain.Rent MapToDomainRent()
@@ -26,8 +28,10 @@ namespace PropertyManagement.Data
             r.RentId = RentId;
             r.CreatedOn = CreatedOn;
             r.CreatedBy = CreatedBy;
+            r.CreatedByName = CreatedByNavigation.UserName;
             r.LastUpdatedOn = LastUpdatedOn;
             r.LastUpdatedBy = LastUpdatedBy;
+            r.LastUpdatedByName = LastUpdatedByNavigation.UserName;
             r.Ts = Ts;
             r.IsDeleted = IsDeleted;
             r.UnitId = UnitId;
