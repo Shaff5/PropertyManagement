@@ -128,5 +128,52 @@ namespace PropertyManagement.Ui.Mvc.Controllers
         {
             return View("Search", new UnitSearchViewModel());
         }
+
+        public IActionResult SearchResults(UnitSearchViewModel model)
+        {
+            var filters = new List<Tuple<string, object>>();
+
+            foreach (var property in model.GetType().GetProperties())
+            {
+                var value = property.GetValue(model);
+                if (value == null)
+                {
+                    continue;
+                }
+
+                if (property.PropertyType == typeof(decimal?))
+                {
+                    if (property.Name.EndsWith("Low"))
+                    {
+                        filters.Add(new Tuple<string, object>($"{property.Name.Substring(0, property.Name.Length - 3)} > {{0}}", $"{(decimal)value}"));
+                    }
+                    else
+                    {
+                        filters.Add(new Tuple<string, object>($"{property.Name.Substring(0, property.Name.Length - 4)} < {{0}}", $"{(decimal)value}"));
+                    }
+                }
+
+                if (property.PropertyType == typeof(DateTime?))
+                {
+                    if (property.Name.EndsWith("Start"))
+                    {
+                        filters.Add(new Tuple<string, object>($"{property.Name.Substring(0, property.Name.Length - 5)} > {{0}}", $"{(DateTime)value}"));
+                    }
+                    else
+                    {
+                        filters.Add(new Tuple<string, object>($"{property.Name.Substring(0, property.Name.Length - 3)} < {{0}}", $"{(DateTime)value}"));
+                    }
+                }
+
+                if (property.PropertyType == typeof(string) && !string.IsNullOrEmpty(value.ToString().Trim()))
+                {
+                    filters.Add(new Tuple<string, object>($"{property.Name} LIKE {{0}}", $"%{value.ToString()}%"));
+                }
+            }
+
+            var units = _unitRepository.GetUnits(filters);
+
+            return View("Index", units);
+        }
     }
 }

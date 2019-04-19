@@ -74,7 +74,7 @@
                         <td class="text-nowrap">@unit.NumberOfBedrooms</td>
                         <td class="text-nowrap">@unit.NumberOfBathrooms</td>
                         <td class="btn-group">
-                            <a class="btn btn-primary mr-2" asp-action="Edit" asp-route-id=@unit.UnitId>
+                            <a class="btn btn-primary mr-2" asp-controller="Unit" asp-action="Edit" asp-route-id=@unit.UnitId>
                                 <i class="fa fa-edit"></i>
                             </a>
                             <a class="btn btn-warning delete"
@@ -82,6 +82,46 @@
                                data-controller="Unit"
                                data-action="Delete"
                                data-body-message="Are you sure you want to delete this unit?">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <h4>Rents</h4>
+    <div class="table-responsive">
+        <table class='table'>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Amount</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var rent in Model.Rents)
+                {
+                    <tr>
+                        <td class="text-nowrap">@rent.RentId</td>
+                        <td class="text-nowrap">@rent.UnitName</td>
+                        <td class="text-nowrap">@rent.StartDate</td>
+                        <td class="text-nowrap">@rent.EndDate</td>
+                        <td class="text-nowrap">@rent.Amount</td>
+                        <td class="btn-group">
+                            <a class="btn btn-primary mr-2" asp-controller="Rent" asp-action="Edit" asp-route-id=@rent.RentId>
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a class="btn btn-warning delete"
+                               data-id="@rent.RentId"
+                               data-controller="Rent"
+                               data-action="Delete"
+                               data-body-message="Are you sure you want to delete this rent?">
                                 Delete
                             </a>
                         </td>

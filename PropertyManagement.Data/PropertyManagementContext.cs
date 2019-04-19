@@ -244,6 +244,18 @@ namespace PropertyManagement.Data
                     .IsRequired()
                     .IsRowVersion();
 
+                entity.HasOne(d => d.CreatedByNavigation)
+                    .WithMany(p => p.RentsCreatedByNavigation)
+                    .HasForeignKey(d => d.CreatedBy)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_RentsCreatedBy_Users");
+
+                entity.HasOne(d => d.LastUpdatedByNavigation)
+                    .WithMany(p => p.RentsLastUpdatedByNavigation)
+                    .HasForeignKey(d => d.LastUpdatedBy)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_RentsLastUpdatedBy_Users");
+
                 entity.HasOne(d => d.Unit)
                     .WithMany(p => p.Rents)
                     .HasForeignKey(d => d.UnitId)

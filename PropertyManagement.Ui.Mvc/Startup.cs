@@ -38,8 +38,9 @@ namespace PropertyManagement.Ui.Mvc
 
             var connectionString = Configuration.GetConnectionString("PropertyManagementConnectionString");
 
-            services.AddScoped<IBuildingRepository>(p => new BuildingRepository());
-            services.AddScoped<IUnitRepository>(p => new UnitRepository());
+            services.AddScoped<IBuildingRepository>(b => new BuildingRepository());
+            services.AddScoped<IUnitRepository>(u => new UnitRepository());
+            services.AddScoped<IRentRepository>(r => new RentRepository());
             services.AddScoped<IUserRepository>(u => new UserRepository());
         }
 

@@ -58,7 +58,10 @@
 
         public IQueryable<Domain.Unit> GetUnits(List<Tuple<string, object>> filters)
         {
-            var rawQuery = new StringBuilder("SELECT * FROM Units WHERE ");
+            var rawQuery = new StringBuilder(@"SELECT u1.* 
+                                                FROM Units u1 
+                                                INNER JOIN Buildings b1 ON b1.BuildingId = u1.BuildingId
+                                                WHERE ");
             var sqlParameters = new List<object>();
 
             foreach (var f in filters)
@@ -71,13 +74,14 @@
                 rawQuery.Append(" AND ");
                 sqlParameters.Add(new SqlParameter(parameterName, f.Item2));
             }
-            rawQuery.Append("IsDeleted = 0");
+            rawQuery.Append("u1.IsDeleted = 0");
 
             var units = _context.Units
-              .FromSql(rawQuery.ToString(), sqlParameters.ToArray())
-              .Include(u => u.CreatedByNavigation)
-              .Include(u => u.LastUpdatedByNavigation)
-              .Include(u => u.Building)
+                .Include(u => u.CreatedByNavigation)
+                .Include(u => u.LastUpdatedByNavigation)
+                .Include(u => u.Building)
+                .FromSql(rawQuery.ToString(), sqlParameters.ToArray())
+              
               .ToList();
 
             var unitsList = new List<Domain.Unit>();

@@ -12,9 +12,10 @@ namespace PropertyManagement.Ui.Mvc.Controllers
     {
         IBuildingRepository _buildingRepository;
         IUnitRepository _unitRepository;
+        IRentRepository _rentRepository;
 
         public FastFindController(IBuildingRepository buildingRepository,
-            IUnitRepository unitRepository)
+            IUnitRepository unitRepository, IRentRepository rentRepository)
         {
             if (buildingRepository == null)
             {
@@ -24,9 +25,14 @@ namespace PropertyManagement.Ui.Mvc.Controllers
             {
                 throw new ArgumentNullException("unitRepository");
             }
+            if (rentRepository == null)
+            {
+                throw new ArgumentNullException("rentRepository");
+            }
 
             _buildingRepository = buildingRepository;
             _unitRepository = unitRepository;
+            _rentRepository = rentRepository;
         }
 
         public IActionResult Index(string searchTerm)
@@ -39,9 +45,14 @@ namespace PropertyManagement.Ui.Mvc.Controllers
             unitFilters.Add(new Tuple<string, object>("UnitName LIKE {0}", $"%{searchTerm}%"));
             var units = _unitRepository.GetUnits(unitFilters);
 
+            var rentFilters = new List<Tuple<string, object>>();
+            rentFilters.Add(new Tuple<string, object>("UnitName LIKE {0}", $"%{searchTerm}%"));
+            var rents = _rentRepository.GetRents(rentFilters);
+
             var viewModel = new FastFindViewModel();
             viewModel.Buildings = buildings;
             viewModel.Units = units;
+            viewModel.Rents = rents;
 
             return View(viewModel);
         }

@@ -58,7 +58,10 @@ namespace PropertyManagement.Repositories.Concrete
 
         public IQueryable<Domain.Rent> GetRents(List<Tuple<string, object>> filters)
         {
-            var rawQuery = new StringBuilder("SELECT * FROM Rents WHERE ");
+            var rawQuery = new StringBuilder(@"SELECT r1.* 
+                                                FROM Rents r1 
+                                                INNER JOIN Units u1 ON u1.UnitId = r1.UnitId
+                                                WHERE ");
             var sqlParameters = new List<object>();
 
             foreach (var f in filters)
@@ -71,13 +74,14 @@ namespace PropertyManagement.Repositories.Concrete
                 rawQuery.Append(" AND ");
                 sqlParameters.Add(new SqlParameter(parameterName, f.Item2));
             }
-            rawQuery.Append("IsDeleted = 0");
+            rawQuery.Append("r1.IsDeleted = 0");
 
             var rents = _context.Rents
               .FromSql(rawQuery.ToString(), sqlParameters.ToArray())
               .Include(r => r.CreatedByNavigation)
               .Include(r => r.LastUpdatedByNavigation)
               .Include(r => r.Unit)
+              .Include(r => r.Unit.Building)
               .ToList();
 
             var rentsList = new List<Domain.Rent>();
