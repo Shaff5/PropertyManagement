@@ -11,12 +11,12 @@
             <h1>Edit Building</h1>
         </div>
 
-        <button class="btn btn-success" asp-action="Save">
+        <button class="btn btn-primary" asp-action="Save">
             Save
         </button>
-        <button class=" = btn btn-primary" asp-controller="Building" asp-action="Index" formnovalidate>
+        <a href="#" class="btn btn-primary" onclick="window.history.go(-1);">
             Cancel
-        </button>
+        </a>
 
         <input type="hidden" asp-for="BuildingId" />
 

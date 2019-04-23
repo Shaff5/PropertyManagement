@@ -49,12 +49,18 @@
                             <a class="btn btn-primary mr-2" asp-action="Edit" asp-route-id=@unit.UnitId>
                                 <i class="fa fa-edit"></i>
                             </a>
-                            <a class="btn btn-warning delete"
+                            <a class="btn btn-primary delete"
+                               href="#"
                                data-id="@unit.UnitId"
                                data-controller="Unit"
                                data-action="Delete"
                                data-body-message="Are you sure you want to delete this unit?">
-                                Delete
+                                <i class="fa fa-trash delete"
+                                   data-id="@unit.UnitId"
+                                   data-controller="Unit"
+                                   data-action="Delete"
+                                   data-body-message="Are you sure you want to delete this unit?">
+                                </i>
                             </a>
                         </td>
                     </tr>

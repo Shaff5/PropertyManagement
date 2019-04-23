@@ -21,7 +21,7 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <nav class="navbar navbar-dark fixed-top navbar-background flex-md-nowrap p-0 shadow">
             <div class="col justify-content-sm-start">
                 <a class="navbar-brand" href="#">Property Management</a>
                 <i id="btnMenuToggle" style="float:right;" class="fa fa-bars fa-2x text-white toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
@@ -41,16 +41,16 @@
                     <ul id="menu-content" class="menu-content collapse out">
                         <li id="menuHome">
                             <a asp-controller="Home" asp-action="Index">
-                                <i class="fa fa-home fa-lg"></i> Home
+                                <i class="fa fa-home fa-lg nav-side-menu-icon"></i> Home
                             </a>
                         </li>
                         <li id="menuDashboard">
                             <a asp-controller="Dashboard" asp-action="Index">
-                                <i class="fa fa-chart-line fa-lg"></i> Dashboard
+                                <i class="fa fa-chart-line fa-lg nav-side-menu-icon"></i> Dashboard
                             </a>
                         </li>
                         <li id="menuSearch" data-toggle="collapse" data-target="#searchTypes" class="collapsed">
-                            <a href="#"><i class="fa fa-search fa-lg"></i> Search <span class="arrow"><i class="fa fa-chevron-down"></i></span></a>
+                            <a href="#"><i class="fa fa-search fa-lg nav-side-menu-icon"></i> Search <span class="arrow"><i class="fa fa-chevron-down"></i></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="searchTypes">
                             <li id="searchBuildings"><a asp-controller="Building" asp-action="Search"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Buildings </a></li>
@@ -60,21 +60,21 @@
                         </ul>
                         <li>
                             <a href="#">
-                                <i class="fa fa-user fa-lg"></i> Users
+                                <i class="fa fa-user fa-lg nav-side-menu-icon"></i> Users
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <i class="fa fa-list fa-lg"></i> Picklists
+                                <i class="fa fa-list fa-lg nav-side-menu-icon"></i> Picklists
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <i class="fa fa-scroll fa-lg"></i> Reports
+                                <i class="fa fa-scroll fa-lg nav-side-menu-icon"></i> Reports
                             </a>
                         </li>
                         <li data-toggle="collapse" data-target="#importTypes" class="collapsed">
-                            <a href="#"><i class="fa fa-upload fa-lg"></i> Import Data <span class="arrow"><i class="fa fa-chevron-down"></i></span></a>
+                            <a href="#"><i class="fa fa-upload fa-lg nav-side-menu-icon"></i> Import Data <span class="arrow"><i class="fa fa-chevron-down"></i></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="importTypes">
                             <li class="active"><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Buildings </a></li>
@@ -107,8 +107,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal" id="cancel-delete">Cancel</button>
-                    <button type="button" class="btn btn-danger" id="confirm-delete">Delete</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="cancel-delete">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="confirm-delete">Delete</button>
                 </div>
             </div>
         </div>
