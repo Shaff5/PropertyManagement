@@ -7,10 +7,6 @@
 
 <form>
     <div>
-        <div class="page-header">
-            <h1>Edit Building</h1>
-        </div>
-
         <button class="btn btn-primary" asp-action="Save">
             Save
         </button>
@@ -18,16 +14,22 @@
             Cancel
         </a>
 
-        <input type="hidden" asp-for="BuildingId" />
-
-        <div class="form-group">
-            <label asp-for="BuildingName"></label>
-            <input class="form-control" asp-for="BuildingName" />
+        <div class="page-header">
+            <h1>Edit Building</h1>
         </div>
 
+        <input type="hidden" asp-for="BuildingId" />
+
+        <div class="panel panel-primary m-2 p-2">
+            <div class="form-group">
+                <label asp-for="BuildingName"></label>
+                <input class="form-control" asp-for="BuildingName" />
+            </div>
+        </div>
+        
         <div class="row">
             <div class="col-sm-4">
-                <div class="panel panel-primary">
+                <div class="panel panel-primary m-2 p-2">
                     <div class="panel-heading">
                         <h3 class="panel-title">Address</h3>
                     </div>
@@ -60,7 +62,7 @@
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="panel panel-primary">
+                <div class="panel panel-primary m-2 p-2">
                     <div class="panel-heading">
                         <h3 class="panel-title">Financials</h3>
                     </div>
@@ -89,7 +91,7 @@
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="panel panel-primary">
+                <div class="panel panel-primary m-2 p-2">
                     <div class="panel-heading">
                         <h3 class="panel-title">System Info</h3>
                     </div>

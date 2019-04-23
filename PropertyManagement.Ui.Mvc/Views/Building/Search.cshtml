@@ -7,22 +7,24 @@
 
 <form>
     <div>
-        <div class="page-header">
-            <h1>Search Buildings</h1>
-        </div>
-
         <button class="btn btn-primary" asp-action="SearchResults">
             Search
         </button>
 
-        <div class="form-group">
-            <label asp-for="BuildingName"></label>
-            <input class="form-control" asp-for="BuildingName" />
+        <div class="page-header">
+            <h1>Search Buildings</h1>
         </div>
 
+        <div class="panel panel-primary m-2 p-2">
+            <div class="form-group">
+                <label asp-for="BuildingName"></label>
+                <input class="form-control" asp-for="BuildingName" />
+            </div>
+        </div>
+        
         <div class="row">
             <div class="col-sm-12 col-lg-4">
-                <div class="panel panel-primary">
+                <div class="panel panel-primary m-2 p-2">
                     <div class="panel-heading">
                         <h3 class="panel-title">Address</h3>
                     </div>
@@ -44,9 +46,9 @@
                             <input class="form-control" asp-for="City" />
                         </div>
                         @*<div class="form-group">
-                                <label asp-for="State"></label>
-                                <select class="form-control" asp-for="State" asp-items="Model.States"></select>
-                            </div>*@
+                            <label asp-for="State"></label>
+                            <select class="form-control" asp-for="State" asp-items="Model.States"></select>
+                        </div>*@
                         <div class="form-group">
                             <label asp-for="ZipCode"></label>
                             <input class="form-control" asp-for="ZipCode" />
@@ -55,15 +57,15 @@
                 </div>
             </div>
             <div class="col-sm-12 col-lg-4">
-                <div class="panel panel-primary">
+                <div class="panel panel-primary m-2 p-2">
                     <div class="panel-heading">
                         <h3 class="panel-title">Financials</h3>
                     </div>
                     <div class="panel-body">
                         @*<div class="form-group">
-                                <label asp-for="PurchaseDate"></label>
-                                <input class="form-control" asp-for="PurchaseDate" />
-                            </div>*@
+                            <label asp-for="PurchaseDate"></label>
+                            <input class="form-control" asp-for="PurchaseDate" />
+                        </div>*@
                         <div class="row">
                             <div class="col form-group">
                                 <label asp-for="PurchasePriceLow"></label>
@@ -75,9 +77,9 @@
                             </div>
                         </div>
                         @*<div class="form-group">
-                                <label asp-for="SellDate"></label>
-                                <input class="form-control" asp-for="SellDate" />
-                            </div>*@
+                            <label asp-for="SellDate"></label>
+                            <input class="form-control" asp-for="SellDate" />
+                        </div>*@
                         <div class="form-group">
                             <label asp-for="SellPrice"></label>
                             <input type="text" class="form-control" asp-for="SellPrice" />
@@ -90,7 +92,7 @@
                 </div>
             </div>
             <div class="col-sm-12 col-lg-4">
-                <div class="panel panel-primary">
+                <div class="panel panel-primary m-2 p-2">
                     <div class="panel-heading">
                         <h3 class="panel-title">System Info</h3>
                     </div>
