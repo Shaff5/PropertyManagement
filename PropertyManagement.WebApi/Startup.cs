@@ -32,6 +32,7 @@ namespace PropertyManagement.WebApi
             var connectionString = Configuration.GetConnectionString("PropertyManagementConnectionString");
 
             services.AddScoped<IBuildingRepository>(b => new BuildingRepository());
+            services.AddScoped<IUnitRepository>(u => new UnitRepository());
             services.AddScoped<IUserRepository>(u => new UserRepository());
         }
 

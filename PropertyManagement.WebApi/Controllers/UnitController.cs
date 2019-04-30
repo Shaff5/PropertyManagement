@@ -10,47 +10,47 @@ namespace PropertyManagement.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BuildingController : ControllerBase
+    public class UnitController : ControllerBase
     {
-        private readonly IBuildingRepository _buildingRepository;
+        private readonly IUnitRepository _unitRepository;
 
-        public BuildingController(IBuildingRepository buildingRepository)
+        public UnitController(IUnitRepository unitRepository)
         {
-            _buildingRepository = buildingRepository;
+            _unitRepository = unitRepository;
         }
 
 
-        // GET api/building
+        // GET api/unit
         [HttpGet]
-        public ActionResult<IEnumerable<Building>> Get()
+        public ActionResult<IEnumerable<Unit>> Get()
         {
-            return Ok(_buildingRepository.GetBuildings());
+            return Ok(_unitRepository.GetUnits());
         }
 
-        // GET api/building/5
+        // GET api/unit/5
         [HttpGet("{id}")]
-        public ActionResult<Building> Get(int id)
+        public ActionResult<Unit> Get(int id)
         {
-            return Ok(_buildingRepository.GetBuilding(id));
+            return Ok(_unitRepository.GetUnit(id));
         }
 
-        // POST api/building
+        // POST api/unit
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/building/5
+        // PUT api/unit/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/building/5
+        // DELETE api/unit/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            _buildingRepository.HardDeleteBuilding(id);
+            _unitRepository.HardDeleteUnit(id);
         }
     }
 }
