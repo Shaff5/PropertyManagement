@@ -31,7 +31,14 @@ namespace PropertyManagement.WebApi.Controllers
         [HttpGet("{id}")]
         public ActionResult<Unit> Get(int id)
         {
-            return Ok(_unitRepository.GetUnit(id));
+            var unit = _unitRepository.GetUnit(id);
+
+            if (unit == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(unit);
         }
 
         // POST api/unit
@@ -48,9 +55,17 @@ namespace PropertyManagement.WebApi.Controllers
 
         // DELETE api/unit/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult Delete(int id)
         {
+            var unit = _unitRepository.GetUnit(id);
+
+            if (unit == null)
+            {
+                return NotFound();
+            }
+
             _unitRepository.HardDeleteUnit(id);
+            return NoContent();
         }
     }
 }

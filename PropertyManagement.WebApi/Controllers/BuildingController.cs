@@ -31,26 +31,76 @@ namespace PropertyManagement.WebApi.Controllers
         [HttpGet("{id}")]
         public ActionResult<Building> Get(int id)
         {
-            return Ok(_buildingRepository.GetBuilding(id));
+            var building = _buildingRepository.GetBuilding(id);
+
+            if (building == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(building);
         }
 
         // POST api/building
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post(Models.BuildingBindingModel model)
         {
+            var building = new Building();
+
+            building.BuildingName = model.BuildingName;
+            building.AddressLine1 = model.AddressLine1;
+            building.AddressLine2 = model.AddressLine2;
+            building.AddressLine3 = model.AddressLine3;
+            building.City = model.City;
+            building.State = model.State;
+            building.ZipCode = model.ZipCode;
+            building.PurchaseDate = model.PurchaseDate;
+            building.PurchasePrice = model.PurchasePrice;
+            building.NumberOfUnits = model.NumberOfUnits;
+
+            _buildingRepository.AddBuilding(building);
         }
 
         // PUT api/building/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public ActionResult Put(int id, Models.BuildingBindingModel model)
         {
+            if (id != model.BuildingId)
+            {
+                return BadRequest();
+            }
+
+            var building = _buildingRepository.GetBuilding(model.BuildingId);
+
+            building.BuildingName = model.BuildingName;
+            building.AddressLine1 = model.AddressLine1;
+            building.AddressLine2 = model.AddressLine2;
+            building.AddressLine3 = model.AddressLine3;
+            building.City = model.City;
+            building.State = model.State;
+            building.ZipCode = model.ZipCode;
+            building.PurchaseDate = model.PurchaseDate;
+            building.PurchasePrice = model.PurchasePrice;
+            building.NumberOfUnits = model.NumberOfUnits;
+
+            _buildingRepository.UpdateBuilding(building);
+
+            return NoContent();
         }
 
         // DELETE api/building/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult Delete(int id)
         {
+            var building = _buildingRepository.GetBuilding(id);
+
+            if (building == null)
+            {
+                return NotFound();
+            }
+
             _buildingRepository.HardDeleteBuilding(id);
+            return NoContent();
         }
     }
 }
