@@ -28,7 +28,7 @@
       <i id="btnMenuToggle" style="float:right;" class="fa fa-bars fa-2x text-white toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
     </div>
     <input id="txtFastFind" class="form-control form-control-dark col-sm-3" type="text" placeholder="Fast Find" aria-label="Fast Find" />
-    <a class="nav-link" asp-controller="RecycleBin" asp-action="Index"><i class="fa fa-trash text-white"></i></a>
+    <a class="nav-link" [routerLink]='["/fetch-data"]'><i class="fa fa-trash text-white"></i></a>
     <a class="nav-link" href="#"><i class="fa fa-cog text-white"></i></a>
     <a class="nav-link" href="#"><i class="fa fa-sign-out-alt text-white"></i></a>
   </nav>
@@ -88,7 +88,7 @@
     </div>
 
     <div id="main" class="p-3">
-      @RenderBody()
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
