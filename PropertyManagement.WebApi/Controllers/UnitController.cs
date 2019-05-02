@@ -19,7 +19,6 @@ namespace PropertyManagement.WebApi.Controllers
             _unitRepository = unitRepository;
         }
 
-
         // GET api/unit
         [HttpGet]
         public ActionResult<IEnumerable<Unit>> Get()
@@ -43,14 +42,39 @@ namespace PropertyManagement.WebApi.Controllers
 
         // POST api/unit
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post(Models.UnitBindingModel model)
         {
+            var unit = new Unit();
+
+            unit.UnitName = model.UnitName;
+            unit.BuildingId = model.BuildingId;
+            unit.SquareFootage = model.SquareFootage;
+            unit.NumberOfBedrooms = model.NumberOfBedrooms;
+            unit.NumberOfBathrooms = model.NumberOfBathrooms;
+            
+            _unitRepository.AddUnit(unit);
         }
 
         // PUT api/unit/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public ActionResult Put(int id, Models.UnitBindingModel model)
         {
+            if (id != model.UnitId)
+            {
+                return BadRequest();
+            }
+
+            var unit = _unitRepository.GetUnit(model.UnitId);
+
+            unit.UnitName = model.UnitName;
+            unit.BuildingId = model.BuildingId;
+            unit.SquareFootage = model.SquareFootage;
+            unit.NumberOfBedrooms = model.NumberOfBedrooms;
+            unit.NumberOfBathrooms = model.NumberOfBathrooms;
+
+            _unitRepository.UpdateUnit(unit);
+
+            return NoContent();
         }
 
         // DELETE api/unit/5

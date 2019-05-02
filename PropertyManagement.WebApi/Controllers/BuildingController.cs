@@ -19,7 +19,6 @@ namespace PropertyManagement.WebApi.Controllers
             _buildingRepository = buildingRepository;
         }
 
-
         // GET api/building
         [HttpGet]
         public ActionResult<IEnumerable<Building>> Get()
@@ -56,6 +55,8 @@ namespace PropertyManagement.WebApi.Controllers
             building.ZipCode = model.ZipCode;
             building.PurchaseDate = model.PurchaseDate;
             building.PurchasePrice = model.PurchasePrice;
+            building.SellDate = model.SellDate;
+            building.SellPrice = model.SellPrice;
             building.NumberOfUnits = model.NumberOfUnits;
 
             _buildingRepository.AddBuilding(building);
