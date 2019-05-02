@@ -1,0 +1,98 @@
+<header>
+  <!--<nav class='navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3'>
+    <div class="container">
+      <a class="navbar-brand" [routerLink]='["/"]'>PropertyManagement.Ui.Angular</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-label="Toggle navigation"
+        [attr.aria-expanded]="isExpanded" (click)="toggle()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]='{"show": isExpanded}'>
+        <ul class="navbar-nav flex-grow">
+          <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+            <a class="nav-link text-dark" [routerLink]='["/"]'>Home</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]='["link-active"]'>
+            <a class="nav-link text-dark" [routerLink]='["/counter"]'>Counter</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]='["link-active"]'>
+            <a class="nav-link text-dark" [routerLink]='["/fetch-data"]'>Fetch data</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>-->
+
+  <nav class="navbar navbar-dark fixed-top navbar-background flex-md-nowrap p-0 shadow">
+    <div class="col justify-content-sm-start">
+      <a class="navbar-brand" href="#">Property Management</a>
+      <i id="btnMenuToggle" style="float:right;" class="fa fa-bars fa-2x text-white toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+    </div>
+    <input id="txtFastFind" class="form-control form-control-dark col-sm-3" type="text" placeholder="Fast Find" aria-label="Fast Find" />
+    <a class="nav-link" asp-controller="RecycleBin" asp-action="Index"><i class="fa fa-trash text-white"></i></a>
+    <a class="nav-link" href="#"><i class="fa fa-cog text-white"></i></a>
+    <a class="nav-link" href="#"><i class="fa fa-sign-out-alt text-white"></i></a>
+  </nav>
+</header>
+
+<div class="container-fluid body-container">
+  <div class="row content">
+    <div class="nav-side-menu">
+
+      <div class="menu-list">
+        <ul id="menu-content" class="menu-content collapse out">
+          <li id="menuHome">
+            <a asp-controller="Home" asp-action="Index">
+              <i class="fa fa-home fa-lg nav-side-menu-icon"></i> Home
+            </a>
+          </li>
+          <li id="menuDashboard">
+            <a asp-controller="Dashboard" asp-action="Index">
+              <i class="fa fa-chart-line fa-lg nav-side-menu-icon"></i> Dashboard
+            </a>
+          </li>
+          <li id="menuSearch" data-toggle="collapse" data-target="#searchTypes" class="collapsed">
+            <a href="#"><i class="fa fa-search fa-lg nav-side-menu-icon"></i> Search <span class="arrow"><i class="fa fa-chevron-down"></i></span></a>
+          </li>
+          <ul class="sub-menu collapse" id="searchTypes">
+            <li id="searchBuildings"><a asp-controller="Building" asp-action="Search"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Buildings </a></li>
+            <li id="searchUnits"><a asp-controller="Unit" asp-action="Search"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Units </a></li>
+            <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Contacts </a></li>
+            <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Vendors </a></li>
+          </ul>
+          <li>
+            <a href="#">
+              <i class="fa fa-user fa-lg nav-side-menu-icon"></i> Users
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-list fa-lg nav-side-menu-icon"></i> Picklists
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-scroll fa-lg nav-side-menu-icon"></i> Reports
+            </a>
+          </li>
+          <li data-toggle="collapse" data-target="#importTypes" class="collapsed">
+            <a href="#"><i class="fa fa-upload fa-lg nav-side-menu-icon"></i> Import Data <span class="arrow"><i class="fa fa-chevron-down"></i></span></a>
+          </li>
+          <ul class="sub-menu collapse" id="importTypes">
+            <li class="active"><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Buildings </a></li>
+            <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Units </a></li>
+            <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Contacts </a></li>
+            <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Vendors </a></li>
+          </ul>
+        </ul>
+      </div>
+    </div>
+
+    <div id="main" class="p-3">
+      @RenderBody()
+    </div>
+  </div>
+</div>
+
+<footer class="border-top footer text-muted ml-2">
+  &copy; 2019 - PropertyManagement
+</footer>
