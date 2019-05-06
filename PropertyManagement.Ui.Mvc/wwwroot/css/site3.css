@@ -45,11 +45,13 @@ thead {
 
 .btn-primary {
     background-color: #47598f;
+    border-color: #47598f;
     
 }
-.btn-primary:hover {
-    background-color: #3c4665;
-}
+    .btn-primary:hover {
+        background-color: #3c4665;
+        border-color: #3c4665;
+    }
 
 .panel {
     background-color: #f5f5f5;
