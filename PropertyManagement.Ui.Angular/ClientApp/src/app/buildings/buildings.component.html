@@ -1,0 +1,61 @@
+<h1>Buildings</h1>
+
+<p *ngIf="!buildings"><em>Loading...</em></p>
+
+<button class="btn btn-primary" [routerLink]="['/buildings/building-detail', -1]">
+  Add Building
+</button>
+<a class="btn btn-primary" asp-action="Download">
+  Download
+</a>
+
+<div class="table-responsive">
+  <table class='table' *ngIf="buildings">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Zip Code</th>
+        <th>Purchase Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let building of buildings">
+        <td>{{ building.buildingId }}</td>
+        <td>{{ building.buildingName }}</td>
+        <td>{{ building.addressLine1 }}</td>
+        <td>{{ building.city }}</td>
+        <td>{{ building.zipCode }}</td>
+        <td>{{ building.purchaseDate | date:'MM/dd/yyyy' }}</td>
+        <!--<td>
+    <button class="btn btn-primary" [routerLink]="['/buildings/building-detail', building.BuildingId]">
+      <i class="glyphicon glyphicon-edit"></i>
+    </button>
+    <button class="btn btn-default" (click)="delete(building.BuildingId)">
+      <i class="glyphicon glyphicon-trash"></i>
+    </button>
+  </td>-->
+        <td class="btn-group">
+          <a class="btn btn-primary mr-2" [routerLink]="['/buildings/building-detail', building.BuildingId]">
+            <i class="fa fa-edit"></i>
+          </a>
+          <a class="btn btn-primary delete"
+             href="#"
+             data-id="@building.BuildingId"
+             data-controller="Building"
+             data-action="Delete"
+             data-body-message="Are you sure you want to delete this building?">
+            <i class="fa fa-trash delete"
+               data-id="@building.BuildingId"
+               data-controller="Building"
+               data-action="Delete"
+               data-body-message="Are you sure you want to delete this building?">
+            </i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
