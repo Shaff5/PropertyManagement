@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-menu',
@@ -9,6 +10,8 @@ export class NavMenuComponent {
   isSearchTypesExpanded = false;
   isImportTypesExpanded = false;
   isMenuExpanded = false;
+
+  constructor(private router: Router) { }
 
   collapseSearchTypes() {
     this.isSearchTypesExpanded = false;
@@ -32,5 +35,17 @@ export class NavMenuComponent {
 
   collapseMenu() {
     this.isMenuExpanded = false;
+  }
+
+  fastFind(searchTerm: string) {
+    alert(searchTerm);
+    //var url = "/FastFind/Index?searchTerm=" + $('#txtFastFind').val();
+    //window.location.href = url;
+    //this.router.navigateByUrl('../buildings/buildings');
+    this.router.navigate(['/fastfind']).then(nav => {
+      console.log(nav); // true if navigation is successful
+    }, err => {
+      console.log(err) // when there's an error
+    });
   }
 }

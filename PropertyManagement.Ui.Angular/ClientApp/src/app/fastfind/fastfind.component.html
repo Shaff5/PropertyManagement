@@ -1,0 +1,138 @@
+<h4>Buildings</h4>
+<div class="table-responsive">
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Zip Code</th>
+        <th>Purchase Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let building of buildings">
+        <td>{{ building.buildingId }}</td>
+        <td>{{ building.buildingName }}</td>
+        <td>{{ building.addressLine1 }}</td>
+        <td>{{ building.city }}</td>
+        <td>{{ building.zipCode }}</td>
+        <td>{{ building.purchaseDate | date:'MM/dd/yyyy' }}</td>
+        <td class="btn-group">
+          <a class="btn btn-primary mr-2" [routerLink]="['/buildings/building-detail', building.BuildingId]">
+            <i class="fa fa-edit"></i>
+          </a>
+          <a class="btn btn-primary delete"
+             href="#"
+             data-id="@building.BuildingId"
+             data-controller="Building"
+             data-action="Delete"
+             data-body-message="Are you sure you want to delete this building?">
+            <i class="fa fa-trash delete"
+               data-id="@building.BuildingId"
+               data-controller="Building"
+               data-action="Delete"
+               data-body-message="Are you sure you want to delete this building?">
+            </i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!--<h4>Units</h4>
+<div class="table-responsive">
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Building Name</th>
+        <th>Square Footage</th>
+        <th>Bedrooms</th>
+        <th>Bathrooms</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var unit in Model.Units)
+      {
+      <tr>
+        <td class="text-nowrap">@unit.UnitId</td>
+        <td class="text-nowrap">@unit.UnitName</td>
+        <td class="text-nowrap">@unit.BuildingName</td>
+        <td class="text-nowrap">@unit.SquareFootage</td>
+        <td class="text-nowrap">@unit.NumberOfBedrooms</td>
+        <td class="text-nowrap">@unit.NumberOfBathrooms</td>
+        <td class="btn-group">
+          <a class="btn btn-primary mr-2" asp-controller="Unit" asp-action="Edit" asp-route-id=@unit.UnitId>
+            <i class="fa fa-edit"></i>
+          </a>
+          <a class="btn btn-primary delete"
+             href="#"
+             data-id="@unit.UnitId"
+             data-controller="Unit"
+             data-action="Delete"
+             data-body-message="Are you sure you want to delete this unit?">
+            <i class="fa fa-trash delete"
+               data-id="@unit.UnitId"
+               data-controller="Unit"
+               data-action="Delete"
+               data-body-message="Are you sure you want to delete this unit?">
+            </i>
+          </a>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<h4>Rents</h4>
+<div class="table-responsive">
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Amount</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var rent in Model.Rents)
+      {
+      <tr>
+        <td class="text-nowrap">@rent.RentId</td>
+        <td class="text-nowrap">@rent.UnitName</td>
+        <td class="text-nowrap">@rent.StartDate</td>
+        <td class="text-nowrap">@rent.EndDate</td>
+        <td class="text-nowrap">@rent.Amount</td>
+        <td class="btn-group">
+          <a class="btn btn-primary mr-2" asp-controller="Rent" asp-action="Edit" asp-route-id=@rent.RentId>
+            <i class="fa fa-edit"></i>
+          </a>
+          <a class="btn btn-primary delete"
+             href="#"
+             data-id="@rent.RentId"
+             data-controller="Rent"
+             data-action="Delete"
+             data-body-message="Are you sure you want to delete this rent?">
+            <i class="fa fa-trash delete"
+               data-id="@rent.RentId"
+               data-controller="Rent"
+               data-action="Delete"
+               data-body-message="Are you sure you want to delete this rent?">
+            </i>
+          </a>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>-->

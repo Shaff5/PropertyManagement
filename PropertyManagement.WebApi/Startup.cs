@@ -43,6 +43,7 @@ namespace PropertyManagement.WebApi
 
             services.AddScoped<IBuildingRepository>(b => new BuildingRepository());
             services.AddScoped<IUnitRepository>(u => new UnitRepository());
+            services.AddScoped<IRentRepository>(r => new RentRepository());
             services.AddScoped<IUserRepository>(u => new UserRepository());
         }
 

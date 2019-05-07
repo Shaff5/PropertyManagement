@@ -11,6 +11,8 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { BuildingsComponent } from './buildings/buildings.component';
 import { BuildingService } from './buildings/building.service';
+import { FastFindComponent } from './fastfind/fastfind.component';
+import { FastFindService } from './fastfind/fastfind.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { BuildingService } from './buildings/building.service';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    BuildingsComponent
+    BuildingsComponent,
+    FastFindComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -30,11 +33,13 @@ import { BuildingService } from './buildings/building.service';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'buildings', component: BuildingsComponent },
+      { path: 'fastfind', component: FastFindComponent },
     ])
   ],
   providers: [
     { provide: 'API_URL', useFactory: getApiUrl },
-    BuildingService
+    BuildingService,
+    FastFindService
   ],
   bootstrap: [AppComponent]
 })
