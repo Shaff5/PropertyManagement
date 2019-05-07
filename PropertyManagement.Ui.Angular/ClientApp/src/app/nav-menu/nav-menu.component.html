@@ -25,10 +25,10 @@
   <nav class="navbar navbar-dark fixed-top navbar-background flex-md-nowrap p-0 shadow">
     <div class="col justify-content-sm-start">
       <a class="navbar-brand" href="#">Property Management</a>
-      <i id="btnMenuToggle" style="float:right;" class="fa fa-bars fa-2x text-white toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+      <i id="btnMenuToggle" style="float:right;" class="fa fa-bars fa-2x text-white toggle-btn" (click)="toggleMenu()" data-toggle="collapse" data-target="#menu-content"></i>
     </div>
     <input id="txtFastFind" class="form-control form-control-dark col-sm-3" type="text" placeholder="Fast Find" aria-label="Fast Find" />
-    <a class="nav-link" [routerLink]='["/buildings"]'><i class="fa fa-trash text-white"></i></a>
+    <a class="nav-link"><i class="fa fa-trash text-white"></i></a>
     <a class="nav-link" href="#"><i class="fa fa-cog text-white"></i></a>
     <a class="nav-link" href="#"><i class="fa fa-sign-out-alt text-white"></i></a>
   </nav>
@@ -39,7 +39,7 @@
     <div class="nav-side-menu">
 
       <div class="menu-list">
-        <ul id="menu-content" class="menu-content collapse out">
+        <ul id="menu-content" [ngClass]='{"show": isMenuExpanded}' class="menu-content collapse out">
           <li id="menuHome">
             <a asp-controller="Home" asp-action="Index">
               <i class="fa fa-home fa-lg nav-side-menu-icon"></i> Home
@@ -51,10 +51,10 @@
             </a>
           </li>
           <li id="menuSearch" data-toggle="collapse" data-target="#searchTypes" class="collapsed">
-            <a href="#"><i class="fa fa-search fa-lg nav-side-menu-icon"></i> Search <span class="arrow"><i class="fa fa-chevron-down"></i></span></a>
+            <a href="#" (click)="toggleSearchTypes()"><i class="fa fa-search fa-lg nav-side-menu-icon"></i> Search <span class="arrow"><i class="fa fa-chevron-down"></i></span></a>
           </li>
-          <ul class="sub-menu collapse" id="searchTypes">
-            <li id="searchBuildings"><a asp-controller="Building" asp-action="Search"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Buildings </a></li>
+          <ul class="sub-menu collapse" [ngClass]='{"show": isSearchTypesExpanded}' id="searchTypes">
+            <li id="searchBuildings"><a [routerLink]='["/buildings"]'><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Buildings </a></li>
             <li id="searchUnits"><a asp-controller="Unit" asp-action="Search"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Units </a></li>
             <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Contacts </a></li>
             <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Vendors </a></li>
@@ -75,10 +75,10 @@
             </a>
           </li>
           <li data-toggle="collapse" data-target="#importTypes" class="collapsed">
-            <a href="#"><i class="fa fa-upload fa-lg nav-side-menu-icon"></i> Import Data <span class="arrow"><i class="fa fa-chevron-down"></i></span></a>
+            <a href="#" (click)="toggleImportTypes()"><i class="fa fa-upload fa-lg nav-side-menu-icon"></i> Import Data <span class="arrow"><i class="fa fa-chevron-down"></i></span></a>
           </li>
-          <ul class="sub-menu collapse" id="importTypes">
-            <li class="active"><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Buildings </a></li>
+          <ul class="sub-menu collapse" [ngClass]='{"show": isImportTypesExpanded}' id="importTypes">
+            <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Buildings </a></li>
             <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Units </a></li>
             <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Contacts </a></li>
             <li><a href="#"><span class="arrowSubitem"><i class="fa fa-angle-right"></i></span> Vendors </a></li>
