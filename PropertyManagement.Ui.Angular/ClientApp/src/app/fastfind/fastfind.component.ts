@@ -1,5 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { Building } from '../buildings/building'
+import { Router, ActivatedRoute } from '@angular/router';
+import { Building } from '../buildings/building';
+import { Unit } from '../units/unit';
 import { FastFindService } from './fastfind.service';
 
 @Component({
@@ -8,24 +10,19 @@ import { FastFindService } from './fastfind.service';
 })
 export class FastFindComponent implements OnInit {
   public buildings: Building[];
+  public units: Unit[];
+  public rents: any;
 
-  constructor(private fastfindservice: FastFindService) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private fastfindservice: FastFindService) { }
 
   ngOnInit(): void {
-    this.getFastFindItems();
+    let searchTerm = this.activatedRoute.snapshot.params["searchTerm"];
+    this.getFastFindItems(searchTerm);
   }
 
-  private getFastFindItems(): void {
-    alert('hi');
-    this.fastfindservice.getFastFindItems().subscribe(buildings => this.buildings = buildings, error => this.handleError(error));
+  private getFastFindItems(searchTerm: string): void {
+    this.fastfindservice.getFastFindItems(searchTerm).subscribe(o => { this.buildings = o.buildings; this.units = o.units, this.rents = o.rents }, error => this.handleError(error));
   }
-
-  //private delete(id: number): void {
-  //  if (confirm("Are you sure you want to delete this building?")) {
-  //    this.buildingservice.deleteBuilding(id)
-  //      .subscribe(() => this.getBuildings(), error => this.handleError(error));
-  //  }
-  //}
 
   private handleError(error: any) {
     let msg: string = "";

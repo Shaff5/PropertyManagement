@@ -43,7 +43,7 @@
   </table>
 </div>
 
-<!--<h4>Units</h4>
+<h4>Units</h4>
 <div class="table-responsive">
   <table class='table'>
     <thead>
@@ -58,15 +58,13 @@
       </tr>
     </thead>
     <tbody>
-      @foreach (var unit in Model.Units)
-      {
-      <tr>
-        <td class="text-nowrap">@unit.UnitId</td>
-        <td class="text-nowrap">@unit.UnitName</td>
-        <td class="text-nowrap">@unit.BuildingName</td>
-        <td class="text-nowrap">@unit.SquareFootage</td>
-        <td class="text-nowrap">@unit.NumberOfBedrooms</td>
-        <td class="text-nowrap">@unit.NumberOfBathrooms</td>
+      <tr *ngFor="let unit of units">
+        <td>{{ unit.unitId }}</td>
+        <td>{{ unit.unitName }}</td>
+        <td>{{ unit.buildingName }}</td>
+        <td>{{ unit.squareFootage }}</td>
+        <td>{{ unit.numberOfBedrooms }}</td>
+        <td>{{ unit.numberOfBathrooms }}</td>
         <td class="btn-group">
           <a class="btn btn-primary mr-2" asp-controller="Unit" asp-action="Edit" asp-route-id=@unit.UnitId>
             <i class="fa fa-edit"></i>
@@ -86,7 +84,6 @@
           </a>
         </td>
       </tr>
-      }
     </tbody>
   </table>
 </div>
@@ -105,14 +102,12 @@
       </tr>
     </thead>
     <tbody>
-      @foreach (var rent in Model.Rents)
-      {
-      <tr>
-        <td class="text-nowrap">@rent.RentId</td>
-        <td class="text-nowrap">@rent.UnitName</td>
-        <td class="text-nowrap">@rent.StartDate</td>
-        <td class="text-nowrap">@rent.EndDate</td>
-        <td class="text-nowrap">@rent.Amount</td>
+     <tr *ngFor="let rent of rents">
+        <td>{{ rent.RentId }}</td>
+        <td>{{ rent.UnitName }}</td>
+        <td>{{ rent.StartDate }}</td>
+        <td>{{ rent.EndDate }}</td>
+        <td>{{ rent.Amount }}</td>
         <td class="btn-group">
           <a class="btn btn-primary mr-2" asp-controller="Rent" asp-action="Edit" asp-route-id=@rent.RentId>
             <i class="fa fa-edit"></i>
@@ -132,7 +127,6 @@
           </a>
         </td>
       </tr>
-      }
     </tbody>
   </table>
-</div>-->
+</div>

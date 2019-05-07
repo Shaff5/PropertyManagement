@@ -38,11 +38,7 @@ export class NavMenuComponent {
   }
 
   fastFind(searchTerm: string) {
-    alert(searchTerm);
-    //var url = "/FastFind/Index?searchTerm=" + $('#txtFastFind').val();
-    //window.location.href = url;
-    //this.router.navigateByUrl('../buildings/buildings');
-    this.router.navigate(['/fastfind']).then(nav => {
+    this.router.navigate(['/fastfind', { searchTerm: searchTerm }]).then(nav => {
       console.log(nav); // true if navigation is successful
     }, err => {
       console.log(err) // when there's an error
